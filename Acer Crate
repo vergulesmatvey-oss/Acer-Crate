@@ -1,0 +1,57 @@
+# Acer Crate
+
+**Acer Crate** is a free, modern and independent alternative to Acer NitroSense, designed for Acer Nitro gaming laptops.
+
+Acer Crate brings performance management, real-time hardware monitoring, cooling controls, and system customization together in one clean and intuitive application.
+
+## Features
+
+- **Real-Time Monitoring** — Monitor CPU and GPU temperatures, usage, fan speeds, RAM, and storage.
+- **Fan Control** — Manage cooling settings and adjust fan speeds.
+- **Performance Modes** — Choose between Quiet, Balanced, Performance, and My Mode.
+- **Keyboard Lighting** — Customize keyboard backlighting on supported laptops.
+- **Custom Presets** — Create and save personalized configurations.
+- **Automation** — Manage automated system settings.
+- **System Diagnostics** — Access hardware information and diagnostic tools.
+- **Modern UI** — Minimalist dark interface with teal accents.
+- **Multilingual Support** — English and Russian.
+
+## System Requirements
+
+- Windows 10 or Windows 11
+- Acer Nitro gaming laptop
+- Recommended model: Acer Nitro 5 AN515-58
+- Administrator permissions may be required for certain hardware controls.
+
+## Installation
+
+1. Open the [Releases](https://github.com/vergulesmatvey-oss/Acer-Crate/releases) page.
+2. Download the latest available version.
+3. Run the installer or executable file.
+4. Follow the on-screen instructions.
+
+## Compatibility
+
+Acer Crate is primarily designed for the Acer Nitro 5 AN515-58.
+
+Compatibility with other Acer Nitro models is not guaranteed. Some features may require specific hardware support.
+
+## Disclaimer
+
+Acer Crate is an independent, unofficial project.
+
+This software is not affiliated with, endorsed by, or sponsored by Acer Inc.
+
+Features and compatibility may vary depending on the device and application version.
+
+## Developer
+
+Developed by [vergulesmatvey-oss](https://github.com/vergulesmatvey-oss).
+
+## Downloads
+
+Download the latest version from [GitHub Releases](https://github.com/vergulesmatvey-oss/Acer-Crate/releases).
+
+---
+
+**Acer Crate — Take Control of Your Performance.**
