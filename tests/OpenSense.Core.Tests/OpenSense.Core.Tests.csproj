@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\OpenSense.Core\OpenSense.Core.csproj" />
+    <Compile Include="..\..\src\OpenSense.App\Helpers\CurveLabelPlacement.cs" Link="App\CurveLabelPlacement.cs" />
+    <Compile Include="..\..\src\OpenSense.App\Services\AutostartTask.cs" Link="App\AutostartTask.cs" />
+    <Compile Include="..\..\src\OpenSense.App\Helpers\UiTelemetryBuffer.cs" Link="App\UiTelemetryBuffer.cs" />
+  </ItemGroup>
+
+</Project>

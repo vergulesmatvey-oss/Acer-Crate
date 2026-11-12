@@ -1,0 +1,4 @@
+Tool: built-in image_gen, edit, transparent_background=true.
+Target: CrateMark.png.
+
+Use case: background-extraction. Edit target: the supplied Acer Crate app icon. Remove the black square background AND the dark rounded square backplate. Keep only the central beveled metallic silver AC monogram with its surrounding thin hexagonal metallic outline and dark interior faces belonging to the hexagon, preserving its exact geometry, angle, silver gradients and subtle tiny green reflection. All area outside the hexagonal outline must be genuinely transparent with a clean alpha channel, including all four corners. Center the existing mark, use most of the square canvas with 6% transparent padding. No new symbols, no text, no new glow, no rounded-square backplate, no checkerboard drawn into the image. This is a clean cutout for a Windows app icon.

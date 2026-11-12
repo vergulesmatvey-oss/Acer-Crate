@@ -1,0 +1,58 @@
+name: Acer Crate build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows-x64:
+    runs-on: windows-2025
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-dotnet@v6.1.0
+        with:
+          global-json-file: global.json
+
+      - name: Build and run core tests
+        run: |
+          . ./installer/Use-BuildEnvironment.ps1
+          dotnet build tests/OpenSense.Core.Tests/OpenSense.Core.Tests.csproj -c Release -p:UseSharedCompilation=false -m:1 -nr:false
+          if ($LASTEXITCODE -ne 0) { throw 'Core test build failed.' }
+          dotnet tests/OpenSense.Core.Tests/bin/Release/net10.0-windows10.0.19041.0/OpenSense.Core.Tests.dll --report-xunit-trx --report-xunit-trx-filename core.trx --results-directory .acercrate-dev/test-results
+          if ($LASTEXITCODE -ne 0) { throw 'Core tests failed.' }
+
+      - name: Publish and package Acer Crate
+        run: |
+          & ./installer/Build-AcerCrate.ps1
+          if ($LASTEXITCODE -ne 0) { throw 'Packaging failed.' }
+
+      - name: Check package inventory
+        run: |
+          $manifest = Get-Content .acercrate-dev/outputs/AcerCrate/AcerCrate.manifest.json -Raw | ConvertFrom-Json
+          $unexpected = @($manifest.Files.Path | Where-Object { $_ -match '(?i)(^|[\\/])(sysmondrv\.sys|cfg\.bak)$|\.(vbs|js|sys)$' })
+          if ($unexpected.Count) { throw ('Unexpected package entries: ' + ($unexpected -join ', ')) }
+          Write-Host ('Checked ' + $manifest.Files.Count + ' manifest entries. This inventory check is not an antivirus scan.')
+
+      - name: Upload build for review
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: AcerCrate-Windows-x64
+          if-no-files-found: error
+          include-hidden-files: true
+          path: |
+            .acercrate-dev/outputs/AcerCrate-Setup-x64.exe
+            .acercrate-dev/outputs/AcerCrate/Source/AcerCrate-source.zip
+            .acercrate-dev/test-results/*.trx

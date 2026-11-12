@@ -1,0 +1,13 @@
+bin/
+obj/
+*.user
+.vs/
+artifacts/
+.acercrate-dev/
+TestResults/
+*.trx
+*.log
+.env
+.env.*
+*.pfx
+*.p12

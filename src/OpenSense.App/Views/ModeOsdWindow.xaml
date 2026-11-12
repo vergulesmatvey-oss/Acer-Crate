@@ -1,0 +1,8 @@
+<Window x:Class="OpenSense.App.Views.ModeOsdWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Acer Crate">
+    <Border x:Name="Pill" Background="#101616" BorderThickness="1" CornerRadius="39" Padding="30,16" IsHitTestVisible="False">
+        <StackPanel Orientation="Horizontal" Spacing="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <FontIcon x:Name="ModeIcon" Glyph="&#xE945;" FontSize="28" VerticalAlignment="Center" />
+            <TextBlock x:Name="ModeLabel" FontSize="21" FontWeight="SemiBold" Foreground="White" VerticalAlignment="Center" MaxWidth="294" TextTrimming="CharacterEllipsis" />
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,0 +1,541 @@
+using System.Reflection;
+using Microsoft.Extensions.Logging;
+using OpenSense.Core.Control;
+using OpenSense.Core.Hardware;
+using OpenSense.Core.Hardware.Hid;
+using OpenSense.Core.Ipc;
+using OpenSense.Core.Monitoring;
+using OpenSense.Core.Settings;
+
+namespace OpenSense.Core.Engine;
+
+/// <summary>
+/// Everything that talks to the laptop: transport, capability detection, temperature sensors, the fan
+/// control loop, the keyboard and the machine settings. Hosted by the OpenSense service, or by the app when
+/// it runs as a portable copy; clients use it through <see cref="IOpenSenseService"/>.
+/// </summary>
+public sealed partial class OpenSenseEngine : IOpenSenseService, IDisposable
+{
+    private static readonly TimeSpan SaveDelay = TimeSpan.FromMilliseconds(400);
+
+    /// <summary>How long stopping waits for work in flight (a firmware call, a light's write) before it goes on without it.</summary>
+    private static readonly TimeSpan StopWait = TimeSpan.FromSeconds(10);
+    private static readonly string Version =
+        typeof(OpenSenseEngine).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "";
+
+    private readonly IMachine _machine;
+    private readonly ModePowerSchemes? _modePowerSchemes;
+    private readonly ILogger<OpenSenseEngine> _log;
+    private readonly SettingsStore<MachineSettings> _store;
+    private readonly SettingsStore<RuntimeState> _runtimeStore;
+    private readonly Timer _saveTimer;
+    private readonly object _settingsGate = new();
+    private readonly object _runtimeGate = new();
+    private readonly SemaphoreSlim _sessionGate = new(1, 1);
+
+    private MachineSettings _settings;
+    private RuntimeState _runtime;
+    private IWmiTransport? _transport;
+    private EcHidDevice? _ecHid;
+    private IPowerSource? _power;
+    private ILoadMonitor? _load;
+    private DirectSensors _sensors = DirectSensors.None;
+    private FanControlService? _controller;
+    private KeyboardService? _keyboard;
+
+    private EngineState _state = EngineState.Starting;
+    private string? _error;
+    private string? _deviceName;
+    private string? _biosVersion;
+    private string? _serialNumber;
+    private DeviceCapabilities _detected = DeviceCapabilities.None;
+    private DeviceCapabilities _capabilities = DeviceCapabilities.None;
+    private FirmwareState? _firmware;
+    private KeyboardState? _keyboardAtStart;
+    private volatile Telemetry? _latest;
+    private int _disposed;
+
+    /// <param name="settingsPath">Where the machine settings live (<see cref="SettingsPaths.Machine"/>).</param>
+    public OpenSenseEngine(IMachine machine, string settingsPath, ILogger<OpenSenseEngine> log)
+    {
+        _machine = machine;
+        _modePowerSchemes = machine.ModePowerSchemes is {} schemes ? new ModePowerSchemes(schemes) : null;
+        _log = log;
+        _store = new SettingsStore<MachineSettings>(settingsPath);
+        _settings = _store.Load().Upgrade();
+        if (_settings.Profile.LaptopMode is not null)
+            _settings = _settings with { Profile = _settings.LastSuccessfulProfile ?? new ControlProfile() };
+        _runtimeStore = new SettingsStore<RuntimeState>(Path.Combine(Path.GetDirectoryName(settingsPath)!, "state.json"));
+        _runtime = _runtimeStore.Load();
+        _saveTimer = new Timer(_ => Flush(), null, Timeout.Infinite, Timeout.Infinite);
+    }
+
+    public event EventHandler<Telemetry>? TelemetryUpdated;
+
+    public event EventHandler<ControlNotice>? NoticeRaised;
+
+    public event EventHandler<EngineSnapshot>? Rebuilt;
+
+    public event EventHandler<MachineSettings>? SettingsChanged;
+
+    public EngineState State => _state;
+
+    /// <summary>
+    /// Detects the laptop and starts controlling it. Never throws; see <see cref="State"/>. The HID devices, the load
+    /// counters and the chips' own sensors are optional: without them the firmware's readings stand in. A start that
+    /// fails at any other step closes at once what it had opened.
+    /// </summary>
+    public void Start()
+    {
+        _sessionGate.Wait();
+        try
+        {
+            _deviceName = _machine.Model;
+            _biosVersion = _machine.BiosVersion;
+            _serialNumber = _machine.SerialNumber;
+            _transport = _machine.OpenFirmware();
+            if (!new AcerDevice(_transport).IsPresent)
+            {
+                _state = EngineState.Unsupported;
+                LogUnsupported();
+                return;
+            }
+            _hid = OpenOptional(_machine.OpenHid, "HID devices", _ => new UnavailableHidBus());
+            _ecHid = OpenOptional(() => EcHidDevice.Open(_hid), "the embedded controller's HID interface", _ => null);
+            var device = Device();
+
+            _probed = DetectBootLogo(CapabilityProbe.Probe(device, _machine.ReadSmbios(), _deviceName, _machine.ReadAcpiTables())) with
+            {
+                ModeKey = Runtime.ModeKeySeen,
+            };
+            _detected = DetectHidLights(_probed);
+            LogDetected(_deviceName ?? "Unknown model", _detected.Diagnostics);
+            _capabilities = Current.Overrides.Apply(_detected);
+
+            _firmware = FirmwareState.Read(device, _capabilities);
+            _keyboardAtStart = KeyboardState.Read(device, _capabilities.Keyboard, _hidLights.KeyboardSettings ? _hidLights.Keyboard : null);
+            _load = OpenOptional(_machine.OpenLoadMonitor, "load counters", _ => new UnavailableLoadMonitor());
+            _sensors = OpenOptional(_machine.OpenSensors, "the chips' temperature sensors", ex => new DirectSensors(null, null, null,
+                SensorStatus.Failed(SensorProblem.NoReading, ex.Message), SensorStatus.Failed(SensorProblem.NoReading, ex.Message)));
+            _power = _machine.OpenPowerSource();
+            LogSensors(_sensors.CpuStatus, _sensors.GpuStatus);
+
+            // First start on this machine: keep whatever NitroSense (or the firmware) is set to.
+            if (!_store.Exists)
+                AdoptFirmwareState();
+
+            StartControl(device);
+            StartFirmwareEvents();
+            WatchHid();
+            _state = EngineState.Ready;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException)
+        {
+            LogStartFailed(ex);
+            _error = ex.Message;
+            _state = EngineState.Failed;
+            Shutdown();
+        }
+        finally
+        {
+            _sessionGate.Release();
+        }
+    }
+
+    /// <summary>The machine is going to sleep. (Services do not get SystemEvents; the host forwards power events.)</summary>
+    public void NotifySuspend() => _powerService?.OnSuspend();
+
+    /// <summary>The machine woke from sleep.</summary>
+    public void NotifyResume()
+    {
+        _modePowerSchemes?.Reset();
+        _controller?.OnResume();
+        _ = _keyboard?.OnResume();
+        _ = _lighting?.OnResume();
+        _ = _powerService?.OnResume();
+    }
+
+    /// <summary>AC power was connected or removed.</summary>
+    public void NotifyPowerSourceChanged() => _controller?.OnPowerSourceChanged();
+
+    public async Task<EngineSnapshot> GetSnapshotAsync(CancellationToken cancellationToken = default)
+    {
+        await _sessionGate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            return Snapshot();
+        }
+        finally
+        {
+            _sessionGate.Release();
+        }
+    }
+
+    public Task SetProfileAsync(ControlProfile profile, CancellationToken cancellationToken = default)
+    {
+        profile = LaptopModePolicy.Normalize(profile);
+        _modePowerSchemes?.Reset();
+        UpdateSettings(s => s with { Profile = profile });
+        _controller?.Update(profile);
+        return Task.CompletedTask;
+    }
+
+    public Task SetKeyboardAsync(KeyboardSettings keyboard, CancellationToken cancellationToken = default)
+    {
+        UpdateSettings(s => s with { Keyboard = keyboard });
+        return _keyboard?.ApplyAsync(keyboard) ?? Task.CompletedTask;
+    }
+
+    public async Task SetOverridesAsync(CapabilityOverrides capabilityOverrides, CancellationToken cancellationToken = default)
+    {
+        UpdateSettings(s => s with { Overrides = capabilityOverrides });
+        EngineSnapshot rebuilt;
+        await _sessionGate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            if (_state != EngineState.Ready || _transport is null)
+                return;
+            // Restarting the loop hands the fans back to Auto briefly (if configured), then re-applies the profile.
+            await Task.Run(() =>
+            {
+                StopControl();
+                _capabilities = capabilityOverrides.Apply(_detected);
+                StartControl(Device());
+            }, cancellationToken).ConfigureAwait(false);
+            rebuilt = Snapshot();
+        }
+        finally
+        {
+            _sessionGate.Release();
+        }
+        LogRebuilt();
+        Rebuilt?.Invoke(this, rebuilt);
+    }
+
+    public async Task<bool> SetGpuModeAsync(GpuMode mode, CancellationToken cancellationToken = default)
+    {
+        if (_controller is not { } controller || !_capabilities.GpuModeSwitch)
+            return false;
+        // A value the BIOS didn't list is not sent (0 and anything above Automatic are no mode at all).
+        if (mode is < GpuMode.Hybrid or > GpuMode.Automatic || (mode == GpuMode.Automatic && !_capabilities.GpuModeAutomatic))
+            return false;
+        var ok = await controller.InvokeAsync(d => d.SetGpuMode(mode)).ConfigureAwait(false);
+        if (ok && _firmware is { } firmware)
+            _firmware = firmware with { GpuMode = mode };
+        LogGpuMode(mode, ok);
+        return ok;
+    }
+
+    public async Task<DustDefenderStart> StartDustDefenderAsync(CancellationToken cancellationToken = default)
+    {
+        if (_controller is not { } controller || !_capabilities.DustDefender)
+            return DustDefenderStart.Failed;
+        var result = await controller.StartDustDefenderAsync().ConfigureAwait(false);
+        LogDustDefender(result);
+        return result;
+    }
+
+    public async Task<KeyboardState?> ReadKeyboardAsync(CancellationToken cancellationToken = default) =>
+        _keyboard is { } keyboard ? await keyboard.ReadStateAsync().ConfigureAwait(false) : null;
+
+    private MachineSettings Current
+    {
+        get
+        {
+            lock (_settingsGate)
+                return _settings;
+        }
+    }
+
+    /// <summary>
+    /// The firmware through both of its interfaces (WMI, and the embedded controller's HID one where there is one), with
+    /// what the model's reviewed BIOS is known to do.
+    /// </summary>
+    private AcerDevice Device() =>
+        new(_transport!) { EcHid = _ecHid, FirmwareProfile = AcerFirmwareProfile.For(_deviceName, _biosVersion, _ecHid is not null) };
+
+    /// <summary>Opens a part the engine can do without; on a failure, logs it and goes on with <paramref name="fallback"/>.</summary>
+    private T OpenOptional<T>(Func<T> open, string what, Func<Exception, T> fallback)
+    {
+        try
+        {
+            return open();
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException and not AcerWmiAccessDeniedException)
+        {
+            LogOptionalFailed(ex, what);
+            return fallback(ex);
+        }
+    }
+
+    /// <summary>Work that goes on after the call that started it: a failure is logged rather than lost.</summary>
+    private void ObserveWork(Task work, string what) =>
+        _ = work.ContinueWith(t => LogBackgroundFailed(t.Exception!.GetBaseException(), what), CancellationToken.None,
+            TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+
+    private RuntimeState Runtime
+    {
+        get
+        {
+            lock (_runtimeGate)
+                return _runtime;
+        }
+    }
+
+    /// <summary>Changes the runtime state and saves it at once: it has to survive a crash.</summary>
+    private void UpdateRuntime(Func<RuntimeState, RuntimeState> change)
+    {
+        lock (_runtimeGate)
+        {
+            _runtime = change(_runtime);
+            try
+            {
+                _runtimeStore.Save(_runtime);
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                LogSaveFailed(ex, _runtimeStore.Path);
+            }
+        }
+    }
+
+    private EngineSnapshot Snapshot() => new()
+    {
+        EngineVersion = Version,
+        State = _state,
+        Error = _error,
+        DeviceName = _deviceName,
+        BiosVersion = _biosVersion,
+        SerialNumber = _serialNumber,
+        CpuName = _load?.CpuName,
+        GpuName = _load?.GpuName,
+        Detected = _detected,
+        Capabilities = _capabilities,
+        Firmware = _firmware,
+        Keyboard = _keyboardAtStart,
+        Lighting = _lightingAtStart,
+        Settings = Current,
+        TemperatureSources = new TemperatureSources(_sensors.CpuStatus, _sensors.GpuStatus),
+        Latest = _latest,
+    };
+
+    private void StartControl(AcerDevice device)
+    {
+        if (Runtime.GpuOverclockApplied)
+            SwitchOffGpuOverclockAfterCrash();
+        var settings = Current;
+        _controller = new FanControlService(device, _capabilities, _load!, _power!, settings.Profile, _sensors, knownGpuClocks: KnownGpuClocks(),
+            batteryBoostSeen: Runtime.BatteryBoostSeen);
+        _controller.TelemetryUpdated += OnTelemetry;
+        _controller.Notice += OnNotice;
+        _controller.GpuClockLimitsChanged += OnGpuClockLimits;
+        _controller.GpuOverclockApplied += OnGpuOverclockApplied;
+        _controller.BatteryBoostSeen += OnBatteryBoostSeen;
+        _controller.Start();
+
+        StartKeyboard(_controller, settings.Keyboard);
+        StartLighting(_controller, settings.Lighting);
+
+        StartPower(settings);
+    }
+
+    private void StopControl()
+    {
+        StopPower();
+        // The lights and the keyboard finish their work while the control thread they use still runs.
+        var stopped = DrainHidServicesAsync(StopLighting(), StopKeyboard());
+        if (!stopped.Wait(StopWait))
+            LogStopFailed(new TimeoutException("The lights and the keyboard settings did not stop in time."));
+        if (_controller is { } controller)
+        {
+            controller.TelemetryUpdated -= OnTelemetry;
+            controller.Notice -= OnNotice;
+            controller.GpuClockLimitsChanged -= OnGpuClockLimits;
+            controller.Dispose(); // hands the fans back to the firmware if configured, and resets the GPU's clocks
+            controller.GpuOverclockApplied -= OnGpuOverclockApplied; // after: resetting the clocks clears it in state.json
+        }
+        _controller = null;
+    }
+
+    private void OnTelemetry(Telemetry telemetry)
+    {
+        var latest = telemetry with { Battery = _powerService?.Telemetry() };
+        var profile = Current.Profile;
+        if (profile.LaptopMode is {} mode && latest.AppliedProfile == profile && latest.ControlConfirmed && _modePowerSchemes is {} schemes)
+        {
+            var result = schemes.Apply(mode);
+            latest = latest with { ActivePowerScheme=result.Active, PowerSchemeError=result.Error, ControlConfirmed=latest.ControlConfirmed && result.Confirmed };
+        }
+        _latest = latest;
+        if (profile.LaptopMode is not null && latest.AppliedProfile == profile && latest.ControlConfirmed && !latest.Failsafe && profile.Mode == latest.EffectiveMode &&
+            (profile.OperatingMode is null || latest.OperatingMode == profile.OperatingMode) &&
+            (profile.CoolBoost is null || latest.CoolBoost == profile.CoolBoost) &&
+            latest.Fans.All(f => f.Behavior == FanBehavior.Auto || profile.Mode != FanControlMode.Auto) &&
+            Current.LastSuccessfulProfile != profile)
+            UpdateSettings(s => s with { LastSuccessfulProfile = profile });
+        NoteSensorGlitch();
+        TelemetryUpdated?.Invoke(this, latest);
+    }
+
+    private void OnNotice(ControlNotice notice)
+    {
+        if (notice.Kind is NoticeKind.OperatingModeChangedByPower or NoticeKind.CalibrationFinished)
+            LogNews(notice.Kind, notice.OperatingMode, notice.PowerLimit);
+        else
+            LogNotice(notice.Kind, notice.OperatingMode, notice.Detail);
+        NoticeRaised?.Invoke(this, notice);
+    }
+
+    private void AdoptFirmwareState()
+    {
+        var firmware = _firmware!;
+        UpdateSettings(s => s with
+        {
+            Profile = firmware.ToProfile(s.Profile),
+            Keyboard = s.Keyboard with
+            {
+                BacklightAutoOff = _keyboardAtStart?.BacklightAutoOff,
+                WindowsKey = _keyboardAtStart?.WindowsKey,
+                LcdOverdrive = _keyboardAtStart?.LcdOverdrive,
+                FnLock = _keyboardAtStart?.FnLock,
+            },
+        });
+        Flush();
+    }
+
+    private void UpdateSettings(Func<MachineSettings, MachineSettings> change)
+    {
+        MachineSettings updated;
+        lock (_settingsGate)
+        {
+            updated = change(_settings);
+            if (updated == _settings)
+                return;
+            _settings = updated;
+            _saveTimer.Change(SaveDelay, Timeout.InfiniteTimeSpan);
+        }
+        SettingsChanged?.Invoke(this, updated);
+    }
+
+    private void Flush()
+    {
+        var snapshot = Current;
+        try
+        {
+            _store.Save(snapshot);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            LogSaveFailed(ex, _store.Path);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (Interlocked.Exchange(ref _disposed, 1) != 0)
+            return;
+        _sessionGate.Wait();
+        try
+        {
+            Shutdown();
+            _saveTimer.Dispose();
+            Flush();
+        }
+        finally
+        {
+            _sessionGate.Release();
+        }
+        _sessionGate.Dispose();
+    }
+
+    /// <summary>
+    /// Stops what <see cref="Start"/> began and closes what it opened, last first. Each step runs whatever the one before
+    /// did, and leaves nothing to close twice, so a failed start can run it at once and <see cref="Dispose"/> again later.
+    /// </summary>
+    private void Shutdown()
+    {
+        Step(StopFirmwareEvents);
+        Step(StopControl);
+        Step(() =>
+        {
+            if (!StopHidAsync().Wait(StopWait))
+                throw new TimeoutException("The HID devices did not close in time.");
+        });
+        Step(() =>
+        {
+            var sensors = _sensors;
+            _sensors = DirectSensors.None;
+            if (!ReferenceEquals(sensors, DirectSensors.None))
+                sensors.Dispose();
+        });
+        Step(() =>
+        {
+            _load?.Dispose();
+            _load = null;
+        });
+        Step(() =>
+        {
+            _ecHid?.Dispose();
+            _ecHid = null;
+        });
+        Step(() =>
+        {
+            _transport?.Dispose();
+            _transport = null;
+        });
+
+        void Step(Action step)
+        {
+            try
+            {
+                step();
+            }
+            catch (Exception ex) when (ex is not OutOfMemoryException)
+            {
+                LogStopFailed(ex);
+            }
+        }
+    }
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "{Device}: capability probe\n{Diagnostics}")]
+    private partial void LogDetected(string device, string diagnostics);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "No Acer gaming firmware (AcerGamingFunction) on this machine")]
+    private partial void LogUnsupported();
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Temperature sources: CPU {Cpu}; GPU {Gpu}")]
+    private partial void LogSensors(SensorStatus cpu, SensorStatus gpu);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "CPU temperature sensor: {Note}")]
+    private partial void LogSensorGlitch(string note);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Engine failed to start")]
+    private partial void LogStartFailed(Exception ex);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Rebuilt the session with new capability overrides")]
+    private partial void LogRebuilt();
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "GPU mode {Mode} requested, accepted: {Accepted}")]
+    private partial void LogGpuMode(GpuMode mode, bool accepted);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Dust Defender requested: {Result}")]
+    private partial void LogDustDefender(DustDefenderStart result);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Notice {Kind} {Mode} {Detail}")]
+    private partial void LogNotice(NoticeKind kind, OperatingMode? mode, string? detail);
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Notice {Kind} {Mode} {Power}")]
+    private partial void LogNews(NoticeKind kind, OperatingMode? mode, PowerLimit? power);
+
+    [LoggerMessage(Level = LogLevel.Error, Message = "Could not save settings to {Path}")]
+    private partial void LogSaveFailed(Exception ex, string path);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Could not open {What}; going on without it")]
+    private partial void LogOptionalFailed(Exception ex, string what);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "Background work failed: {What}")]
+    private partial void LogBackgroundFailed(Exception ex, string what);
+
+    [LoggerMessage(Level = LogLevel.Warning, Message = "A step of stopping failed; the others went on")]
+    private partial void LogStopFailed(Exception ex);
+}

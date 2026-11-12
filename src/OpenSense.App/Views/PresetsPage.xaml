@@ -1,0 +1,7 @@
+<Page x:Class="OpenSense.App.Views.PresetsPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="using:OpenSense.App.Controls" Background="{ThemeResource CrateSurface}" xmlns:l="using:OpenSense.App.Localization">
+<ScrollView><StackPanel Padding="{StaticResource PagePadding}" Spacing="22" MaxWidth="1600" HorizontalAlignment="Stretch">
+<TextBlock Text="{l:Text Key=Crate152}" FontSize="28" FontWeight="SemiBold" />
+<c:TileGrid MinColumnWidth="520" MaxColumns="2" Spacing="22"><c:PersonalModeEditor /><StackPanel Spacing="22">
+<Border Style="{StaticResource CardStyle}"><StackPanel Spacing="12"><TextBlock Text="{l:Text Key=Crate126}" FontSize="21" /><TextBlock Text="{l:Text Key=Crate222}" TextWrapping="Wrap" Opacity=".65" /><c:PresetEditor /></StackPanel></Border>
+<Border Style="{StaticResource CardStyle}"><StackPanel Spacing="12"><TextBlock Text="{l:Text Key=Crate141}" FontSize="21" /><TextBlock Text="{l:Text Key=Crate223}" TextWrapping="Wrap" Opacity=".65" /><c:PresetEditor ForLighting="True" /></StackPanel></Border>
+<c:CurrentProfileSummary /></StackPanel></c:TileGrid></StackPanel></ScrollView></Page>

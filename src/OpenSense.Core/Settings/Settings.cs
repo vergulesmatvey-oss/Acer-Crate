@@ -1,0 +1,211 @@
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using OpenSense.Core.Control;
+using OpenSense.Core.Hardware;
+using OpenSense.Core.Lighting;
+
+namespace OpenSense.Core.Settings;
+
+/// <summary>How the app looks and behaves for one Windows user.</summary>
+public sealed record UiSettings
+{
+    public bool CloseToTray { get; init; } = true;
+    public bool StartMinimized { get; init; } = true;
+    public bool ProfileHotkeys { get; init; }
+    public bool ModeCycleHotkey { get; init; } = true;
+    public bool ModeOsdWhenHidden { get; init; } = true;
+    public bool Notifications { get; init; } = true;
+    public bool AnimateInterface { get; init; } = true;
+    public int UiRefreshSeconds { get; init; } = 2;
+    public string AccentHex { get; init; } = "#12E1D2";
+    public string? TextHex { get; init; }
+    public string? SidebarHex { get; init; }
+    public string? CustomLaptopImage { get; init; }
+    public string? ArtworkModelQuery { get; init; }
+    public bool PersonalModeSelected { get; init; }
+
+    /// <summary>The notification that says closing the window leaves OpenSense in the notification area has been shown once.</summary>
+    public bool TrayHintShown { get; init; }
+
+    public bool UseFahrenheit { get; init; }
+
+    /// <summary>The laptop's NitroSense key opens OpenSense, as it opened NitroSense.</summary>
+    public bool OpenWithNitroSenseKey { get; init; } = true;
+
+    /// <summary>Another key or combination that opens OpenSense from anywhere; null for none.</summary>
+    public KeyShortcut? OpenShortcut { get; init; }
+
+    /// <summary>0 = follow Windows, 1 = light, 2 = dark.</summary>
+    public int Theme { get; init; } = 2;
+
+    /// <summary>The app's language (a Strings folder name such as "de-DE"), or null to follow Windows.</summary>
+    public string? Language { get; init; } = "ru-RU";
+}
+
+/// <summary>A key (Windows virtual-key code) and the modifier keys held with it, as RegisterHotKey takes them.</summary>
+public sealed record KeyShortcut(int Key, bool Control = false, bool Alt = false, bool Shift = false, bool Windows = false);
+
+/// <summary>Update checks against GitHub Releases, per user.</summary>
+public sealed record UpdateSettings
+{
+    /// <summary>Check once a day.</summary>
+    public bool CheckAutomatically { get; init; } = true;
+
+    public DateTimeOffset? LastCheck { get; init; }
+
+    /// <summary>A release tag the user chose to skip; automatic checks stay quiet about it.</summary>
+    public string? SkippedVersion { get; init; }
+}
+
+/// <summary>Per-user settings, kept by the app in %APPDATA%\OpenSense.</summary>
+public sealed record UserSettings
+{
+    public int Version { get; init; } = 1;
+    public UiSettings Ui { get; init; } = new();
+    public UpdateSettings Updates { get; init; } = new();
+    public Dictionary<string, CoolingPreset> CoolingPresets { get; init; } = [];
+    public Dictionary<string, LightingSettings> LightingPresets { get; init; } = [];
+    public PersonalMode PersonalMode { get; init; } = new();
+}
+
+/// <summary>
+/// What the laptop should do, for every user: kept by the OpenSense service (or the portable app)
+/// in %ProgramData%\OpenSense and applied from boot, before anyone signs in.
+/// </summary>
+public sealed record MachineSettings
+{
+    /// <summary>What <see cref="Upgrade"/> brings settings to.</summary>
+    public const int CurrentVersion = 3;
+
+    /// <summary>
+    /// 2: lighting per light in <see cref="Lighting"/> (version 1 kept the keyboard's in <see cref="Keyboard"/>).
+    /// 3: GPU offsets apply only while overclocking is switched on (<see cref="GpuClockSettings.Enabled"/>).
+    /// </summary>
+    public int Version { get; init; } = CurrentVersion;
+    public ControlProfile Profile { get; init; } = new();
+    public ControlProfile? LastSuccessfulProfile { get; init; }
+    public KeyboardSettings Keyboard { get; init; } = new();
+    public LightingConfig Lighting { get; init; } = new();
+    public PowerSettings Power { get; init; } = new();
+    public CapabilityOverrides Overrides { get; init; } = new();
+
+    /// <summary>Whether BIOS settings may be changed (the engine refuses otherwise).</summary>
+    public BiosAccess Bios { get; init; } = new();
+
+    /// <summary>Settings written by an older version, in today's form.</summary>
+    public MachineSettings Upgrade()
+    {
+        if (Version >= CurrentVersion)
+            return this;
+        var settings = this;
+        if (settings.Version < 2)
+        {
+            settings = settings with
+            {
+                Keyboard = settings.Keyboard with { LegacyLighting = null },
+                Lighting = settings.Keyboard.LegacyLighting is { } keyboard
+                    ? settings.Lighting.With(EcKeyboardBackend.Id, keyboard)
+                    : settings.Lighting,
+            };
+        }
+        if (settings.Version < 3)
+        {
+            // Offsets set then were applied (the user had confirmed the warning), so overclocking stays on with them.
+            var clocks = settings.Profile.GpuClocks;
+            var set = !clocks.Fixed.IsNone || clocks.Modes.Values.Any(o => !o.IsNone);
+            settings = settings with { Profile = settings.Profile with { GpuClocks = clocks with { Enabled = set } } };
+        }
+        return settings with { Version = CurrentVersion };
+    }
+}
+
+public static class SettingsPaths
+{
+    public static string User { get; } = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "OpenSense", "settings.json");
+
+    public static string MachineDirectory { get; } = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "OpenSense");
+
+    public static string Machine { get; } = Path.Combine(MachineDirectory, "settings.json");
+
+    /// <summary>
+    /// Creates <see cref="MachineDirectory"/> readable by everyone but writable only by SYSTEM and
+    /// administrators, and resets those permissions if it already exists: %ProgramData% lets any user
+    /// create folders, so one could otherwise plant settings for the service. Needs administrator rights.
+    /// </summary>
+    public static void SecureMachineDirectory()
+    {
+        const InheritanceFlags inherit = InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit;
+        var security = new DirectorySecurity();
+        security.SetAccessRuleProtection(isProtected: true, preserveInheritance: false);
+        security.SetOwner(new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null));
+        security.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.LocalSystemSid, null),
+            FileSystemRights.FullControl, inherit, PropagationFlags.None, AccessControlType.Allow));
+        security.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null),
+            FileSystemRights.FullControl, inherit, PropagationFlags.None, AccessControlType.Allow));
+        security.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null),
+            FileSystemRights.ReadAndExecute, inherit, PropagationFlags.None, AccessControlType.Allow));
+
+        var directory = new DirectoryInfo(MachineDirectory);
+        if (directory.Exists)
+            directory.SetAccessControl(security);
+        else
+            directory.Create(security);
+    }
+}
+
+public static class SettingsJson
+{
+    public static JsonSerializerOptions Options { get; } = new()
+    {
+        WriteIndented = true,
+        Converters = { new JsonStringEnumConverter() },
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    };
+}
+
+/// <summary>Loads and saves settings of type <typeparamref name="T"/> as a JSON file.</summary>
+public sealed class SettingsStore<T>(string path) where T : new()
+{
+    public string Path { get; } = path;
+
+    public bool Exists => File.Exists(Path);
+
+    public T Load()
+    {
+        try
+        {
+            if (File.Exists(Path))
+                return JsonSerializer.Deserialize<T>(File.ReadAllText(Path), SettingsJson.Options) ?? new T();
+        }
+        catch (Exception ex) when (ex is JsonException or IOException or UnauthorizedAccessException)
+        {
+            // A corrupt file must not stop OpenSense; keep a copy for inspection and start fresh.
+            TryBackup();
+        }
+        return new T();
+    }
+
+    public void Save(T settings)
+    {
+        Directory.CreateDirectory(System.IO.Path.GetDirectoryName(Path)!);
+        var temp = Path + ".tmp";
+        File.WriteAllText(temp, JsonSerializer.Serialize(settings, SettingsJson.Options));
+        File.Move(temp, Path, overwrite: true);
+    }
+
+    private void TryBackup()
+    {
+        try
+        {
+            File.Copy(Path, Path + ".bad", overwrite: true);
+        }
+        catch (Exception)
+        {
+            // best effort
+        }
+    }
+}

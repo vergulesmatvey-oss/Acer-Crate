@@ -1,0 +1,40 @@
+using OpenSense.Core.Hardware;
+
+namespace OpenSense.Core.Settings;
+
+/// <summary>
+/// What the engine is in the middle of, kept next to the machine settings (state.json) so it survives a restart
+/// or a crash. Not user settings.
+/// </summary>
+public sealed record RuntimeState
+{
+    public CalibrationRecord? Calibration { get; init; }
+
+    public GpuClockRecord? GpuClocks { get; init; }
+
+    /// <summary>
+    /// OpenSense's GPU clock offsets are in the driver. Still set when the engine starts, the last run never stopped
+    /// while they were (Windows crashed, froze or lost power), so overclocking is switched off instead of applied again.
+    /// </summary>
+    public bool GpuOverclockApplied { get; init; }
+
+    /// <summary>The laptop's Mode key has been pressed once, so it has one (see <see cref="DeviceCapabilities.ModeKey"/>).</summary>
+    public bool ModeKeySeen { get; init; }
+
+    /// <summary>
+    /// The firmware's battery-boost flag has been seen on once, so its 0 means something: from then on it holds the
+    /// performance modes back on AC from the start (see <see cref="DeviceCapabilities.BatteryBoostFlag"/>).
+    /// </summary>
+    public bool BatteryBoostSeen { get; init; }
+}
+
+/// <summary>What the discrete GPU's driver said about clock offsets when last asked (asking needs the GPU awake).</summary>
+/// <param name="Device">The GPU (its PCI hardware id).</param>
+/// <param name="Driver">The driver's version then, for diagnostics.</param>
+/// <param name="Limits">The offsets it accepts; null when it has none for this GPU.</param>
+public sealed record GpuClockRecord(string Device, string? Driver, GpuClockLimits? Limits);
+
+/// <summary>A battery calibration OpenSense started.</summary>
+/// <param name="ChargeLimitBefore">The 80 % limit was on, and is turned on again afterwards.</param>
+/// <param name="PowerScheme">The power plan settings changed meanwhile; null while none are changed.</param>
+public sealed record CalibrationRecord(DateTime StartedUtc, bool ChargeLimitBefore, SavedPowerScheme? PowerScheme);

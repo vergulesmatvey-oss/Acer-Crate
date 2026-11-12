@@ -1,0 +1,4 @@
+Tool: built-in image_gen, edit, transparent_background=true.
+Target: CrateMark-transparent.png.
+
+Use case: precise-object-edit / logo icon sizing. Edit the supplied transparent Acer Crate metallic AC hexagon icon. Make the existing complete hexagon and AC monogram about 12 percent larger within the square canvas, so the complete icon occupies 96–98 percent of the canvas height with only tiny transparent margins. Preserve the entire outer hexagonal outline without clipping and keep exactly the existing shape, metallic faces, AC letter geometry, silver gradients, and subtle tiny green reflection. This is only enlargement and centering of the existing cutout for a Windows taskbar icon, not a redesign. No square or rounded-square backdrop. No added shadow outside the mark, no text, no extra objects. All pixels outside the hexagon must have a genuine transparent alpha channel.
