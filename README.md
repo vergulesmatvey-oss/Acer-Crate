@@ -46,3 +46,6 @@ A targeted static inspection did not find the specifically reported VBS/JS files
 The hardware-control foundation and substantial parts of this application come from [OpenSense by archivesteak and its contributors](https://github.com/archivesteak/opensense). Acer Crate adds its own interface, settings, packaging, and integration changes. The [original upstream README](UPSTREAM.md) is retained, and the [GNU GPL v3 license](LICENSE) and upstream copyright notices are included.
 
 Some Acer Crate changes were developed with assistance from ChatGPT/Codex. That does not replace code review, hardware validation, or security testing.
+## Screenshots
+
+![Acer Crate Interface](https://i.postimg.cc/jSbqy4Kh/1000002108.png)
