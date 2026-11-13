@@ -7,9 +7,10 @@
     <LangVersion>latest</LangVersion>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <RestoreConfigFile>$(MSBuildThisFileDirectory)NuGet.Config</RestoreConfigFile>
     <Authors>OpenSense contributors</Authors>
+    <Company>Acer Crate</Company>
     <Product>Acer Crate</Product>
     <Copyright>OpenSense contributors</Copyright>
     <!-- Also where the app looks for updates (GitHub Releases). -->

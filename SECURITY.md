@@ -6,11 +6,11 @@ Acer Crate is an independent GPL-3.0-or-later fork of [OpenSense](https://github
 
 The NSIS installer unpacks its bundled payload into a temporary directory and invokes two readable PowerShell scripts: `Install-AcerCrate-Package.ps1` and `Ensure-PowerPlans.ps1`.
 
-The installation helper verifies bundled SHA-256 hashes, backs up an existing installation and settings, installs files into the selected folder (default `D:\Acer Crate`), and configures the `OpenSense` Windows service to run the included `Service\OpenSense.Service.exe`. The installer creates a Start menu shortcut and a Windows uninstall entry. The power-plan helper uses Windows `powercfg.exe` to create or update the application's power plans.
+The installation helper verifies bundled SHA-256 hashes, backs up an existing installation and settings, installs files into the selected folder (default `D:\Acer Crate`), and configures the `AcerCrate` Windows service to run the included `Service\AcerCrate.Service.exe`. The installer creates a Start menu shortcut and a Windows uninstall entry. The power-plan helper uses Windows `powercfg.exe` to create or update the application's power plans.
 
-Administrator rights are required for installation and service configuration. The installed interface normally runs without elevation. Settings keep the inherited `%APPDATA%\OpenSense` and `%PROGRAMDATA%\OpenSense` locations for compatibility. The application uses the inherited Acer firmware/WMI/HID interfaces for supported hardware controls. Existing PawnIO support is retained for supported CPU sensor access; the Acer Crate installer does not install a new `sysmondrv.sys` driver.
+Administrator rights are required for installation and service configuration. The installed interface normally runs without elevation. Active settings use `%APPDATA%\AcerCrate` and `%PROGRAMDATA%\AcerCrate`. The installer backs up and migrates legacy locations and the old service only when tied to an existing Acer Crate installation; migration code retains the legacy identifiers for that purpose. Binary/service folders are protected from standard-user writes. Only the current user log subfolder grants that user write access. The application uses the inherited Acer firmware/WMI/HID interfaces for supported hardware controls. Existing PawnIO support is retained for supported CPU sensor access; the Acer Crate installer does not install a new `sysmondrv.sys` driver.
 
-The offline installer does not need to download application runtimes. The application's optional update checks contact GitHub's release API; release downloads come from GitHub. Version 1.0.1 points these checks at `vergulesmatvey-oss/Acer-Crate`. A GitHub update request is a network connection and should not be described as the application having no network activity.
+The offline installer does not need to download application runtimes. The application's optional update checks contact GitHub's release API; release downloads come from GitHub. Version 1.0.1 points these checks at `vergulesmatvey-oss/Acer-Crate`. Optional automatic artwork lookup also contacts store.acer.com and Acer-hosted image URLs using only the public model code, then caches successful images. It can be disabled in Settings; bundled images do not need the network. Application/service logs stay local unless the user exports them. These features are network activity and must not be described as having no outbound connections.
 
 ## Targeted review on 2026-11-12
 
@@ -23,7 +23,7 @@ Reports on Reddit mentioned `sysmondrv.sys`, `CFG.BAK`, VBS/JavaScript payloads,
 - Both extracted installation scripts matched the separately published source files.
 - The 387 files in the separately published source archive matched the source archive embedded in that installer.
 
-The current release has its own SHA-256 checksums and validation notes. These are separate builds: do not apply the initial release's hash to version 1.0.1.
+The current release has its own SHA-256 checksums and validation notes. These are separate builds: do not apply the initial release's hash to later versions.
 
 This was a targeted static inspection. It was not an independent security audit, an antivirus scan, a clean virtual-machine execution trace, or proof that arbitrary downloaded copies are malware-free. No blanket claim that the application is "virus-free" is made. Passing functional tests does not establish that claim either. The installer is currently not Authenticode-signed.
 

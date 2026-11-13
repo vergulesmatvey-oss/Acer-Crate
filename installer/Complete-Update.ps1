@@ -15,7 +15,7 @@ try {
     $taskExpected = ([xml](Get-Content -LiteralPath (Join-Path $taskSourceRoot 'Directory.Build.props') -Raw)).Project.PropertyGroup.Version
     if ($taskRegistration.DisplayVersion -ne $taskExpected) { throw 'The new version was not installed, or installation was cancelled.' }
     if (-not $taskRegistration.InstallLocation.StartsWith('D:\',[StringComparison]::OrdinalIgnoreCase)) { throw 'The selected installation folder is not on D:.' }
-    $taskService = Get-CimInstance Win32_Service -Filter "Name='OpenSense'"
+    $taskService = Get-CimInstance Win32_Service -Filter "Name='AcerCrate'"
     if ($taskService.State -ne 'Running') { throw 'Installation completed, but the control service is not running.' }
     @{Success=$true;Version=$taskRegistration.DisplayVersion;InstallLocation=$taskRegistration.InstallLocation;ServiceState=$taskService.State;Time=(Get-Date -Format o)} | ConvertTo-Json | Set-Content -LiteralPath $taskStatus -Encoding UTF8
     Write-Host ('Installed: Acer Crate ' + $taskRegistration.DisplayVersion + ' in ' + $taskRegistration.InstallLocation)

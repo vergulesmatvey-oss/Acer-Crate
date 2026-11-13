@@ -12,7 +12,7 @@ SetCompressor /SOLID zlib
 !define APP_EXE "AcerCrate.exe"
 !define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\AcerCrate"
 !ifndef VERSION
-  !define VERSION "1.0.1"
+  !define VERSION "1.1.0"
 !endif
 Name "${APP_NAME}"
 OutFile "${OUTPUT}"
@@ -25,8 +25,8 @@ VIAddVersionKey /LANG=1049 "FileVersion" "${VERSION}.0"
 VIAddVersionKey /LANG=1049 "ProductVersion" "${VERSION}"
 VIAddVersionKey /LANG=1049 "LegalCopyright" "OpenSense contributors · GPL-3.0"
 
-!define MUI_ICON "..\src\OpenSense.App\Assets\OpenSense.ico"
-!define MUI_UNICON "..\src\OpenSense.App\Assets\OpenSense.ico"
+!define MUI_ICON "..\src\AcerCrate.App\Assets\AcerCrate.ico"
+!define MUI_UNICON "..\src\AcerCrate.App\Assets\AcerCrate.ico"
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "$(CrateWelcomeTitle)"
 !define MUI_WELCOMEPAGE_TEXT "$(CrateWelcomeText)"
@@ -93,7 +93,7 @@ Section "Acer Crate"
   CreateShortcut "$SMPROGRAMS\Acer Crate.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\Assets\AcerCrate-clear.ico" 0 SW_SHOWNORMAL
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayName" "Acer Crate"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayVersion" "${VERSION}"
-  WriteRegStr HKLM "${UNINSTALL_KEY}" "Publisher" "Acer Crate · OpenSense contributors"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" "Publisher" "Acer Crate"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "InstallLocation" "$INSTDIR"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "DisplayIcon" "$INSTDIR\${APP_EXE},0"
   WriteRegStr HKLM "${UNINSTALL_KEY}" "UninstallString" '$\"$INSTDIR\Uninstall.exe$\"'
@@ -125,11 +125,11 @@ Section "Uninstall"
     ExecWait '"$INSTDIR\${APP_EXE}" --exit'
   IfFileExists "$INSTDIR\${APP_EXE}" 0 +2
     ExecWait '"$INSTDIR\${APP_EXE}" --disable-autostart'
-  ReadRegStr $0 HKLM "SYSTEM\CurrentControlSet\Services\OpenSense" "ImagePath"
-  ${If} $0 == '$\"$INSTDIR\Service\OpenSense.Service.exe$\"'
-    nsExec::ExecToLog '"$SYSDIR\net.exe" stop OpenSense'
+  ReadRegStr $0 HKLM "SYSTEM\CurrentControlSet\Services\AcerCrate" "ImagePath"
+  ${If} $0 == '$\"$INSTDIR\Service\AcerCrate.Service.exe$\"'
+    nsExec::ExecToLog '"$SYSDIR\net.exe" stop AcerCrate'
     Pop $0
-    nsExec::ExecToLog '"$SYSDIR\sc.exe" delete OpenSense'
+    nsExec::ExecToLog '"$SYSDIR\sc.exe" delete AcerCrate'
     Pop $0
   ${EndIf}
   SetShellVarContext current

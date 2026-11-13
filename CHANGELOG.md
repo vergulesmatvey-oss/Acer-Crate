@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.1.0 — 2026-11-13
+
+### Modes and hardware
+
+- Refine the OSD as a compact frameless pill, with an accent icon badge, progress/confirmation indicator and a subtle outline. Remove the native gray frame and render the popup with per-pixel alpha and Direct2D/DirectWrite antialiasing, without a hard window-region clip.
+- Show the requested mode immediately on Ctrl+Alt+F while the main window is hidden or minimized. The pill shows Applying until fresh telemetry confirms the change; timeout or failure does not claim success.
+- Advance rapid presses from the requested mode, coalesce queued changes, and retry registration when another application releases the shortcut.
+- Let older firmware without native operating modes cycle the existing safe software profiles. Unavailable firmware commands are not sent.
+- Add a Graphics page for firmware-supported Hybrid, Discrete and Automatic GPU routing, confirmation/restart handling, detected adapters and Windows per-app GPU preferences. Hybrid is not integrated-only mode.
+- Use capability detection for Nitro, Nitro V and Predator generations from 2021 onward. Universal hardware compatibility and MUX availability are not claimed; physical validation remains limited to AN515-58.
+
+### Interface and library
+
+- Add a game library: executable/shortcut entries, automatic Steam/Epic detection at startup with a toggle, manual scanning, search, favorites, recent launch history and bounded page rendering.
+- Add application and service logs with size/retention limits, filters, refresh and export.
+- Update page headers and cards outside Overview; retain the Overview layout and remove its card outlines.
+- Default new settings to English while retaining a saved language choice.
+- Bundle 38 official Acer model photographs (about 5 MB), match model codes including suffixes, label series illustrations when an exact photograph is unavailable, and add an offline photo selector in Settings. Retain optional online lookup/cache and manual images. Artwork coverage does not certify hardware support.
+
+### Acer Crate identity and upgrade
+
+- Rename projects, namespaces, assemblies, IPC, Windows service, singleton events, autostart entries, icons and active settings folders to AcerCrate.
+- Migrate the legacy service/settings only when they belong to the existing Acer Crate installation. Preserve settings/presets and back them up before upgrading.
+- Retain GPL notices, copyright attribution and legacy migration identifiers.
+- Keep installers, self-contained runtimes, editable source and build caches on the selected development/install drive.
+
 ## 1.0.1 — 2026-11-12
 
 Acer Crate is an independent fork of [OpenSense](https://github.com/archivesteak/opensense), based on OpenSense 0.3.6. Upstream copyright notices and the GPL-3.0-or-later license are retained.

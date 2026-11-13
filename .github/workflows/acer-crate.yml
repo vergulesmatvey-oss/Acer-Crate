@@ -29,9 +29,9 @@ jobs:
       - name: Build and run core tests
         run: |
           . ./installer/Use-BuildEnvironment.ps1
-          dotnet build tests/OpenSense.Core.Tests/OpenSense.Core.Tests.csproj -c Release -p:UseSharedCompilation=false -m:1 -nr:false
+          dotnet build tests/AcerCrate.Core.Tests/AcerCrate.Core.Tests.csproj -c Release -p:UseSharedCompilation=false -m:1 -nr:false
           if ($LASTEXITCODE -ne 0) { throw 'Core test build failed.' }
-          dotnet tests/OpenSense.Core.Tests/bin/Release/net10.0-windows10.0.19041.0/OpenSense.Core.Tests.dll --report-xunit-trx --report-xunit-trx-filename core.trx --results-directory .acercrate-dev/test-results
+          dotnet tests/AcerCrate.Core.Tests/bin/Release/net10.0-windows10.0.19041.0/AcerCrate.Core.Tests.dll --report-xunit-trx --report-xunit-trx-filename core.trx --results-directory .acercrate-dev/test-results
           if ($LASTEXITCODE -ne 0) { throw 'Core tests failed.' }
 
       - name: Publish and package Acer Crate

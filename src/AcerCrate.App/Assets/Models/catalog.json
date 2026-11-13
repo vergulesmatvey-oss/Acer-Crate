@@ -1,0 +1,458 @@
+[
+  {
+    "File": "PH16-71.png",
+    "Title": "Helios 16",
+    "Models": [
+      "PH16-71"
+    ],
+    "Prefixes": [
+      "PH16"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-16_agl6ty.png"
+  },
+  {
+    "File": "PH18-71.png",
+    "Title": "Helios 18",
+    "Models": [
+      "PH18-71"
+    ],
+    "Prefixes": [
+      "PH18"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-18_sy9va8.png"
+  },
+  {
+    "File": "PH315-54.png",
+    "Title": "Helios 300",
+    "Models": [
+      "PH315-54"
+    ],
+    "Prefixes": [
+      "PH315"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300_veygbm.png"
+  },
+  {
+    "File": "PH315-55S.png",
+    "Title": "Helios 300 SpatialLabs",
+    "Models": [
+      "PH315-55S"
+    ],
+    "Prefixes": [
+      "PH315"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300-spatiallabs_vcnwtn.png"
+  },
+  {
+    "File": "PH517-52.png",
+    "Title": "Helios 500",
+    "Models": [
+      "PH517-52"
+    ],
+    "Prefixes": [
+      "PH517"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-500_h0f1oq.png"
+  },
+  {
+    "File": "PHN16-72.png",
+    "Title": "Helios Neo 16 14th Gen",
+    "Models": [
+      "PHN16-72"
+    ],
+    "Prefixes": [
+      "PHN16"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-neo-16_hosqrs.png"
+  },
+  {
+    "File": "PHN16S-71.jpg",
+    "Title": "Helios Neo 16S AI",
+    "Models": [
+      "PHN16S-71"
+    ],
+    "Prefixes": [
+      "PHN16S"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/sw4ou9jwqwr2uaggphy6.webp"
+  },
+  {
+    "File": "AN16-41.png",
+    "Title": "Nitro 16",
+    "Models": [
+      "AN16-41"
+    ],
+    "Prefixes": [
+      "AN16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-swift-laptops-powered-by-the-latest-amd-ryzen-7000-series-processors",
+    "ImageUrl": "https://cdn.assets.prezly.com/c3604f44-461d-499d-b70c-584cf0462470/-/resize/640x/-/format/png/Nitro_16_AMD_AN16-41_03.png"
+  },
+  {
+    "File": "AN16-73.png",
+    "Title": "Nitro 16 (2024)",
+    "Models": [
+      "AN16-73"
+    ],
+    "Prefixes": [
+      "AN16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-debuts-new-predator-helios-neo-14-a-portable-ai-gaming-laptop-with-intel-core-ultra-processors",
+    "ImageUrl": "https://cdn.assets.prezly.com/49324705-023f-4dc9-ac70-1a1dc0630aaa/-/resize/640x/-/format/png/Nitro_16_%28AN16-73%29_Special_Angle_1.png"
+  },
+  {
+    "File": "AN16-61.png",
+    "Title": "Nitro 16 AI",
+    "Models": [
+      "AN16-61"
+    ],
+    "Prefixes": [
+      "AN16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/89fa1c23-a9f5-4340-98c0-5c6f49b752bb/-/resize/640x/-/format/png/Nitro-16_AI_EV9-02.png"
+  },
+  {
+    "File": "AN17-41.png",
+    "Title": "Nitro 17",
+    "Models": [
+      "AN17-41"
+    ],
+    "Prefixes": [
+      "AN17"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-swift-laptops-powered-by-the-latest-amd-ryzen-7000-series-processors",
+    "ImageUrl": "https://cdn.assets.prezly.com/d8113181-792d-440c-8398-f330310adc44/-/resize/640x/-/format/png/Nitro_17_AMD_AN17-41_05.png"
+  },
+  {
+    "File": "AN18-61.png",
+    "Title": "Nitro 18 AI",
+    "Models": [
+      "AN18-61"
+    ],
+    "Prefixes": [
+      "AN18"
+    ],
+    "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/bf4ce2d3-de7c-42f3-8ab5-817173677270/-/resize/640x/-/format/png/Nitro-18-AI_AN18-61_SA-01.png"
+  },
+  {
+    "File": "AN515-58.png",
+    "Title": "Nitro 5",
+    "Models": [
+      "AN515-58"
+    ],
+    "Prefixes": [
+      "AN515"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/nitro-5_qq5z3q.png"
+  },
+  {
+    "File": "AN515-45.png",
+    "Title": "Nitro 5 (2021)",
+    "Models": [
+      "AN515-45"
+    ],
+    "Prefixes": [
+      "AN515"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-aspire-notebooks-powered-by-new-amd-ryzen-5000-series-mobile-processors-nitro-notebooks-also-feature-new-nvidia-geforce-rtx-30-series-laptop-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/779e83bc-15f4-46b3-95f4-c15129c05f7e/-/resize/640x/-/format/png/Nitro5_AN515-45-56-57_High_01.jpg"
+  },
+  {
+    "File": "AN517-41.png",
+    "Title": "Nitro 5 17 (2021)",
+    "Models": [
+      "AN517-41"
+    ],
+    "Prefixes": [
+      "AN517"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-aspire-notebooks-powered-by-new-amd-ryzen-5000-series-mobile-processors-nitro-notebooks-also-feature-new-nvidia-geforce-rtx-30-series-laptop-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/a1052f9d-d8bf-4679-8d4b-61624138484f/-/resize/640x/-/format/png/Nitro5_AN517-41-53-54_High_05.jpg"
+  },
+  {
+    "File": "NL16-71.jpg",
+    "Title": "Nitro Lite 16",
+    "Models": [
+      "NL16-71"
+    ],
+    "Prefixes": [
+      "NL16"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492619844-100527011.png"
+  },
+  {
+    "File": "NITRO-V14.jpg",
+    "Title": "Nitro V 14",
+    "Models": [
+      "ANV14-61"
+    ],
+    "Prefixes": [
+      "ANV14"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/v8jtzz7tj7davkoumvjz.webp"
+  },
+  {
+    "File": "ANV14-62.png",
+    "Title": "Nitro V 14 AI",
+    "Models": [
+      "ANV14-62"
+    ],
+    "Prefixes": [
+      "ANV14"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
+    "ImageUrl": "https://cdn.assets.prezly.com/4fdce9f4-7ee6-44bb-8f26-5e629c3a6549/-/resize/640x/-/format/png/Nitro-V-14-AI_ANV14-62-06.jpg"
+  },
+  {
+    "File": "ANV15-42.png",
+    "Title": "Nitro V 15 AI",
+    "Models": [
+      "ANV15-42"
+    ],
+    "Prefixes": [
+      "ANV15"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
+    "ImageUrl": "https://cdn.assets.prezly.com/2742ae9a-1c70-4fdd-aed7-6f63050c1c61/-/resize/640x/-/format/png/Nitro-V-15-AI-ANV15-42-Lifestyle-03.jpg"
+  },
+  {
+    "File": "ANV15-51.jpg",
+    "Title": "Nitro V 15 SE",
+    "Models": [
+      "ANV15-51"
+    ],
+    "Prefixes": [
+      "ANV15"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/kpykakhf5ouvxm3o0imd.webp"
+  },
+  {
+    "File": "ANV16-71.jpg",
+    "Title": "Nitro V 16",
+    "Models": [
+      "ANV16-71"
+    ],
+    "Prefixes": [
+      "ANV16"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/fzkgkckjrngmh1ikx7ox.webp"
+  },
+  {
+    "File": "ANV16-61.png",
+    "Title": "Nitro V 16 AI",
+    "Models": [
+      "ANV16-61"
+    ],
+    "Prefixes": [
+      "ANV16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
+    "ImageUrl": "https://cdn.assets.prezly.com/a6924909-65ad-4067-a22c-13c3b4e7fa2c/-/resize/640x/-/format/png/Nitro-V-16-AI_ANV16-61-06.jpg"
+  },
+  {
+    "File": "ANV16S-41.jpg",
+    "Title": "Nitro V 16S AI",
+    "Models": [
+      "ANV16S-41"
+    ],
+    "Prefixes": [
+      "ANV16S"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/knd4rmkub03tmoinoy0p.webp"
+  },
+  {
+    "File": "ANV16S-61.png",
+    "Title": "Nitro V 16S AI (2025)",
+    "Models": [
+      "ANV16S-61"
+    ],
+    "Prefixes": [
+      "ANV16S"
+    ],
+    "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/2a6b4162-84be-4764-97c9-f5aaf7333fbe/-/resize/640x/-/format/png/Nitro-V-16S-AI_ANV16S-61_SA-04.png"
+  },
+  {
+    "File": "ANV17-61.png",
+    "Title": "Nitro V 17 AI",
+    "Models": [
+      "ANV17-61"
+    ],
+    "Prefixes": [
+      "ANV17"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
+    "ImageUrl": "https://cdn.assets.prezly.com/e093e3da-74a3-4759-a2e1-b2757b987943/-/resize/640x/-/format/png/Nitro-V-17-AI_ANV17-61-Lifestyle-01.jpg"
+  },
+  {
+    "File": "ANV15-52.jpg",
+    "Title": "Nitro V15",
+    "Models": [
+      "ANV15-52"
+    ],
+    "Prefixes": [
+      "ANV15"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492548516-874806024.png"
+  },
+  {
+    "File": "PH3D15-71.png",
+    "Title": "Predator Helios 3D 15",
+    "Models": [
+      "PH3D15-71"
+    ],
+    "Prefixes": [
+      "PH3D15"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
+    "ImageUrl": "https://cdn.assets.prezly.com/c6c90929-016d-43dc-b12d-698f18d2e352/-/resize/640x/-/format/png/PREDATOR-HELIOS-3D-15-PH3D15-71-01.jpg"
+  },
+  {
+    "File": "PHN14-51.png",
+    "Title": "Predator Helios Neo 14",
+    "Models": [
+      "PHN14-51"
+    ],
+    "Prefixes": [
+      "PHN14"
+    ],
+    "SourcePage": "https://news.acer.com/acer-debuts-new-predator-helios-neo-14-a-portable-ai-gaming-laptop-with-intel-core-ultra-processors",
+    "ImageUrl": "https://cdn.assets.prezly.com/830e20ba-ef9b-4207-9205-d241713bccd2/-/resize/640x/-/format/png/Helios_Neo14_SP01_transparent.png"
+  },
+  {
+    "File": "PHN16-71.png",
+    "Title": "Predator Helios Neo 16 (2023)",
+    "Models": [
+      "PHN16-71"
+    ],
+    "Prefixes": [
+      "PHN16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
+    "ImageUrl": "https://cdn.assets.prezly.com/fbf761b1-c0e3-437f-a07c-21fce5688ed1/-/resize/640x/-/format/png/PREDATOR-HELIOS-NEO-16-PHN16-71-04.jpg"
+  },
+  {
+    "File": "PHN16-73.png",
+    "Title": "Predator Helios Neo 16 AI",
+    "Models": [
+      "PHN16-73"
+    ],
+    "Prefixes": [
+      "PHN16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-predator-helios-neo-ai-gaming-laptops-with-next-gen-processors-and-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/4f40e21b-0b84-4468-b155-6c909ad562f7/-/resize/640x/-/format/png/Predator%20Helios%20Neo%2016%20AI_SA-01.png"
+  },
+  {
+    "File": "PHN18-72.png",
+    "Title": "Predator Helios Neo 18 AI",
+    "Models": [
+      "PHN18-72"
+    ],
+    "Prefixes": [
+      "PHN18"
+    ],
+    "SourcePage": "https://news.acer.com/acer-launches-new-predator-helios-neo-ai-gaming-laptops-with-next-gen-processors-and-gpus",
+    "ImageUrl": "https://cdn.assets.prezly.com/0b67f184-f11f-4b5d-a698-893ebdec18c0/-/resize/640x/-/format/png/Neo18-02.png"
+  },
+  {
+    "File": "PT14-51.png",
+    "Title": "Predator Triton 14",
+    "Models": [
+      "PT14-51"
+    ],
+    "Prefixes": [
+      "PT14"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
+    "ImageUrl": "https://cdn.assets.prezly.com/ad1d51b2-e3de-48b7-b1b8-a87974e00e40/-/resize/640x/-/format/png/PREDATOR-TRITON-14-PT14-51-01.jpg"
+  },
+  {
+    "File": "PT16-51.png",
+    "Title": "Predator Triton 16",
+    "Models": [
+      "PT16-51"
+    ],
+    "Prefixes": [
+      "PT16"
+    ],
+    "SourcePage": "https://news.acer.com/acer-expands-its-premium-gaming-portfolio-with-the-new-predator-triton-16",
+    "ImageUrl": "https://cdn.assets.prezly.com/aa1886d2-bee8-46c5-973d-2fc916cbcab0/-/resize/640x/-/format/png/PREDATOR-TRITON-16-PT16-51-01.jpg"
+  },
+  {
+    "File": "PTX17-71.png",
+    "Title": "Predator Triton 17 X",
+    "Models": [
+      "PTX17-71"
+    ],
+    "Prefixes": [
+      "PTX17"
+    ],
+    "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
+    "ImageUrl": "https://cdn.assets.prezly.com/9af18cd8-8184-40df-9aa0-596cefcd10e4/-/resize/640x/-/format/png/PREDATOR-TRITON-17-X-PTX17-71-01.jpg"
+  },
+  {
+    "File": "PT14-52T.jpg",
+    "Title": "Triton 14 AI",
+    "Models": [
+      "PT14-52T"
+    ],
+    "Prefixes": [
+      "PT14"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/vj26jufodhoxjypwxxfb.webp"
+  },
+  {
+    "File": "PT314-52S.png",
+    "Title": "Triton 300SE",
+    "Models": [
+      "PT314-52S"
+    ],
+    "Prefixes": [
+      "PT314"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-300se_d6skjs.png"
+  },
+  {
+    "File": "PT516-52S.png",
+    "Title": "Triton 500SE",
+    "Models": [
+      "PT516-52S"
+    ],
+    "Prefixes": [
+      "PT516"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-500se_v2odh0.png"
+  },
+  {
+    "File": "PTN16-51.jpg",
+    "Title": "Triton Neo 16",
+    "Models": [
+      "PTN16-51"
+    ],
+    "Prefixes": [
+      "PTN16"
+    ],
+    "SourcePage": "https://www.acerid.com/produk/laptop",
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/bbwipvvprzso8tq8phqe.webp"
+  }
+]

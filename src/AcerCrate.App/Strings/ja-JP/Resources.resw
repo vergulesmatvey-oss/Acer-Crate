@@ -1,0 +1,2043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Nav_Dashboard.Content" xml:space="preserve">
+    <value>ダッシュボード</value>
+    <comment>Navigation menu item: the overview page.</comment>
+  </data>
+  <data name="Nav_Fans.Content" xml:space="preserve">
+    <value>ファン</value>
+    <comment>Navigation menu item: fan control page.</comment>
+  </data>
+  <data name="Nav_Lighting.Content" xml:space="preserve">
+    <value>ライティング</value>
+    <comment>Navigation menu item: the RGB keyboard lighting page.</comment>
+  </data>
+  <data name="Nav_System.Content" xml:space="preserve">
+    <value>システム</value>
+    <comment>Navigation menu item: the laptop's keyboard, display, graphics, battery, startup and power settings. Like Windows Settings' System page.</comment>
+  </data>
+  <data name="Startup_Connecting.Text" xml:space="preserve">
+    <value>ノート PC に接続しています…</value>
+    <comment>Shown while the app starts.</comment>
+  </data>
+  <data name="Problem_RestartElevated.Content" xml:space="preserve">
+    <value>管理者として再起動</value>
+    <comment>Button.</comment>
+  </data>
+  <data name="Problem_StartService.Content" xml:space="preserve">
+    <value>サービスを開始</value>
+    <comment>Button: starts the Acer Crate background service.</comment>
+  </data>
+  <data name="Problem_NeedsElevation_Title" xml:space="preserve">
+    <value>管理者権限が必要です</value>
+  </data>
+  <data name="Problem_NeedsElevation_Message" xml:space="preserve">
+    <value>このポータブル版はノート PC のファンとライティングの制御に直接アクセスするため、管理者権限が必要です。管理者として再起動するか、管理者権限なしで実行できるよう Acer Crate をインストールしてください。</value>
+  </data>
+  <data name="Problem_ServiceUnavailable_Title" xml:space="preserve">
+    <value>Acer Crate サービスが実行されていません</value>
+  </data>
+  <data name="Problem_ServiceUnavailable_Message" xml:space="preserve">
+    <value>Acer Crate はバックグラウンド サービスを通じてノート PC を制御しますが、このサービスが停止しています。サービスを開始するか（Windows が許可を求めます）、停止が繰り返される場合は Acer Crate を再インストールしてください。</value>
+  </data>
+  <data name="Problem_Unsupported_Title" xml:space="preserve">
+    <value>Acer のゲーミング ファームウェアが見つかりません</value>
+  </data>
+  <data name="Problem_Unsupported_Message" xml:space="preserve">
+    <value>この PC には Acer のゲーミング WMI インターフェイス (AcerGamingFunction) がありません。Acer Crate は Acer Nitro と Predator のノート PC に対応しています。</value>
+    <comment>Keep 'AcerGamingFunction' as is.</comment>
+  </data>
+  <data name="Problem_Failed_Title" xml:space="preserve">
+    <value>Acer Crate を起動できませんでした</value>
+  </data>
+  <data name="Problem_Failed_Message" xml:space="preserve">
+    <value>予期しないエラーが発生しました。詳細はログ フォルダーにあります。</value>
+  </data>
+  <data name="Session_VersionMismatch" xml:space="preserve">
+    <value>Acer Crate サービスのバージョンが異なります（{0}）。更新するには Acer Crate を再インストールしてください。</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Notice_Service_Title" xml:space="preserve">
+    <value>サービス</value>
+    <comment>Banner title: about the Acer Crate background service.</comment>
+  </data>
+  <data name="Notice_Disconnected" xml:space="preserve">
+    <value>Acer Crate サービスとの接続が切れました。再接続しています…</value>
+  </data>
+  <data name="Notice_ServiceStartFailed" xml:space="preserve">
+    <value>Acer Crate サービスが開始されませんでした。詳細は %ProgramData%\Acer Crate\logs のサービス ログにあります。</value>
+    <comment>Keep the folder path as is.</comment>
+  </data>
+  <data name="Notice_FanControl_Title" xml:space="preserve">
+    <value>ファン制御</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_Keyboard_Title" xml:space="preserve">
+    <value>キーボード</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_Lighting_Title" xml:space="preserve">
+    <value>ライティング</value>
+    <comment>Title of a banner about the light bars or the logo.</comment>
+  </data>
+  <data name="Notice_Display_Title" xml:space="preserve">
+    <value>ディスプレイ</value>
+    <comment>Banner title: the laptop screen.</comment>
+  </data>
+  <data name="Notice_FirmwareAccessDenied" xml:space="preserve">
+    <value>Acer のファームウェア インターフェイスにアクセスするには管理者権限が必要です。</value>
+  </data>
+  <data name="Notice_ControlLoopError" xml:space="preserve">
+    <value>ファン制御でエラーが発生しました: {0}</value>
+    <comment>{0} = a technical error message (not translated).</comment>
+  </data>
+  <data name="Notice_OperatingModeRejected" xml:space="preserve">
+    <value>ファームウェアが動作モードの変更を拒否しました（{0}）。</value>
+    <comment>{0} = an operating mode name, e.g. Turbo.</comment>
+  </data>
+  <data name="Notice_CoolBoostRejected" xml:space="preserve">
+    <value>ファームウェアが CoolBoost の変更を拒否しました。</value>
+    <comment>CoolBoost is an Acer feature name: keep it.</comment>
+  </data>
+  <data name="Notice_FanTableRejected" xml:space="preserve">
+    <value>ファームウェアがファン カーブの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_FansHandedBack" xml:space="preserve">
+    <value>CPU 温度を取得できないため、ファンを「自動」に戻しました。</value>
+    <comment>Auto = the automatic fan mode, as in FanMode_Auto.</comment>
+  </data>
+  <data name="Notice_LightingRejected" xml:space="preserve">
+    <value>キーボードがライティングの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_LightBarRejected" xml:space="preserve">
+    <value>ライトバーがライティングの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_LogoRejected" xml:space="preserve">
+    <value>ロゴがライティングの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_LightRejected" xml:space="preserve">
+    <value>{0}: ライティングの変更が拒否されました。</value>
+    <comment>Notice when a light other than the keyboard, the light bar and the logo refused a change. {0} = its name (e.g. "Lid logo").</comment>
+  </data>
+  <data name="Notice_BacklightTimeoutRejected" xml:space="preserve">
+    <value>キーボードがバックライトのタイムアウトの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_WindowsKeyRejected" xml:space="preserve">
+    <value>ファームウェアが Windows キーの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_FnLockRejected" xml:space="preserve">
+    <value>ファームウェアが Fn ロックの変更を受け付けませんでした。</value>
+    <comment>The firmware rejected the requested Fn lock setting.</comment>
+  </data>
+  <data name="Notice_LcdOverdriveRejected" xml:space="preserve">
+    <value>ディスプレイがオーバードライブの変更を拒否しました。</value>
+    <comment>Overdrive = LCD overdrive, a screen setting that speeds up pixel response.</comment>
+  </data>
+  <data name="Notice_PowerPlan_Title" xml:space="preserve">
+    <value>電源プラン</value>
+    <comment>Banner title: a Windows power plan.</comment>
+  </data>
+  <data name="Notice_PowerPlanFailed" xml:space="preserve">
+    <value>Windows が「{0}」に切り替わりませんでした。</value>
+    <comment>{0} = a Windows power plan name. Use your language's quotation marks.</comment>
+  </data>
+  <data name="Notice_GpuMode_Title" xml:space="preserve">
+    <value>GPU モード</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_GpuModeRejected" xml:space="preserve">
+    <value>ファームウェアが GPU モードの変更を拒否しました。</value>
+  </data>
+  <data name="Notice_Bios_Title" xml:space="preserve">
+    <value>BIOS 設定</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_BiosPasswordSet" xml:space="preserve">
+    <value>BIOS パスワードを保存しました。ノート PC の再起動後に有効になります。</value>
+  </data>
+  <data name="Notice_BiosPasswordRemoved" xml:space="preserve">
+    <value>BIOS パスワードを削除しました。ノート PC の再起動後に有効になります。</value>
+  </data>
+  <data name="Notice_BiosOff" xml:space="preserve">
+    <value>BIOS 設定は設定でオフになっています。</value>
+  </data>
+  <data name="Notice_BiosUnsupported" xml:space="preserve">
+    <value>この BIOS はそれに対応していません。</value>
+  </data>
+  <data name="Notice_BiosRejected" xml:space="preserve">
+    <value>BIOS に受け付けられませんでした。</value>
+  </data>
+  <data name="Notice_BiosLocked" xml:space="preserve">
+    <value>パスワードの誤りが多すぎます。ノート PC を再起動してからもう一度お試しください。</value>
+  </data>
+  <data name="Notice_BiosFailed" xml:space="preserve">
+    <value>BIOS から応答がありませんでした。</value>
+  </data>
+  <data name="Notice_GpuClocks_Title" xml:space="preserve">
+    <value>GPU オーバークロック</value>
+    <comment>Notice title for problems with the GPU overclock.</comment>
+  </data>
+  <data name="Notice_GpuClocksRejected" xml:space="preserve">
+    <value>NVIDIA ドライバーがクロックのオフセットを拒否しました。</value>
+  </data>
+  <data name="Notice_OperatingMode_Title" xml:space="preserve">
+    <value>動作モード</value>
+    <comment>Title of the toast shown when the Mode key or the power supply changes the operating mode.</comment>
+  </data>
+  <data name="Notice_ModeOnBattery" xml:space="preserve">
+    <value>バッテリー駆動: {0}</value>
+    <comment>Toast text: the laptop runs on battery, in operating mode {0} (e.g. "Eco").</comment>
+  </data>
+  <data name="Notice_ModePluggedIn" xml:space="preserve">
+    <value>電源に接続: {0}</value>
+    <comment>Toast text: the adapter was plugged in, so operating mode {0} runs again (e.g. "Turbo").</comment>
+  </data>
+  <data name="Notice_ModeLowBattery" xml:space="preserve">
+    <value>バッテリー残量低下: 充電されるまで {0}</value>
+    <comment>Toast text: on AC, but the battery is too low to help the adapter, so operating mode {0} (Balanced or Quiet) runs until it charges.</comment>
+  </data>
+  <data name="Notice_ModeAdapter" xml:space="preserve">
+    <value>電源アダプターの出力不足: {0}</value>
+    <comment>Toast when the operating mode changed because the adapter can't power every mode (a USB-C charger that is too weak, or the laptop's own limit). {0} = the mode now in use.</comment>
+  </data>
+  <data name="Notice_TurboUnavailable" xml:space="preserve">
+    <value>「ターボ」には電源と充電済みのバッテリーが必要です。</value>
+    <comment>Toast text when the Mode key is set to Turbo on and off, but the laptop is on battery or its battery is too low.</comment>
+  </data>
+  <data name="Notice_TurboNeedsAdapter" xml:space="preserve">
+    <value>「ターボ」には、ノート PC 付属のものなど、より出力の高い電源アダプターが必要です。</value>
+    <comment>Toast when the Mode key (set to Turbo) is pressed while the adapter can't power Turbo.</comment>
+  </data>
+  <data name="Notice_Autostart_Title" xml:space="preserve">
+    <value>Windows と同時に起動</value>
+    <comment>Banner title, same as Settings_StartWithWindows.Header.</comment>
+  </data>
+  <data name="Notice_AutostartFailed" xml:space="preserve">
+    <value>スタートアップ エントリを更新できませんでした: {0}</value>
+    <comment>{0} = a technical error message.</comment>
+  </data>
+  <data name="GpuSwitch_DiscreteTitle" xml:space="preserve">
+    <value>専用 GPU のみに切り替えますか？</value>
+    <comment>Dialog title. Discrete GPU = the separate NVIDIA graphics chip.</comment>
+  </data>
+  <data name="GpuSwitch_HybridTitle" xml:space="preserve">
+    <value>ハイブリッド グラフィックスに切り替えますか？</value>
+    <comment>Dialog title.</comment>
+  </data>
+  <data name="GpuSwitch_DiscreteMessage" xml:space="preserve">
+    <value>NVIDIA GPU がディスプレイを直接駆動し、ゲームで最高のパフォーマンスを発揮しますが、バッテリー駆動時間は短くなります。適用するには Windows の再起動が必要です。</value>
+  </data>
+  <data name="GpuSwitch_HybridMessage" xml:space="preserve">
+    <value>内蔵 GPU がディスプレイを駆動し、専用 GPU は必要なときだけ起動するため、バッテリーを節約できます。適用するには Windows の再起動が必要です。</value>
+  </data>
+  <data name="GpuSwitch_AutomaticTitle" xml:space="preserve">
+    <value>グラフィックスの自動選択に切り替えますか？</value>
+    <comment>Dialog title.</comment>
+  </data>
+  <data name="GpuSwitch_AutomaticMessage" xml:space="preserve">
+    <value>内蔵 GPU と専用 GPU のどちらでディスプレイを駆動するかは、ノート PC が自動で選びます。適用するには Windows の再起動が必要です。</value>
+  </data>
+  <data name="GpuSwitch_RestartNow" xml:space="preserve">
+    <value>今すぐ再起動</value>
+    <comment>Dialog button: restart Windows now.</comment>
+  </data>
+  <data name="GpuSwitch_RestartLater" xml:space="preserve">
+    <value>後で再起動</value>
+    <comment>Dialog button.</comment>
+  </data>
+  <data name="GpuSwitch_Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>Dialog button.</comment>
+  </data>
+  <data name="Chip_Cpu" xml:space="preserve">
+    <value>CPU</value>
+    <comment>The processor. Short: used in labels like 'CPU 45°'.</comment>
+  </data>
+  <data name="Chip_Gpu" xml:space="preserve">
+    <value>GPU</value>
+    <comment>The graphics chip. Short: used in labels like 'GPU 45°'.</comment>
+  </data>
+  <data name="Chip_System" xml:space="preserve">
+    <value>システム</value>
+    <comment>Short name of a system (chassis) fan where space is tight, e.g. the tray tooltip: "System 2,000 rpm".</comment>
+  </data>
+  <data name="Fan_Cpu" xml:space="preserve">
+    <value>CPU ファン</value>
+  </data>
+  <data name="Fan_Gpu" xml:space="preserve">
+    <value>GPU ファン</value>
+  </data>
+  <data name="Fan_Gpu1" xml:space="preserve">
+    <value>GPU ファン 1</value>
+    <comment>The first of two GPU fans, on laptops that have two (Acer's software numbers them the same way).</comment>
+  </data>
+  <data name="Fan_Gpu2" xml:space="preserve">
+    <value>GPU ファン 2</value>
+    <comment>The second GPU fan.</comment>
+  </data>
+  <data name="Fan_System" xml:space="preserve">
+    <value>システム ファン</value>
+    <comment>A fan in the chassis, not on the CPU or GPU. Acer Crate only shows its speed.</comment>
+  </data>
+  <data name="Fan_System1" xml:space="preserve">
+    <value>システム ファン 1</value>
+    <comment>The first of two system fans.</comment>
+  </data>
+  <data name="Fan_System2" xml:space="preserve">
+    <value>システム ファン 2</value>
+    <comment>The second system fan.</comment>
+  </data>
+  <data name="FanShort_Gpu1" xml:space="preserve">
+    <value>GPU 1</value>
+    <comment>Short name of the first GPU fan where space is tight (the tray tooltip), on laptops with two.</comment>
+  </data>
+  <data name="FanShort_Gpu2" xml:space="preserve">
+    <value>GPU 2</value>
+    <comment>Short name of the second GPU fan.</comment>
+  </data>
+  <data name="FanShort_System1" xml:space="preserve">
+    <value>システム 1</value>
+    <comment>Short name of the first of two system fans.</comment>
+  </data>
+  <data name="FanShort_System2" xml:space="preserve">
+    <value>システム 2</value>
+    <comment>Short name of the second system fan.</comment>
+  </data>
+  <data name="FanMode_Auto" xml:space="preserve">
+    <value>自動</value>
+    <comment>Fan mode: the laptop's firmware controls the fans. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Max" xml:space="preserve">
+    <value>最大</value>
+    <comment>Fan mode: all fans at full speed. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Custom" xml:space="preserve">
+    <value>カスタム</value>
+    <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Auto_Description" xml:space="preserve">
+    <value>ノート PC のファームウェアがファンを管理します。高温時には Acer Crate が速度を上乗せできます。</value>
+  </data>
+  <data name="FanMode_Max_Description" xml:space="preserve">
+    <value>すべてのファンを最高速度で回します。</value>
+  </data>
+  <data name="FanMode_Custom_Description" xml:space="preserve">
+    <value>ファンごとに、ファームウェアの速度に上乗せする速度です (固定、またはカーブに従う)。0% はファームウェアに任せ、100% は最高速度です。</value>
+  </data>
+  <data name="FanMode_Custom_DescriptionFixed" xml:space="preserve">
+    <value>ファンごとの速度そのものです (固定、またはカーブに従う)。チップが性能を落とし始める温度に近づくと最高速度になります。0% はファームウェアに任せます。</value>
+    <comment>Fan mode description on laptops whose firmware takes each fan's speed as it is (not added on top of Auto). "Throttle" = a chip slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="FanBehavior_Auto" xml:space="preserve">
+    <value>自動（ファームウェア）</value>
+    <comment>What a fan is doing right now: controlled by the laptop's firmware.</comment>
+  </data>
+  <data name="FanBehavior_Max" xml:space="preserve">
+    <value>最高速度</value>
+    <comment>What a fan is doing right now.</comment>
+  </data>
+  <data name="FanBehavior_Boost" xml:space="preserve">
+    <value>自動 + {0}</value>
+    <comment>What a fan is doing right now: the firmware's speed plus what Acer Crate adds. {0} = the added speed as a percentage. Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="FanLock_QuietMode" xml:space="preserve">
+    <value>「静音」モードではファンは「自動」のままです。</value>
+    <comment>Quiet = OperatingMode_Quiet; Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="FanLock_EcoMode" xml:space="preserve">
+    <value>「エコ」モードではファンは「自動」のままです。</value>
+    <comment>Banner on the Fans page: in the Eco operating mode the fans stay on Auto (as Acer's software has it).</comment>
+  </data>
+  <data name="FanLock_DustDefender" xml:space="preserve">
+    <value>ほこりを取り除くため、ファンが逆回転しています。終わるとファン制御が再開します。</value>
+    <comment>Banner on the Fans page while the laptop's DustDefender runs the fans backwards; Acer Crate leaves the fans alone meanwhile.</comment>
+  </data>
+  <data name="DustDefender_Description" xml:space="preserve">
+    <value>ファンを短時間逆回転させ、ヒートシンクのほこりを吹き飛ばします。</value>
+    <comment>The DustDefender card's description on the Fans page ("DustDefender" is Acer's name for the feature and stays in English).</comment>
+  </data>
+  <data name="DustDefender_Running" xml:space="preserve">
+    <value>クリーニング中: ファンが短時間逆回転しています。</value>
+    <comment>The DustDefender card's description while a run is going.</comment>
+  </data>
+  <data name="DustDefender_Busy" xml:space="preserve">
+    <value>高負荷時と同じく、ノート PC が今は受け付けませんでした。アイドル状態のときにもう一度お試しください。</value>
+    <comment>The DustDefender card's description when the laptop's embedded controller turned a start down (Acer: it does under heavy load).</comment>
+  </data>
+  <data name="DustDefender_Failed" xml:space="preserve">
+    <value>ノート PC がクリーニングを開始しませんでした。</value>
+    <comment>The DustDefender card's description when the firmware refused a start.</comment>
+  </data>
+  <data name="Fans_CleanNow.Content" xml:space="preserve">
+    <value>今すぐクリーニング</value>
+    <comment>Button on the DustDefender card: the fans run backwards for a moment to blow dust out.</comment>
+  </data>
+  <data name="OperatingMode_Eco" xml:space="preserve">
+    <value>エコ</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Quiet" xml:space="preserve">
+    <value>静音</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Balanced" xml:space="preserve">
+    <value>バランス</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Performance" xml:space="preserve">
+    <value>パフォーマンス</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Turbo" xml:space="preserve">
+    <value>ターボ</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Eco_Description" xml:space="preserve">
+    <value>バッテリー駆動時間が最も長くなります。</value>
+  </data>
+  <data name="OperatingMode_Quiet_Description" xml:space="preserve">
+    <value>騒音が最も少なくなります。ファンは「自動」のままです。</value>
+    <comment>Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="OperatingMode_Balanced_Description" xml:space="preserve">
+    <value>普段使いのパフォーマンスです。</value>
+  </data>
+  <data name="OperatingMode_Performance_Description" xml:space="preserve">
+    <value>電力制限を引き上げます。AC 電源が必要です。</value>
+  </data>
+  <data name="OperatingMode_Turbo_Description" xml:space="preserve">
+    <value>最大の電力と冷却です。AC 電源が必要です。</value>
+  </data>
+  <data name="OperatingMode_BatteryModeNote" xml:space="preserve">
+    <value>バッテリー駆動中: 電源に接続するまで、ここで選んだモードを使います。</value>
+    <comment>Under the operating mode list while on battery: the list shows the battery's own mode.</comment>
+  </data>
+  <data name="OperatingMode_LowBatteryNote" xml:space="preserve">
+    <value>バッテリー残量が少なく電源を補えないため、充電されるとパフォーマンス モードが戻ります。</value>
+    <comment>Under the operating mode list on AC when the battery is too low to help the adapter (only Quiet and Balanced are listed then).</comment>
+  </data>
+  <data name="OperatingMode_AdapterNote" xml:space="preserve">
+    <value>この電源アダプターではパフォーマンス モードを使えません。ノート PC 付属のものなど、より出力の高いアダプターで戻ります。</value>
+    <comment>Under the operating modes when the adapter can't power every mode (a USB-C charger that is too weak, or the laptop's own limit), so only the quieter ones are offered.</comment>
+  </data>
+  <data name="PowerSource_PluggedIn" xml:space="preserve">
+    <value>AC 電源</value>
+    <comment>Power source: the charger is connected.</comment>
+  </data>
+  <data name="PowerSource_Battery" xml:space="preserve">
+    <value>バッテリー</value>
+    <comment>Power source.</comment>
+  </data>
+  <data name="Gpu_Idle" xml:space="preserve">
+    <value>アイドル</value>
+    <comment>Shown instead of the GPU temperature while the graphics chip is powered down. Short.</comment>
+  </data>
+  <data name="Unit_Rpm" xml:space="preserve">
+    <value>rpm</value>
+    <comment>Unit: revolutions per minute (fan speed). Use your language's usual abbreviation.</comment>
+  </data>
+  <data name="Unit_RpmValue" xml:space="preserve">
+    <value>{0} rpm</value>
+    <comment>{0} = a fan speed number. Same unit as Unit_Rpm.</comment>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>、</value>
+    <comment>Separates items in a list inside a sentence, e.g. 'Quiet, Balanced, Performance'. Keep the trailing space if your language uses one.</comment>
+  </data>
+  <data name="Dashboard_Title.Text" xml:space="preserve">
+    <value>ダッシュボード</value>
+    <comment>Page title, same as Nav_Dashboard.Content.</comment>
+  </data>
+  <data name="Dashboard_Failsafe.Title" xml:space="preserve">
+    <value>ファンをファームウェアに戻しました</value>
+    <comment>Warning banner title.</comment>
+  </data>
+  <data name="Dashboard_Failsafe.Message" xml:space="preserve">
+    <value>CPU 温度が報告されなくなったため、再び報告されるまでノート PC がファンを自ら制御しています。</value>
+  </data>
+  <data name="Dashboard_CpuTemperature.Text" xml:space="preserve">
+    <value>CPU 温度</value>
+    <comment>Tile caption.</comment>
+  </data>
+  <data name="Dashboard_GpuTemperature.Text" xml:space="preserve">
+    <value>GPU 温度</value>
+    <comment>Tile caption.</comment>
+  </data>
+  <data name="Dashboard_LoadDetail" xml:space="preserve">
+    <value>負荷 {0} · {1}</value>
+    <comment>Under a temperature: {0} = usage percentage (e.g. 45%), {1} = the chip's model name.</comment>
+  </data>
+  <data name="Dashboard_AsleepDetail" xml:space="preserve">
+    <value>スリープ中 · {0}</value>
+    <comment>Under the GPU temperature while the graphics chip is powered down: {0} = its model name.</comment>
+  </data>
+  <data name="Dashboard_Cooling.Text" xml:space="preserve">
+    <value>冷却</value>
+    <comment>Card title.</comment>
+  </data>
+  <data name="Dashboard_CoolBoost.Text" xml:space="preserve">
+    <value>「自動」モードでファンをより速く回せるようにします。</value>
+    <comment>Describes CoolBoost (an Acer feature name shown above it). Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="Dashboard_Performance.Text" xml:space="preserve">
+    <value>パフォーマンス</value>
+    <comment>Card title.</comment>
+  </data>
+  <data name="Dashboard_PowerPlan.Header" xml:space="preserve">
+    <value>Windows の電源プラン</value>
+    <comment>Label above a list of Windows power plans.</comment>
+  </data>
+  <data name="Dashboard_PowerSource.Text" xml:space="preserve">
+    <value>電源</value>
+    <comment>Caption above 'Plugged in' or 'On battery'.</comment>
+  </data>
+  <data name="Dashboard_SystemTemperature.Text" xml:space="preserve">
+    <value>システム温度</value>
+    <comment>Caption: the laptop's internal temperature.</comment>
+  </data>
+  <data name="Fans_Title.Text" xml:space="preserve">
+    <value>ファン</value>
+    <comment>Page title.</comment>
+  </data>
+  <data name="Fans_AutoBoost.Header" xml:space="preserve">
+    <value>スロットリング防止</value>
+    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
+  </data>
+  <data name="Fans_AutoBoost.Description" xml:space="preserve">
+    <value>チップが熱くなるにつれてファームウェアの速度に上乗せし、プロセッサーが性能を落とし始める温度で最高速度に達します。</value>
+    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="Fans_AutoBoostFixed" xml:space="preserve">
+    <value>チップが性能を落とし始める温度に近づくと、ファンを最高速度で回します。</value>
+    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="Fans_CoolBoost.Description" xml:space="preserve">
+    <value>ファームウェア自身のファン速度を上げます。「自動」モードはこの速度を使い、「カスタム」モードはこれに上乗せします。</value>
+    <comment>Under the header "CoolBoost" (an Acer feature name). Auto, Custom = FanMode_Auto, FanMode_Custom.</comment>
+  </data>
+  <data name="Fans_CoolBoostFixed" xml:space="preserve">
+    <value>ファームウェア自身のファン速度を上げます。「自動」モードはこの速度を使います。</value>
+    <comment>Under the header "CoolBoost" (an Acer feature name), on laptops where Custom sets each fan's speed itself. Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="Fans_FanTable.Header" xml:space="preserve">
+    <value>ファン カーブ</value>
+  </data>
+  <data name="Fans_FanTable.Description" xml:space="preserve">
+    <value>ファームウェア自身のファン速度です。「自動」モードはこの速度を使い、「カスタム」モードはこれに上乗せします。Acer のソフトウェアは GPU のオーバークロック時により速いカーブを選びます。</value>
+  </data>
+  <data name="Fans_FanTableStandard.Content" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="Fans_FanTableFaster.Content" xml:space="preserve">
+    <value>速い</value>
+  </data>
+  <data name="Fans_FanTableFastest.Content" xml:space="preserve">
+    <value>最速</value>
+  </data>
+  <data name="Fans_BoostFixed.Content" xml:space="preserve">
+    <value>固定</value>
+    <comment>Segmented button per fan in Custom mode: add a fixed amount of speed (the slider below). Very short.</comment>
+  </data>
+  <data name="Fans_BoostCurve.Content" xml:space="preserve">
+    <value>カーブ</value>
+    <comment>Segmented button per fan in Custom mode: the added speed follows a temperature curve. Very short.</comment>
+  </data>
+  <data name="Fans_Boost.Header" xml:space="preserve">
+    <value>上乗せする速度</value>
+    <comment>Slider label: speed added on top of the firmware's, from 0% (firmware only) to 100% (full speed).</comment>
+  </data>
+  <data name="Fans_SpeedFixed" xml:space="preserve">
+    <value>速度</value>
+    <comment>Slider label: a fan's own speed in Custom mode, from 0% (left to the firmware) to 100% (full speed). Short.</comment>
+  </data>
+  <data name="Fans_Presets.Content" xml:space="preserve">
+    <value>プリセット</value>
+    <comment>Button that opens a list of ready-made fan curves.</comment>
+  </data>
+  <data name="Fans_PresetDefault.Text" xml:space="preserve">
+    <value>既定</value>
+    <comment>Fan curve preset name: the curve Auto uses when it speeds up the fans.</comment>
+  </data>
+  <data name="Fans_CurveHelp.Text" xml:space="preserve">
+    <value>ポイントをドラッグしてカーブを調整 · ダブルクリックでポイントを追加 · 右クリックでポイントを削除 · 方向キーで選択したポイントを微調整</value>
+    <comment>Help under the curve editor.</comment>
+  </data>
+  <data name="CurveEditor_Now" xml:space="preserve">
+    <value>現在 {0} · {1}</value>
+    <comment>Label on the curve editor: {0} = the current temperature, {1} = the speed Acer Crate adds now, as a percentage.</comment>
+  </data>
+  <data name="Fans_Safety.Text" xml:space="preserve">
+    <value>安全</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Fans_HandBack.Header" xml:space="preserve">
+    <value>Acer Crate の停止時にファンを戻す</value>
+  </data>
+  <data name="Fans_HandBack.Description" xml:space="preserve">
+    <value>Acer Crate サービスが停止したとき（またはポータブル版を終了したとき）は、ノート PC 自体のファン制御が再び引き継ぎます。</value>
+  </data>
+  <data name="Lighting_Title.Text" xml:space="preserve">
+    <value>ライティング</value>
+    <comment>Page title: RGB keyboard lighting.</comment>
+  </data>
+  <data name="Lighting_Static.Content" xml:space="preserve">
+    <value>固定色</value>
+    <comment>Lighting mode: one fixed colour per keyboard zone.</comment>
+  </data>
+  <data name="Lighting_Effect.Content" xml:space="preserve">
+    <value>エフェクト</value>
+    <comment>Lighting mode: an animated effect.</comment>
+  </data>
+  <data name="Lighting_PerKey.Content" xml:space="preserve">
+    <value>キーごと</value>
+    <comment>Lighting mode: a colour for each key (next to "Static colours" and "Effect").</comment>
+  </data>
+  <data name="Lighting_PerKeyHint.Text" xml:space="preserve">
+    <value>キーをクリックすると選択、Ctrl キーを押しながらクリックすると追加・解除、ドラッグすると複数選択します。色は選択したキーに、何も選択していなければすべてのキーに適用されます。</value>
+    <comment>Help above the per-key editor's buttons.</comment>
+  </data>
+  <data name="Lighting_SelectWasd.Content" xml:space="preserve">
+    <value>WASD</value>
+    <comment>Button that selects the W, A, S and D keys (the name of the key group; keep as is).</comment>
+  </data>
+  <data name="Lighting_SelectArrows.Content" xml:space="preserve">
+    <value>矢印キー</value>
+    <comment>Button that selects the four arrow keys.</comment>
+  </data>
+  <data name="Lighting_SelectFunctionKeys.Content" xml:space="preserve">
+    <value>F1～F12</value>
+    <comment>Button that selects the function keys F1 to F12.</comment>
+  </data>
+  <data name="Lighting_SelectNumbers.Content" xml:space="preserve">
+    <value>数字キーの列</value>
+    <comment>Button that selects the row of digit keys 1 to 0.</comment>
+  </data>
+  <data name="Lighting_SelectAll.Content" xml:space="preserve">
+    <value>すべてのキー</value>
+    <comment>Button that selects every key.</comment>
+  </data>
+  <data name="Lighting_SelectNone.Content" xml:space="preserve">
+    <value>選択を解除</value>
+    <comment>Button that deselects every key in the per-key editor.</comment>
+  </data>
+  <data name="Lighting_TurnOffKeys.Content" xml:space="preserve">
+    <value>消灯</value>
+    <comment>Button that makes the selected keys (or all, with none selected) dark.</comment>
+  </data>
+  <data name="Lighting_Layout.Header" xml:space="preserve">
+    <value>配列</value>
+    <comment>Which keyboard layout the per-key editor draws (US, UK and Europe, Japanese).</comment>
+  </data>
+  <data name="Layout_Ansi" xml:space="preserve">
+    <value>英語 (ANSI)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Layout_Iso" xml:space="preserve">
+    <value>英国・欧州 (ISO)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Layout_Jis" xml:space="preserve">
+    <value>日本語 (JIS)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Lighting_EffectList.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>エフェクト</value>
+    <comment>Screen-reader name of the list of lighting effects.</comment>
+  </data>
+  <data name="Lighting_Zone" xml:space="preserve">
+    <value>ゾーン {0}</value>
+    <comment>A keyboard lighting zone: {0} = its number.</comment>
+  </data>
+  <data name="Lighting_NumberedLight" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>A light's name when the laptop has two of that kind: {0} = its name (e.g. "Light bar"), {1} = 1 or 2.</comment>
+  </data>
+  <data name="Light_Keyboard" xml:space="preserve">
+    <value>キーボード</value>
+    <comment>Name of the keyboard backlight in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_LightBar" xml:space="preserve">
+    <value>ライトバー</value>
+    <comment>Name of the laptop's light bar(s) in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_InfinityMirror" xml:space="preserve">
+    <value>Infinity Mirror</value>
+    <comment>Acer's name for the rear light bar of Predator Helios 16/18 (2024). A product name: keep it as it is.</comment>
+  </data>
+  <data name="Light_Logo" xml:space="preserve">
+    <value>ロゴ</value>
+    <comment>Name of the lit logo on the laptop's lid in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_FrontLightBar" xml:space="preserve">
+    <value>前面ライトバー</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_LeftLightBar" xml:space="preserve">
+    <value>左ライトバー</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_RightLightBar" xml:space="preserve">
+    <value>右ライトバー</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_RearLightBar" xml:space="preserve">
+    <value>背面ライトバー</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_TurboKey" xml:space="preserve">
+    <value>Turbo キー</value>
+    <comment>A light's name: the light in the laptop's Turbo key.</comment>
+  </data>
+  <data name="Light_ModeKey" xml:space="preserve">
+    <value>モードキー</value>
+    <comment>A light's name: the light in the laptop's Mode key (switches operating modes).</comment>
+  </data>
+  <data name="Light_CoverLogo" xml:space="preserve">
+    <value>天板のロゴ</value>
+    <comment>A light's name: the logo on the outside of the lid.</comment>
+  </data>
+  <data name="Light_BaseLogo" xml:space="preserve">
+    <value>本体のロゴ</value>
+    <comment>A light's name: a logo on the laptop's base.</comment>
+  </data>
+  <data name="Light_MagKey" xml:space="preserve">
+    <value>MagForce キー</value>
+    <comment>A light's name: the lights under the W, A, S and D keys of Predator Helios models (Acer calls these keys MagForce keys; keep "MagForce").</comment>
+  </data>
+  <data name="Light_InfiniteRing" xml:space="preserve">
+    <value>InfiniteRing</value>
+    <comment>A light's name: a ring of light on some Predator laptops (Acer's name for it; keep as is).</comment>
+  </data>
+  <data name="Lighting_ZoneColor.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>色を選択</value>
+    <comment>Tooltip.</comment>
+  </data>
+  <data name="Lighting_AllZones.Text" xml:space="preserve">
+    <value>すべてのゾーンを同じ色にする</value>
+  </data>
+  <data name="Lighting_ApplyToAll.Content" xml:space="preserve">
+    <value>すべてのライトに適用</value>
+    <comment>Button: gives every other light the nearest look it can show to the one being edited.</comment>
+  </data>
+  <data name="Lighting_Color.Text" xml:space="preserve">
+    <value>色</value>
+    <comment>Heading of the colour picker for a light with a single colour (the logo).</comment>
+  </data>
+  <data name="Lighting_Speed.Header" xml:space="preserve">
+    <value>速度</value>
+    <comment>Slider label: animation speed.</comment>
+  </data>
+  <data name="Lighting_Direction.Text" xml:space="preserve">
+    <value>方向</value>
+    <comment>Label: animation direction.</comment>
+  </data>
+  <data name="Lighting_EffectColor.Text" xml:space="preserve">
+    <value>エフェクトの色</value>
+  </data>
+  <data name="Lighting_RandomColor.Content" xml:space="preserve">
+    <value>ランダムな色</value>
+    <comment>Check box next to "Effect colour": the effect picks random colours instead.</comment>
+  </data>
+  <data name="Lighting_AnyColor.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>任意の色</value>
+    <comment>Tooltip of a button that opens a colour picker.</comment>
+  </data>
+  <data name="Effect_Breathing" xml:space="preserve">
+    <value>ブリージング</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Neon" xml:space="preserve">
+    <value>ネオン</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Wave" xml:space="preserve">
+    <value>ウェーブ</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Shifting" xml:space="preserve">
+    <value>シフト</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Zoom" xml:space="preserve">
+    <value>ズーム</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Breathing_Description" xml:space="preserve">
+    <value>色がゆっくり明滅します。</value>
+  </data>
+  <data name="Effect_Neon_Description" xml:space="preserve">
+    <value>虹の色を順に切り替えます。</value>
+  </data>
+  <data name="Effect_NeonKeyboard_Description" xml:space="preserve">
+    <value>キーボードが赤、緑、青の順にゆっくり点いては消えます。</value>
+    <comment>Description of the Neon effect on a keyboard lit by zones (the embedded controller's), under the effect list. The whole keyboard fades in and out in one colour at a time.</comment>
+  </data>
+  <data name="Effect_Wave_Description" xml:space="preserve">
+    <value>色の波がキーの上を流れます。</value>
+  </data>
+  <data name="Effect_Shifting_Description" xml:space="preserve">
+    <value>色のブロックがキーボード上を移動します。</value>
+  </data>
+  <data name="Effect_Zoom_Description" xml:space="preserve">
+    <value>色が中央から広がります。</value>
+  </data>
+  <data name="Effect_Meteor" xml:space="preserve">
+    <value>メテオ</value>
+    <comment>Keyboard lighting effect: streaks of colour move across the keyboard.</comment>
+  </data>
+  <data name="Effect_Meteor_Description" xml:space="preserve">
+    <value>色の軌跡がキーボード上を流れます。</value>
+  </data>
+  <data name="Effect_MeteorKeyboard_Description" xml:space="preserve">
+    <value>色の光がキーボードの端から端まで走り、また戻ってきます。</value>
+    <comment>Description of the Meteor effect on a keyboard lit by zones (the embedded controller's), under the effect list. The colour lights one zone after the other to the far end, then comes back the same way.</comment>
+  </data>
+  <data name="Effect_Twinkling" xml:space="preserve">
+    <value>トゥインクル</value>
+    <comment>Keyboard lighting effect: parts of the keyboard light up at random and fade.</comment>
+  </data>
+  <data name="Effect_Snake" xml:space="preserve">
+    <value>スネーク</value>
+    <comment>Light bar effect (Infinity Mirror): a band of rainbow colours runs along the bar.</comment>
+  </data>
+  <data name="Effect_Lightning" xml:space="preserve">
+    <value>ライトニング</value>
+    <comment>Light bar effect (Infinity Mirror).</comment>
+  </data>
+  <data name="Effect_Stack" xml:space="preserve">
+    <value>スタック</value>
+    <comment>Light bar effect (Infinity Mirror): light builds up zone by zone.</comment>
+  </data>
+  <data name="Effect_MotionPoint" xml:space="preserve">
+    <value>モーション ポイント</value>
+    <comment>Light bar effect (Infinity Mirror): a point of light moves along the bar.</comment>
+  </data>
+  <data name="Effect_Ripple" xml:space="preserve">
+    <value>リップル</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Raindrop" xml:space="preserve">
+    <value>雨粒</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Fireball" xml:space="preserve">
+    <value>ファイアボール</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Snow" xml:space="preserve">
+    <value>スノー</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Heartbeat" xml:space="preserve">
+    <value>ハートビート</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Dazzling" xml:space="preserve">
+    <value>ダズリング</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Matrix" xml:space="preserve">
+    <value>マトリックス</value>
+    <comment>Lighting effect name (after the film's falling green code).</comment>
+  </data>
+  <data name="Effect_Swiping" xml:space="preserve">
+    <value>スワイプ</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_RowWave" xml:space="preserve">
+    <value>行ウェーブ</value>
+    <comment>Lighting effect name: a wave that moves row by row.</comment>
+  </data>
+  <data name="Effect_Racing" xml:space="preserve">
+    <value>レーシング</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Sprouting" xml:space="preserve">
+    <value>スプラウト</value>
+    <comment>Lighting effect name: light grows like a sprout.</comment>
+  </data>
+  <data name="Effect_Disco" xml:space="preserve">
+    <value>ディスコ</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_PingPong" xml:space="preserve">
+    <value>ピンポン</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_LightShow" xml:space="preserve">
+    <value>ライトショー</value>
+    <comment>Lighting effect name: the light's effects in turn.</comment>
+  </data>
+  <data name="Effect_FollowOperatingMode" xml:space="preserve">
+    <value>動作モード</value>
+    <comment>Lighting effect name: the firmware colours the light by the operating mode (Quiet, Balanced, Performance, ...).</comment>
+  </data>
+  <data name="Effect_Combo" xml:space="preserve">
+    <value>コンボ</value>
+    <comment>Lighting effect name: several effects at once.</comment>
+  </data>
+  <data name="Effect_Rainbow" xml:space="preserve">
+    <value>レインボー</value>
+    <comment>Lighting effect name (MagForce keys).</comment>
+  </data>
+  <data name="Effect_Slash" xml:space="preserve">
+    <value>スラッシュ</value>
+    <comment>Lighting effect name (MagForce keys): a slash of light across the keys.</comment>
+  </data>
+  <data name="Effect_Star" xml:space="preserve">
+    <value>スター</value>
+    <comment>Lighting effect name (MagForce keys).</comment>
+  </data>
+  <data name="Effect_Blasting" xml:space="preserve">
+    <value>ブラスト</value>
+    <comment>Lighting effect name (MagForce keys): colour bursts out.</comment>
+  </data>
+  <data name="Effect_Twinkling_Description" xml:space="preserve">
+    <value>キーボードのあちこちがランダムに光っては消えていきます。</value>
+  </data>
+  <data name="Effect_TwinklingKeyboard_Description" xml:space="preserve">
+    <value>キーボード全体が点滅します。</value>
+    <comment>Description of the Twinkling effect on a keyboard lit by zones (the embedded controller's), under the effect list. All zones switch on and off together, with no fading.</comment>
+  </data>
+  <data name="Effect_Snake_Description" xml:space="preserve">
+    <value>虹色の帯がライトバーを流れます。</value>
+  </data>
+  <data name="Effect_SnakeColor_Description" xml:space="preserve">
+    <value>色の線がくねりながら進みます。</value>
+    <comment>Description of the Snake effect where it takes a colour (keyboards, logos), under the effect list.</comment>
+  </data>
+  <data name="Effect_Lightning_Description" xml:space="preserve">
+    <value>稲妻のように光が走ります。</value>
+  </data>
+  <data name="Effect_Stack_Description" xml:space="preserve">
+    <value>光がゾーンごとに積み重なります。</value>
+  </data>
+  <data name="Effect_MotionPoint_Description" xml:space="preserve">
+    <value>光の点がライトバーを移動します。</value>
+  </data>
+  <data name="Effect_ZoomIn_Description" xml:space="preserve">
+    <value>光が中央に向かって集まります。</value>
+    <comment>The Infinity Mirror's Zoom (Acer names it Zoom there too).</comment>
+  </data>
+  <data name="Effect_Ripple_Description" xml:space="preserve">
+    <value>色の輪が外側へ広がります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Raindrop_Description" xml:space="preserve">
+    <value>色のしずくが落ちては消えます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Fireball_Description" xml:space="preserve">
+    <value>火の玉が横切ります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Snow_Description" xml:space="preserve">
+    <value>光の雪がゆっくり舞い落ちます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Heartbeat_Description" xml:space="preserve">
+    <value>光が心臓の鼓動のように脈打ちます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Dazzling_Description" xml:space="preserve">
+    <value>まばゆい光が全体にきらめきます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Matrix_Description" xml:space="preserve">
+    <value>光の筋が雨のように流れ落ちます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Swiping_Description" xml:space="preserve">
+    <value>色が行ったり来たりします。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_RowWave_Description" xml:space="preserve">
+    <value>色が行ごとに流れていきます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Racing_Description" xml:space="preserve">
+    <value>光が追いかけっこをします。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Sprouting_Description" xml:space="preserve">
+    <value>光が下から伸びていきます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Disco_Description" xml:space="preserve">
+    <value>ダンスフロアのように色が点滅します。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_PingPong_Description" xml:space="preserve">
+    <value>光の点が左右に跳ね返ります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_LightShow_Description" xml:space="preserve">
+    <value>エフェクトが次々に切り替わります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_FollowOperatingMode_Description" xml:space="preserve">
+    <value>色で現在の動作モードを示します。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Combo_Description" xml:space="preserve">
+    <value>複数のエフェクトを同時に表示します。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Rainbow_Description" xml:space="preserve">
+    <value>キーが虹色に光ります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Slash_Description" xml:space="preserve">
+    <value>光がキーを切り裂くように走ります。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Star_Description" xml:space="preserve">
+    <value>キーが星のようにまたたきます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Blasting_Description" xml:space="preserve">
+    <value>色がはじけて消えます。</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Direction_Left" xml:space="preserve">
+    <value>左</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Right" xml:space="preserve">
+    <value>右</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Up" xml:space="preserve">
+    <value>上</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Down" xml:space="preserve">
+    <value>下</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Brightness_Off" xml:space="preserve">
+    <value>オフ</value>
+    <comment>Keyboard backlight brightness: off. Short: shown next to 25%, 50%...</comment>
+  </data>
+  <data name="System_Title.Text" xml:space="preserve">
+    <value>システム</value>
+    <comment>Page title, same as Nav_System.Content.</comment>
+  </data>
+  <data name="System_Keyboard.Text" xml:space="preserve">
+    <value>キーボード</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_BacklightAutoOff.Header" xml:space="preserve">
+    <value>バックライトの自動オフ</value>
+    <comment>Keyboard backlight setting.</comment>
+  </data>
+  <data name="System_BacklightAutoOff.Description" xml:space="preserve">
+    <value>30 秒間入力がないとキーボードのバックライトをオフにします。</value>
+  </data>
+  <data name="System_WindowsKey.Header" xml:space="preserve">
+    <value>Windows キーとメニュー キー</value>
+    <comment>The Windows logo key and the Menu (application) key.</comment>
+  </data>
+  <data name="System_FnLock.Header" xml:space="preserve">
+    <value>Fn ロック</value>
+    <comment>Keyboard Fn lock toggle, shown only when the firmware reports support.</comment>
+  </data>
+  <data name="System_WindowsKey.Description" xml:space="preserve">
+    <value>オフにすると、Windows キーとメニュー キーでゲームが中断されなくなります。</value>
+  </data>
+  <data name="System_ModeKey.Header" xml:space="preserve">
+    <value>モード キー</value>
+    <comment>System page, Keyboard section: the laptop's Mode key (it switches the operating mode). Shown once the key has been pressed.</comment>
+  </data>
+  <data name="System_ModeKey.Description" xml:space="preserve">
+    <value>ノート PC のモード キーの動作です。</value>
+    <comment>Description of the Mode key setting.</comment>
+  </data>
+  <data name="System_ModeKeyCycle.Content" xml:space="preserve">
+    <value>モードを順に切り替える</value>
+    <comment>Mode key choice: each press goes to the next operating mode (Balanced, Performance, Turbo, Quiet; on battery Balanced and Eco).</comment>
+  </data>
+  <data name="System_ModeKeyTurbo.Content" xml:space="preserve">
+    <value>「ターボ」をオン/オフする</value>
+    <comment>Mode key choice: a press turns Turbo on, the next one goes back to the mode before.</comment>
+  </data>
+  <data name="System_StickyKeys.Header" xml:space="preserve">
+    <value>固定キー</value>
+    <comment>The Windows accessibility feature: use its official Windows name in your language.</comment>
+  </data>
+  <data name="System_StickyKeys.Description" xml:space="preserve">
+    <value>修飾キーを離しても押されたままになります。Shift キーを 5 回押すとオン/オフを切り替えます。</value>
+  </data>
+  <data name="System_Display.Text" xml:space="preserve">
+    <value>ディスプレイ</value>
+    <comment>Section title: the laptop screen.</comment>
+  </data>
+  <data name="System_LcdOverdrive.Header" xml:space="preserve">
+    <value>LCD オーバードライブ</value>
+    <comment>Screen setting that speeds up pixel response.</comment>
+  </data>
+  <data name="System_LcdOverdrive.Description" xml:space="preserve">
+    <value>ノート PC の内蔵画面用です（外部モニターには効きません）。ピクセルの応答が速くなり、ゲームでの動きのぼやけが減ります。画面の最高リフレッシュ レートで最も効果的です。動く物体の後ろにハローが見える場合はオフにしてください。</value>
+  </data>
+  <data name="System_Graphics.Text" xml:space="preserve">
+    <value>グラフィックス</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_GpuMode.Header" xml:space="preserve">
+    <value>GPU モード</value>
+    <comment>Setting: hybrid or discrete graphics.</comment>
+  </data>
+  <data name="System_GpuMode.Description" xml:space="preserve">
+    <value>「ハイブリッド」はディスプレイに内蔵 GPU を使ってバッテリーを節約します。「専用」は NVIDIA GPU を直接接続し、ゲームで最高のパフォーマンスを発揮します。再起動後に適用されます。</value>
+    <comment>Hybrid, Discrete = System_GpuHybrid, System_GpuDiscrete.</comment>
+  </data>
+  <data name="System_GpuHybrid.Content" xml:space="preserve">
+    <value>ハイブリッド</value>
+    <comment>GPU mode: both graphics chips (NVIDIA Optimus). Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuDiscrete.Content" xml:space="preserve">
+    <value>専用</value>
+    <comment>GPU mode: only the NVIDIA graphics chip. Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuAutomatic.Content" xml:space="preserve">
+    <value>自動</value>
+    <comment>GPU mode: the laptop chooses which graphics chip drives the display (Acer: Automatic Selection). Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuRestart.Title" xml:space="preserve">
+    <value>GPU モードを切り替えるには再起動してください</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="System_GpuRestart.Message" xml:space="preserve">
+    <value>新しい GPU モードは Windows の再起動後に有効になります。</value>
+  </data>
+  <data name="System_RestartNow.Content" xml:space="preserve">
+    <value>今すぐ再起動</value>
+    <comment>Button: restart Windows now.</comment>
+  </data>
+  <data name="System_GpuClocks.Header" xml:space="preserve">
+    <value>GPU オーバークロック</value>
+    <comment>Expander on the System page: clock offsets for the NVIDIA GPU, per operating mode.</comment>
+  </data>
+  <data name="GpuClocks_Reset.Content" xml:space="preserve">
+    <value>リセット</value>
+    <comment>Button next to "GPU overclock": sets every offset back to 0.</comment>
+  </data>
+  <data name="GpuClocks_FollowFirmware.Header" xml:space="preserve">
+    <value>Acer のオーバークロック</value>
+    <comment>Switch in the GPU overclock section, on laptops whose firmware has its own GPU overclock for each operating mode (2024+ Predators). Keep "Acer".</comment>
+  </data>
+  <data name="GpuClocks_Core.Header" xml:space="preserve">
+    <value>コア (MHz)</value>
+    <comment>Number box label: the GPU core clock offset, in MHz.</comment>
+  </data>
+  <data name="GpuClocks_Memory.Header" xml:space="preserve">
+    <value>メモリ (MHz)</value>
+    <comment>Number box label: the GPU memory clock offset, in MHz.</comment>
+  </data>
+  <data name="GpuClocks_Footer.Text" xml:space="preserve">
+    <value>メモリのオフセットは MSI Afterburner と同じく 2 倍で数えます。+100 でメモリ クロックが 50 MHz 上がります。</value>
+    <comment>Note under the GPU overclock rows. MSI Afterburner is a product name.</comment>
+  </data>
+  <data name="GpuClocks_Always" xml:space="preserve">
+    <value>常時</value>
+    <comment>The only row of GPU offsets on laptops without operating modes: they apply all the time.</comment>
+  </data>
+  <data name="GpuClocks_InUse" xml:space="preserve">
+    <value>現在使用中</value>
+    <comment>Under the operating mode whose GPU offsets apply right now.</comment>
+  </data>
+  <data name="GpuClocks_Firmware" xml:space="preserve">
+    <value>Acer の設定: コア {0} MHz、メモリ {1} MHz</value>
+    <comment>Under an operating mode in the GPU overclock section: the firmware's own offsets for that mode. {0} = core offset, {1} = memory offset (signed numbers, e.g. +150).</comment>
+  </data>
+  <data name="GpuClocks_Description" xml:space="preserve">
+    <value>GPU のクロック速度を上げます。</value>
+    <comment>Under "GPU overclock" while no offsets are set in the operating mode in force.</comment>
+  </data>
+  <data name="GpuClocks_WaitingForLimits" xml:space="preserve">
+    <value>GPU の上限は、GPU が一度使われると表示されます。</value>
+    <comment>Under "GPU overclock" until the NVIDIA driver has reported which offsets it accepts (it is only asked while the GPU is on).</comment>
+  </data>
+  <data name="GpuClocks_Pending" xml:space="preserve">
+    <value>次に GPU が使われるときに適用されます。</value>
+    <comment>Under "GPU overclock" while offsets are set but the GPU is powered down (it is not woken to apply them).</comment>
+  </data>
+  <data name="GpuClocks_Applied" xml:space="preserve">
+    <value>適用中: コア {0} MHz、メモリ {1} MHz</value>
+    <comment>Under "GPU overclock": the offsets in force. {0} = core, {1} = memory offset, with their sign (e.g. +150, 0).</comment>
+  </data>
+  <data name="GpuClocks_NotApplied" xml:space="preserve">
+    <value>NVIDIA ドライバーがこのオフセットを受け付けませんでした。</value>
+    <comment>Under "GPU overclock" when the driver did not take the offsets.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Title" xml:space="preserve">
+    <value>GPU をオーバークロックしますか?</value>
+    <comment>Dialog title before the first GPU offset is set.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Message" xml:space="preserve">
+    <value>NVIDIA の設定を超えるクロック速度では、ゲームがクラッシュしたり、ノート PC がフリーズや再起動したりすることがあります。そうなったらオフセットを下げてください。</value>
+    <comment>Dialog text before the first GPU offset is set.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Overclock" xml:space="preserve">
+    <value>オーバークロック</value>
+    <comment>The dialog's button that goes ahead with the overclock.</comment>
+  </data>
+  <data name="System_Battery.Text" xml:space="preserve">
+    <value>バッテリー</value>
+    <comment>Section header on the System page.</comment>
+  </data>
+  <data name="System_BatteryHealth.Header" xml:space="preserve">
+    <value>バッテリーの状態</value>
+  </data>
+  <data name="BatteryHealth_Capacity" xml:space="preserve">
+    <value>元の容量の {0}% ({2} Wh 中 {1} Wh)</value>
+    <comment>{0} = percent, {1} = what it holds now, {2} = what it held new (watt-hours).</comment>
+  </data>
+  <data name="BatteryHealth_CapacityRelative" xml:space="preserve">
+    <value>元の容量の {0}%</value>
+    <comment>{0} = percent. For batteries that don't report watt-hours.</comment>
+  </data>
+  <data name="BatteryHealth_Cycles" xml:space="preserve">
+    <value>充電サイクル: {0}</value>
+    <comment>{0} = how many times the battery has been fully charged, as it counts.</comment>
+  </data>
+  <data name="System_ChargeLimit.Header" xml:space="preserve">
+    <value>80% で充電を停止</value>
+  </data>
+  <data name="System_ChargeLimit.Description" xml:space="preserve">
+    <value>バッテリーを満充電のままにすると劣化が早まります。ノート PC をほとんど電源につないで使う場合におすすめです。</value>
+  </data>
+  <data name="System_Calibration.Header" xml:space="preserve">
+    <value>バッテリーの調整</value>
+  </data>
+  <data name="System_Calibration.Description" xml:space="preserve">
+    <value>バッテリーを満充電し、放電してから再び充電して、表示される残量を正確にします。数時間かかります。</value>
+  </data>
+  <data name="System_CalibrationStart.Content" xml:space="preserve">
+    <value>調整</value>
+  </data>
+  <data name="System_CalibrationStop.Content" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="System_UsbCharging.Header" xml:space="preserve">
+    <value>電源オフ時に USB 機器を充電</value>
+  </data>
+  <data name="System_UsbCharging.Description" xml:space="preserve">
+    <value>ノート PC の電源が切れていても、バッテリーがここで選んだ残量に下がるまで、USB ポートからスマートフォンなどを充電し続けます。</value>
+  </data>
+  <data name="UsbCharging_Floor" xml:space="preserve">
+    <value>残量 {0}% まで</value>
+    <comment>An item of the list next to "Charge USB devices while off": charging stops when the battery falls to {0} percent.</comment>
+  </data>
+  <data name="System_Startup.Text" xml:space="preserve">
+    <value>起動</value>
+    <comment>Section header on the System page: what the laptop does when it is switched on (boot), not apps that start with Windows.</comment>
+  </data>
+  <data name="System_BootAnimation.Header" xml:space="preserve">
+    <value>起動アニメーションとサウンド</value>
+  </data>
+  <data name="System_BootAnimation.Description" xml:space="preserve">
+    <value>ノート PC の起動時のアニメーションとサウンドです (搭載モデルのみ)。次回の起動時から反映されます。</value>
+    <comment>Not every laptop has an animation or a sound, and Acer Crate can't tell which do, so the text says so.</comment>
+  </data>
+  <data name="System_BootLogo.Header" xml:space="preserve">
+    <value>起動ロゴ</value>
+  </data>
+  <data name="System_BootLogoAcer.Text" xml:space="preserve">
+    <value>Acer のロゴ</value>
+    <comment>Shown in place of a thumbnail while the firmware shows Acer's own logo.</comment>
+  </data>
+  <data name="System_BootLogoRestore.Content" xml:space="preserve">
+    <value>Acer のロゴに戻す</value>
+    <comment>Button: removes the custom picture so Acer's logo shows again.</comment>
+  </data>
+  <data name="System_BootLogoChoose.Content" xml:space="preserve">
+    <value>画像を選択</value>
+  </data>
+  <data name="Calibration_Charging" xml:space="preserve">
+    <value>{0} から調整中: 充電中、{1}%</value>
+    <comment>Next to the Stop button while the battery calibrates. {0} = when it started (a time), {1} = battery percent.</comment>
+  </data>
+  <data name="Calibration_Discharging" xml:space="preserve">
+    <value>{0} から調整中: 放電中、{1}%</value>
+    <comment>Next to the Stop button while the battery calibrates. {0} = when it started (a time), {1} = battery percent.</comment>
+  </data>
+  <data name="Calibration_Running" xml:space="preserve">
+    <value>{0} から調整中</value>
+    <comment>Next to the Stop button while the battery calibrates and Windows can't tell the battery's charge. {0} = when it started (a time).</comment>
+  </data>
+  <data name="Calibration_Confirm_Title" xml:space="preserve">
+    <value>バッテリーを調整しますか?</value>
+  </data>
+  <data name="Calibration_Confirm_Message" xml:space="preserve">
+    <value>数時間かかります。その間ずっと AC アダプターをつないでおいてください。外すと調整は止まります。終わるまで、ふたを閉じてもノート PC はスリープしません。</value>
+  </data>
+  <data name="Calibration_Confirm_Start" xml:space="preserve">
+    <value>調整を開始</value>
+    <comment>The dialog's button that starts the calibration.</comment>
+  </data>
+  <data name="Calibration_NeedsAc" xml:space="preserve">
+    <value>バッテリーを調整するには AC アダプターをつないでください。</value>
+  </data>
+  <data name="Calibration_AlreadyRunning" xml:space="preserve">
+    <value>バッテリーはすでに調整中です。</value>
+  </data>
+  <data name="Calibration_Rejected" xml:space="preserve">
+    <value>ファームウェアがバッテリーの調整を拒否しました。</value>
+  </data>
+  <data name="BootLogo_Description" xml:space="preserve">
+    <value>ノート PC の起動時に表示される GIF または JPEG 画像です (最大 {0} × {1} ピクセル、35 MB、24 ビット カラー)。GIF の各フレームは 30 ミリ秒以上表示されます。</value>
+    <comment>Under "Boot logo". {0} × {1} = the largest width and height, in pixels (40 % of the laptop screen's). 35 MB is Acer's file limit (35,000,000 bytes); the BIOS shows each frame of an animated GIF for 30 ms or longer.</comment>
+  </data>
+  <data name="BootLogo_DescriptionAnySize" xml:space="preserve">
+    <value>ノート PC の起動時に表示される GIF または JPEG 画像です (最大で画面の幅と高さの 40%、35 MB、24 ビット カラー)。GIF の各フレームは 30 ミリ秒以上表示されます。</value>
+    <comment>Under "Boot logo" while the laptop screen's resolution is unknown (e.g. the lid is closed). 35 MB is Acer's file limit (35,000,000 bytes); the BIOS shows each frame of an animated GIF for 30 ms or longer.</comment>
+  </data>
+  <data name="BootLogo_BiosDefaults" xml:space="preserve">
+    <value>BIOS セットアップで既定の設定を読み込むと、画像は削除されます。</value>
+  </data>
+  <data name="BootLogo_Confirm_Title" xml:space="preserve">
+    <value>この起動ロゴを使いますか?</value>
+  </data>
+  <data name="BootLogo_Confirm_Message" xml:space="preserve">
+    <value>次回ノート PC を起動したときに表示されます。</value>
+  </data>
+  <data name="BootLogo_Confirm_MessageWithAnimation" xml:space="preserve">
+    <value>次回ノート PC を起動したときに表示されます。ロゴを表示する起動アニメーションがオンになります。</value>
+    <comment>Used instead of BootLogo_Confirm_Message while the boot animation is off: the firmware shows the logo as part of it.</comment>
+  </data>
+  <data name="BootLogo_Confirm_Use" xml:space="preserve">
+    <value>この画像を使う</value>
+    <comment>The dialog's button that makes the picture the boot logo.</comment>
+  </data>
+  <data name="BootLogo_NotGifOrJpeg" xml:space="preserve">
+    <value>GIF または JPEG の画像を選んでください。</value>
+  </data>
+  <data name="BootLogo_FileTooLarge" xml:space="preserve">
+    <value>画像ファイルが 35 MB を超えています。</value>
+    <comment>Acer's limit is 35,000,000 bytes.</comment>
+  </data>
+  <data name="BootLogo_TooManyPixels" xml:space="preserve">
+    <value>画像は {0} × {1} ピクセルです。このノート PC の起動ロゴは最大 {2} × {3} ピクセルです。</value>
+    <comment>{0} × {1} = the picture's width and height; {2} × {3} = the largest this laptop's boot logo can be.</comment>
+  </data>
+  <data name="BootLogo_ColorDepth" xml:space="preserve">
+    <value>画像は 32 ビット以上の色を使っています。24 ビット カラー (RGB) で保存し直してください。</value>
+    <comment>The firmware takes pictures with fewer than 32 bits per pixel (e.g. not CMYK JPEGs).</comment>
+  </data>
+  <data name="BootLogo_NotBaseline" xml:space="preserve">
+    <value>BIOS が表示できるのは標準 (ベースライン) の JPEG だけで、Windows ではこの画像を変換できませんでした。標準の JPEG で保存し直してください。</value>
+  </data>
+  <data name="BootLogo_ScreenUnknown" xml:space="preserve">
+    <value>画像のサイズを確認するためのノート PC の画面解像度を Acer Crate が読み取れません。ふたを開けてからやり直してください。</value>
+    <comment>Windows doesn't list the built-in screen, usually because the lid is closed.</comment>
+  </data>
+  <data name="BootLogo_NoSpace" xml:space="preserve">
+    <value>EFI システム パーティションにこの画像を保存する空き容量がありません。</value>
+  </data>
+  <data name="BootLogo_WriteFailed" xml:space="preserve">
+    <value>起動ロゴを保存できませんでした。</value>
+  </data>
+  <data name="BootLogo_RestoreFailed" xml:space="preserve">
+    <value>Acer のロゴに戻せませんでした。</value>
+  </data>
+  <data name="BootLogo_ReadFailed" xml:space="preserve">
+    <value>画像を読み込めませんでした: {0}</value>
+    <comment>{0} = the error from Windows.</comment>
+  </data>
+  <data name="Notice_Battery_Title" xml:space="preserve">
+    <value>バッテリー</value>
+  </data>
+  <data name="Notice_ChargeLimitRejected" xml:space="preserve">
+    <value>ファームウェアが充電上限の変更を拒否しました。</value>
+  </data>
+  <data name="Notice_UsbChargingRejected" xml:space="preserve">
+    <value>ファームウェアが USB 充電の変更を拒否しました。</value>
+  </data>
+  <data name="Notice_CalibrationFinished" xml:space="preserve">
+    <value>バッテリーの調整が完了しました。</value>
+  </data>
+  <data name="Notice_CalibrationInterrupted" xml:space="preserve">
+    <value>ノート PC がスリープまたはシャットダウンしたため、バッテリーの調整が止まりました。</value>
+  </data>
+  <data name="Notice_CalibrationStoppedUnplugged" xml:space="preserve">
+    <value>AC アダプターが外されたため、バッテリーの調整が止まりました。</value>
+  </data>
+  <data name="Notice_Startup_Title" xml:space="preserve">
+    <value>起動</value>
+  </data>
+  <data name="Notice_BootAnimationRejected" xml:space="preserve">
+    <value>ファームウェアが起動アニメーションの変更を拒否しました。</value>
+  </data>
+  <data name="System_Power.Text" xml:space="preserve">
+    <value>電源</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_Bios.Text" xml:space="preserve">
+    <value>BIOS</value>
+    <comment>Section header on the System page; BIOS is not translated.</comment>
+  </data>
+  <data name="System_BiosRestart.Title" xml:space="preserve">
+    <value>BIOS の変更を適用するには再起動してください</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="System_BiosRestart.Message" xml:space="preserve">
+    <value>BIOS の変更はノート PC の再起動後に有効になります。</value>
+  </data>
+  <data name="System_BiosSettings.Header" xml:space="preserve">
+    <value>BIOS 設定</value>
+    <comment>Expander on the System page that opens to every BIOS setting.</comment>
+  </data>
+  <data name="Bios_SetPassword.Content" xml:space="preserve">
+    <value>設定…</value>
+    <comment>Button on a BIOS password setting; opens a dialog to type the new password.</comment>
+  </data>
+  <data name="Bios_RemovePassword.Content" xml:space="preserve">
+    <value>削除…</value>
+    <comment>Button on a BIOS password setting; takes the password away after a question.</comment>
+  </data>
+  <data name="Bios_LoadDefaults.Content" xml:space="preserve">
+    <value>BIOS の既定値を読み込む</value>
+    <comment>Button under the BIOS settings: puts every BIOS setting back to Acer's defaults.</comment>
+  </data>
+  <data name="Bios_LoadUserDefaults.Content" xml:space="preserve">
+    <value>保存した既定値を読み込む</value>
+    <comment>Button under the BIOS settings: loads the defaults the user saved in the BIOS setup.</comment>
+  </data>
+  <data name="BiosSettings_Footer.Text" xml:space="preserve">
+    <value>名前と値は BIOS 自身のもので、英語で表示されます。変更はノート PC の再起動後に有効になります。</value>
+    <comment>Under the list of BIOS settings.</comment>
+  </data>
+  <data name="Bios_StatusIdle" xml:space="preserve">
+    <value>開くと BIOS から設定を読み取ります。</value>
+    <comment>Under "BIOS settings" before it is opened.</comment>
+  </data>
+  <data name="Bios_StatusReading" xml:space="preserve">
+    <value>BIOS を読み取っています…</value>
+    <comment>Under "BIOS settings" while the BIOS is being read.</comment>
+  </data>
+  <data name="Bios_StatusCount" xml:space="preserve">
+    <value>見つかった設定: {0}</value>
+    <comment>{0} = how many settings the BIOS listed.</comment>
+  </data>
+  <data name="Bios_StatusNone" xml:space="preserve">
+    <value>この BIOS は Windows に設定を公開していません。</value>
+    <comment>Under "BIOS settings" when the BIOS lists none.</comment>
+  </data>
+  <data name="Bios_Dangerous" xml:space="preserve">
+    <value>危険: 値を誤ると、ノート PC が起動しなくなるおそれがあります。</value>
+    <comment>Under a dangerous BIOS setting that can be changed.</comment>
+  </data>
+  <data name="Bios_DangerousLocked" xml:space="preserve">
+    <value>危険。変更するには、設定で「危険な BIOS 設定を有効にする」をオンにしてください。</value>
+    <comment>Under a dangerous BIOS setting while dangerous BIOS settings are off in Settings; "Enable dangerous BIOS settings" is that setting's name.</comment>
+  </data>
+  <data name="BiosPassword_Title" xml:space="preserve">
+    <value>BIOS パスワード</value>
+    <comment>Dialog title asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosPassword_Message" xml:space="preserve">
+    <value>BIOS は、設定の変更を許可する前にスーパーバイザー パスワードを要求します。</value>
+    <comment>In the dialog asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosPassword_Wrong" xml:space="preserve">
+    <value>パスワードが正しくありません。もう一度お試しください。</value>
+    <comment>In the dialog asking for the BIOS supervisor password, after a wrong one.</comment>
+  </data>
+  <data name="BiosPassword_Continue" xml:space="preserve">
+    <value>続行</value>
+    <comment>Button of the dialog asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosNewPassword_Title" xml:space="preserve">
+    <value>新しい BIOS パスワード</value>
+    <comment>Dialog title for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Message" xml:space="preserve">
+    <value>{0}: 新しいパスワードを 2 回入力してください。BIOS が受け付けるのは、英語キーボードにある英数字と記号のみです。</value>
+    <comment>In the dialog for setting a BIOS password. {0} = the BIOS's name for the setting, in English (for example "Set Supervisor Password").</comment>
+  </data>
+  <data name="BiosNewPassword_First" xml:space="preserve">
+    <value>新しいパスワード</value>
+    <comment>Label of the first box in the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Again" xml:space="preserve">
+    <value>パスワードを再入力</value>
+    <comment>Label of the second box in the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Set" xml:space="preserve">
+    <value>パスワードを設定</value>
+    <comment>Button of the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosPasswordSave_Title" xml:space="preserve">
+    <value>BIOS パスワードを保存しますか？</value>
+    <comment>Dialog title before a BIOS password is saved.</comment>
+  </data>
+  <data name="BiosPasswordSave_Message" xml:space="preserve">
+    <value>{0}: BIOS は次回の起動からこのパスワードを使用します。忘れると、BIOS セットアップにアクセスできなくなるおそれがあります。</value>
+    <comment>Dialog text before a BIOS password is saved. {0} = the BIOS's name for the setting, in English (for example "Set Supervisor Password").</comment>
+  </data>
+  <data name="BiosPasswordSave_Save" xml:space="preserve">
+    <value>パスワードを保存</value>
+    <comment>Button of the dialog that saves a BIOS password.</comment>
+  </data>
+  <data name="BiosDanger_Title" xml:space="preserve">
+    <value>危険な設定を変更しますか？</value>
+    <comment>Dialog title before a dangerous BIOS setting changes.</comment>
+  </data>
+  <data name="BiosDanger_Message" xml:space="preserve">
+    <value>ノート PC の再起動後に {0} が {1} に設定されます。
+
+値を誤ると、ノート PC が起動しなくなったり、キーボード、ドライブ、ポートが使えなくなったりするおそれがあります。内容を理解している場合にのみ続行してください。</value>
+    <comment>Dialog text before a dangerous BIOS setting changes. {0} = the setting's name, {1} = the new value, both as the BIOS gives them (English). Two line breaks.</comment>
+  </data>
+  <data name="BiosDanger_Change" xml:space="preserve">
+    <value>変更</value>
+    <comment>Button of the dialog that goes ahead with a dangerous BIOS setting change.</comment>
+  </data>
+  <data name="BiosDefaults_Title" xml:space="preserve">
+    <value>Acer の既定値を読み込みますか？</value>
+    <comment>Dialog title before Acer's BIOS defaults are loaded.</comment>
+  </data>
+  <data name="BiosDefaults_Message" xml:space="preserve">
+    <value>ノート PC の再起動後、Acer Crate に表示されないものも含め、すべての BIOS 設定が Acer の既定値に戻ります。</value>
+    <comment>Dialog text before Acer's BIOS defaults are loaded.</comment>
+  </data>
+  <data name="BiosUserDefaults_Title" xml:space="preserve">
+    <value>保存した既定値を読み込みますか？</value>
+    <comment>Dialog title before the defaults the user saved in the BIOS setup are loaded.</comment>
+  </data>
+  <data name="BiosUserDefaults_Message" xml:space="preserve">
+    <value>ノート PC の再起動後、Acer Crate に表示されないものも含め、すべての BIOS 設定が BIOS セットアップに保存された既定値に戻ります。</value>
+    <comment>Dialog text before the defaults the user saved in the BIOS setup are loaded.</comment>
+  </data>
+  <data name="BiosDefaults_Load" xml:space="preserve">
+    <value>読み込む</value>
+    <comment>Button of the dialogs that go ahead with loading BIOS defaults.</comment>
+  </data>
+  <data name="System_PowerPlan.Header" xml:space="preserve">
+    <value>電源プラン</value>
+    <comment>Windows power plan setting.</comment>
+  </data>
+  <data name="System_PowerPlan.Description" xml:space="preserve">
+    <value>使用中の Windows の電源プランです。</value>
+  </data>
+  <data name="Settings_Title.Text" xml:space="preserve">
+    <value>設定</value>
+    <comment>Page title.</comment>
+  </data>
+  <data name="Settings_Startup.Text" xml:space="preserve">
+    <value>スタートアップ</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_StartWithWindows.Header" xml:space="preserve">
+    <value>Windows と同時に起動</value>
+  </data>
+  <data name="Settings_StartWithWindows.Description" xml:space="preserve">
+    <value>サインイン時に Acer Crate を通知領域で開きます。ファン制御はこの設定に依存しません。</value>
+    <comment>Notification area = the Windows system tray.</comment>
+  </data>
+  <data name="Settings_NitroSenseKey.Header" xml:space="preserve">
+    <value>NitroSense キーで開く</value>
+    <comment>NitroSense is Acer's app; the laptop has a key for it. Keep the name.</comment>
+  </data>
+  <data name="Settings_NitroSenseKey.Description" xml:space="preserve">
+    <value>キーボードの NitroSense キーで、NitroSense と同じように Acer Crate が開きます。Acer Crate が通知領域にあるときに機能します。</value>
+  </data>
+  <data name="Settings_OpenShortcut.Header" xml:space="preserve">
+    <value>ショートカットで開く</value>
+    <comment>Setting under Settings_NitroSenseKey.Header: a key or key combination chosen by the user opens AcerCrate.</comment>
+  </data>
+  <data name="Settings_ShortcutHelp" xml:space="preserve">
+    <value>どこからでも Acer Crate を開くキーまたはキーの組み合わせです。</value>
+    <comment>Description of Settings_OpenShortcut.Header.</comment>
+  </data>
+  <data name="Settings_ShortcutTaken" xml:space="preserve">
+    <value>そのショートカットは別のアプリが既に使っています。別のものを選んでください。</value>
+    <comment>Shown instead of Settings_ShortcutHelp when Windows refuses the chosen shortcut (another app has it).</comment>
+  </data>
+  <data name="Settings_ShortcutNone" xml:space="preserve">
+    <value>未設定</value>
+    <comment>On the shortcut button when no shortcut is chosen. Short.</comment>
+  </data>
+  <data name="Settings_ShortcutRecording" xml:space="preserve">
+    <value>キーを押してください…</value>
+    <comment>On the shortcut button while it waits for the user to press the key or combination. Short.</comment>
+  </data>
+  <data name="Settings_ShortcutClear.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>ショートカットを削除</value>
+    <comment>Tooltip of the ✕ button next to the shortcut.</comment>
+  </data>
+  <data name="Settings_CloseToTray.Header" xml:space="preserve">
+    <value>ウィンドウを閉じても実行を続ける</value>
+  </data>
+  <data name="Settings_CloseToTray.Description" xml:space="preserve">
+    <value>ウィンドウを閉じても通知領域のアイコンは残ります。終了するにはそのメニューを使います。</value>
+  </data>
+  <data name="Settings_Appearance.Text" xml:space="preserve">
+    <value>外観</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_Language.Header" xml:space="preserve">
+    <value>言語</value>
+    <comment>Setting: the app's language.</comment>
+  </data>
+  <data name="Language_System" xml:space="preserve">
+    <value>システム設定を使用する</value>
+    <comment>First entry in the language list: follow the Windows language.</comment>
+  </data>
+  <data name="Settings_LanguageRestart.Title" xml:space="preserve">
+    <value>言語を変更するには再起動してください</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Settings_LanguageRestart.Message" xml:space="preserve">
+    <value>Acer Crate は再起動後に新しい言語で表示されます。</value>
+  </data>
+  <data name="Settings_LanguageRestartNow.Content" xml:space="preserve">
+    <value>今すぐ再起動</value>
+    <comment>Button: restart Acer Crate now.</comment>
+  </data>
+  <data name="Settings_Theme.Header" xml:space="preserve">
+    <value>テーマ</value>
+    <comment>Setting: light or dark colours.</comment>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>システム設定を使用する</value>
+    <comment>Theme choice: follow Windows.</comment>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>ライト</value>
+    <comment>Theme choice.</comment>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>ダーク</value>
+    <comment>Theme choice.</comment>
+  </data>
+  <data name="Settings_Fahrenheit.Header" xml:space="preserve">
+    <value>温度を華氏で表示する</value>
+  </data>
+  <data name="Settings_Laptop.Text" xml:space="preserve">
+    <value>お使いのノート PC</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_UnknownModel" xml:space="preserve">
+    <value>Acer ノート PC</value>
+    <comment>Shown when the laptop's model name is unknown.</comment>
+  </data>
+  <data name="Settings_Bios" xml:space="preserve">
+    <value>BIOS {0}</value>
+    <comment>{0} = the BIOS version.</comment>
+  </data>
+  <data name="Settings_BiosUnknown" xml:space="preserve">
+    <value>BIOS のバージョンは不明です</value>
+  </data>
+  <data name="Settings_Sensors.Header" xml:space="preserve">
+    <value>温度センサー</value>
+  </data>
+  <data name="Settings_SensorSources" xml:space="preserve">
+    <value>CPU: {0}
+GPU: {1}</value>
+    <comment>Two lines: {0}, {1} = where each temperature comes from (Sensor_* texts).</comment>
+  </data>
+  <data name="Sensor_IntelPackage" xml:space="preserve">
+    <value>Intel パッケージ センサー (TjMax {0} °C)</value>
+    <comment>The Intel CPU's own temperature sensor. {0} = a temperature. Keep 'TjMax'.</comment>
+  </data>
+  <data name="Sensor_AmdTctl" xml:space="preserve">
+    <value>AMD Tctl センサー</value>
+    <comment>The AMD CPU's own temperature sensor. Keep 'Tctl'.</comment>
+  </data>
+  <data name="Sensor_NvidiaDriver" xml:space="preserve">
+    <value>NVIDIA ドライバー</value>
+    <comment>Temperature read from the NVIDIA graphics driver.</comment>
+  </data>
+  <data name="Sensor_GraphicsDriver" xml:space="preserve">
+    <value>グラフィックス ドライバー (Windows 経由)</value>
+    <comment>Where the GPU temperature comes from: the GPU's driver, read through Windows (as Task Manager does).</comment>
+  </data>
+  <data name="Sensor_EmbeddedController" xml:space="preserve">
+    <value>エンベデッド コントローラー</value>
+    <comment>The laptop's embedded controller (EC) chip, which also reports temperatures.</comment>
+  </data>
+  <data name="Sensor_EmbeddedControllerBecause" xml:space="preserve">
+    <value>エンベデッド コントローラー（{0}）</value>
+    <comment>{0} = why the chip's own sensor isn't used (one of the SensorProblem_* texts).</comment>
+  </data>
+  <data name="SensorProblem_NotX86Cpu" xml:space="preserve">
+    <value>x86 CPU ではありません</value>
+    <comment>Reason in parentheses after 'Embedded controller': starts lowercase in English.</comment>
+  </data>
+  <data name="SensorProblem_UnsupportedCpuVendor" xml:space="preserve">
+    <value>サポートされていない CPU ベンダー {0}</value>
+    <comment>Reason in parentheses. {0} = a CPU vendor code such as 'GenuineIntel'.</comment>
+  </data>
+  <data name="SensorProblem_NoPackageSensor" xml:space="preserve">
+    <value>この Intel CPU にはパッケージ温度センサーがありません</value>
+    <comment>Reason in parentheses.</comment>
+  </data>
+  <data name="SensorProblem_ImplausibleTjMax" xml:space="preserve">
+    <value>CPU が不自然な TjMax を報告しました: {0} °C</value>
+    <comment>Reason in parentheses. Keep 'TjMax'. {0} = a number.</comment>
+  </data>
+  <data name="SensorProblem_NoReading" xml:space="preserve">
+    <value>センサーが応答しませんでした</value>
+    <comment>Reason in parentheses.</comment>
+  </data>
+  <data name="SensorProblem_PciLockUnavailable" xml:space="preserve">
+    <value>共有 PCI ロックを開けませんでした: {0}</value>
+    <comment>Reason in parentheses. {0} = a technical error message.</comment>
+  </data>
+  <data name="SensorProblem_NoDiscreteGpu" xml:space="preserve">
+    <value>ディスクリート GPU が見つかりません</value>
+    <comment>Why the GPU temperature comes from the embedded controller: Windows lists no graphics card.</comment>
+  </data>
+  <data name="SensorProblem_GpuAdapterUnavailable" xml:space="preserve">
+    <value>Windows で GPU を開けませんでした ({0})</value>
+    <comment>Why the GPU temperature comes from the embedded controller. {0} = the error code.</comment>
+  </data>
+  <data name="SensorProblem_PawnIONotInstalled" xml:space="preserve">
+    <value>PawnIO がインストールされていません</value>
+    <comment>Reason in parentheses. PawnIO is a driver's name: keep it.</comment>
+  </data>
+  <data name="SensorProblem_PawnIOUnavailable" xml:space="preserve">
+    <value>PawnIO を開けませんでした ({0})</value>
+    <comment>Reason in parentheses. {0} = an error code.</comment>
+  </data>
+  <data name="SensorProblem_PawnIOModuleRefused" xml:space="preserve">
+    <value>PawnIO がモジュールを拒否しました ({0})</value>
+    <comment>Reason in parentheses. {0} = a module name and an error code.</comment>
+  </data>
+  <data name="Settings_GetPawnIO.Content" xml:space="preserve">
+    <value>CPU を正確に読み取るために PawnIO を入手</value>
+    <comment>Link. PawnIO is a driver's name: keep it.</comment>
+  </data>
+  <data name="Settings_OperatingModes.Header" xml:space="preserve">
+    <value>動作モード</value>
+    <comment>Setting: use Acer's operating modes (Eco, Quiet, Balanced...).</comment>
+  </data>
+  <data name="Settings_MagKey.Header" xml:space="preserve">
+    <value>MagForce キーのライト</value>
+    <comment>Setting in "Your laptop": whether the W, A, S and D keys' own lights (Acer's MagForce keys) are offered on the Lighting page.</comment>
+  </data>
+  <data name="Settings_MagKey.Description" xml:space="preserve">
+    <value>W、A、S、D キーの下にある専用のライトです。ノート PC のモデル名で判別しています。お使いの PC と違う場合は切り替えてください。</value>
+    <comment>Under "MagForce key lights".</comment>
+  </data>
+  <data name="Settings_BiosSettings.Header" xml:space="preserve">
+    <value>BIOS 設定を有効にする</value>
+    <comment>Setting in "Your laptop": lets Acer Crate show and change the BIOS's own settings.</comment>
+  </data>
+  <data name="Settings_BiosSettings.Description" xml:space="preserve">
+    <value>BIOS 設定を [システム] ページに表示し、Acer Crate による変更を許可します。変更はノート PC の再起動後に有効になります。</value>
+    <comment>Under "Enable BIOS settings".</comment>
+  </data>
+  <data name="Settings_DangerousBiosSettings.Header" xml:space="preserve">
+    <value>危険な BIOS 設定を有効にする</value>
+    <comment>Setting shown once BIOS settings are enabled: also allows the dangerous ones.</comment>
+  </data>
+  <data name="Settings_DangerousBiosSettings.Description" xml:space="preserve">
+    <value>ノート PC が起動しなくなったり、キーボード、ドライブ、ポートが使えなくなったりするおそれのある設定も許可します。設定の内容を理解している場合にのみ使用してください。</value>
+    <comment>Under "Enable dangerous BIOS settings".</comment>
+  </data>
+  <data name="BiosDangerousEnable_Title" xml:space="preserve">
+    <value>危険な BIOS 設定を有効にしますか？</value>
+    <comment>First dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousEnable_Message" xml:space="preserve">
+    <value>これらの設定は、ノート PC が起動しなくなったり、キーボード、ドライブ、ポートが使えなくなったりするおそれがあり、元に戻せないものもあります。値を誤ると、ノート PC の修理が必要になることがあります。</value>
+    <comment>Text of the first dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousEnable_Continue" xml:space="preserve">
+    <value>続行</value>
+    <comment>Button of the first dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Title" xml:space="preserve">
+    <value>よろしいですか？</value>
+    <comment>Title of the second dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Message" xml:space="preserve">
+    <value>最終確認です。オンにすると、Acer Crate はノート PC が起動しなくなるおそれのある設定を変更できるようになります。設定の内容を理解している場合にのみオンにしてください。</value>
+    <comment>Text of the second dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Enable" xml:space="preserve">
+    <value>有効にする</value>
+    <comment>Button of the second dialog when "Enable dangerous BIOS settings" is switched on: goes ahead.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Supported" xml:space="preserve">
+    <value>{0}（このモデルで Acer のソフトウェアが提供しているとおり）。{1}</value>
+    <comment>{0} = a list of operating mode names; {1} = Settings_OperatingModes_CoolBoost or Settings_OperatingModes_Default.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Unused" xml:space="preserve">
+    <value>ファームウェアには {0} がありますが、このモデルでは Acer のソフトウェアはこれらを使用しておらず、何も変わらない可能性があります。{1}</value>
+    <comment>{0} = a list of operating mode names; {1} = Settings_OperatingModes_CoolBoost or Settings_OperatingModes_Default.</comment>
+  </data>
+  <data name="Settings_OperatingModes_CoolBoost" xml:space="preserve">
+    <value>オフの間は CoolBoost を使用できます。</value>
+    <comment>They = the operating modes.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Default" xml:space="preserve">
+    <value>オフの間、ノート PC は既定のモードのままです。</value>
+    <comment>They = the operating modes.</comment>
+  </data>
+  <data name="Settings_Updates.Text" xml:space="preserve">
+    <value>更新</value>
+    <comment>Section title: app updates.</comment>
+  </data>
+  <data name="Settings_CheckNow.Content" xml:space="preserve">
+    <value>今すぐ確認</value>
+    <comment>Button: check for updates now.</comment>
+  </data>
+  <data name="Settings_AutoUpdate.Header" xml:space="preserve">
+    <value>更新を自動的に確認する</value>
+  </data>
+  <data name="Settings_AutoUpdate.Description" xml:space="preserve">
+    <value>1 日に 1 回、プロジェクトの GitHub リリースを確認します。ダウンロードしたファイルは、インストール前に GitHub が公開している SHA-256 チェックサムと照合されます。</value>
+  </data>
+  <data name="Settings_Troubleshooting.Text" xml:space="preserve">
+    <value>トラブルシューティング</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_Diagnostics.Header" xml:space="preserve">
+    <value>診断</value>
+  </data>
+  <data name="Settings_Diagnostics.Description" xml:space="preserve">
+    <value>機能検出で得られたファームウェアの生の応答です。問題や新しいモデルを報告するときに添付してください。</value>
+    <comment>The copied diagnostics stay in English for the developers.</comment>
+  </data>
+  <data name="Settings_Copy.Content" xml:space="preserve">
+    <value>コピー</value>
+    <comment>Button: copy the diagnostics to the clipboard.</comment>
+  </data>
+  <data name="Settings_Copied" xml:space="preserve">
+    <value>コピーしました</value>
+    <comment>Shown on the Copy button (Settings_Copy.Content) for a moment after the diagnostics were copied to the clipboard. Short.</comment>
+  </data>
+  <data name="Settings_ServiceLogs.Content" xml:space="preserve">
+    <value>サービス ログ</value>
+    <comment>Button: opens the background service's log folder.</comment>
+  </data>
+  <data name="Settings_AppLogs.Content" xml:space="preserve">
+    <value>アプリ ログ</value>
+    <comment>Button: opens the app's log folder.</comment>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>バージョン情報</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_AboutAcerCrate.Description" xml:space="preserve">
+    <value>Acer Nitro と Predator のノート PC 向けの、オープンソースのファン、パフォーマンス、ライティング制御です。</value>
+  </data>
+  <data name="Settings_Version" xml:space="preserve">
+    <value>バージョン {0}</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Settings_Mode_Portable" xml:space="preserve">
+    <value>ポータブル版: 管理者として実行され、開いている間はノート PC を自ら制御します。</value>
+  </data>
+  <data name="Settings_Mode_Installed" xml:space="preserve">
+    <value>インストール版: このウィンドウが開いているかどうかにかかわらず、Acer Crate サービスが起動時からノート PC を制御します。</value>
+  </data>
+  <data name="Settings_Trademarks.Text" xml:space="preserve">
+    <value>Acer Crate は独立したプロジェクトであり、Acer との提携関係や Acer による承認はありません。Acer、Nitro、Predator、NitroSense は Acer Inc. の商標です。GNU General Public License v3.0 以降のもとで公開されています。</value>
+    <comment>Legal notice: translate faithfully and keep the names.</comment>
+  </data>
+  <data name="Update_Install.Content" xml:space="preserve">
+    <value>今すぐ更新</value>
+    <comment>Button: download and install the update.</comment>
+  </data>
+  <data name="Update_WhatsNew.Content" xml:space="preserve">
+    <value>新機能</value>
+    <comment>Link to the release notes.</comment>
+  </data>
+  <data name="Update_Skip.Content" xml:space="preserve">
+    <value>このバージョンをスキップ</value>
+    <comment>Link.</comment>
+  </data>
+  <data name="Update_BannerTitle" xml:space="preserve">
+    <value>Acer Crate {0} を利用できます</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>ダウンロードしています… {0}</value>
+    <comment>{0} = progress as a percentage.</comment>
+  </data>
+  <data name="Update_NoAsset" xml:space="preserve">
+    <value>このリリースには、このコピー用のダウンロードがありません。リリース ページをご覧ください。</value>
+  </data>
+  <data name="Update_InstallerHint" xml:space="preserve">
+    <value>「今すぐ更新」を押すと、インストールして Acer Crate を開き直します（Windows が許可を求めます）。</value>
+    <comment>'Update now' = Update_Install.Content.</comment>
+  </data>
+  <data name="Update_PortableHint" xml:space="preserve">
+    <value>「今すぐ更新」を押すと、このポータブル版を置き換えて開き直します。</value>
+    <comment>'Update now' = Update_Install.Content.</comment>
+  </data>
+  <data name="Update_Checking" xml:space="preserve">
+    <value>更新を確認しています…</value>
+  </data>
+  <data name="Update_UpToDate" xml:space="preserve">
+    <value>最新の状態です。{0}</value>
+    <comment>{0} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_Skipped" xml:space="preserve">
+    <value>バージョン {0} をスキップしました。{1}</value>
+    <comment>{0} = a version number; {1} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_Available" xml:space="preserve">
+    <value>バージョン {0} を利用できます。{1}</value>
+    <comment>{0} = a version number; {1} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_LastChecked" xml:space="preserve">
+    <value>最終確認: {0}。</value>
+    <comment>{0} = a date and time.</comment>
+  </data>
+  <data name="Update_NotChecked" xml:space="preserve">
+    <value>まだ確認していません。</value>
+  </data>
+  <data name="Update_OpenToUpdate" xml:space="preserve">
+    <value>更新するには Acer Crate を開いてください。</value>
+    <comment>Notification balloon.</comment>
+  </data>
+  <data name="Update_CheckFailed" xml:space="preserve">
+    <value>更新を確認できませんでした: {0}</value>
+    <comment>{0} = a technical error message.</comment>
+  </data>
+  <data name="Update_Cancelled" xml:space="preserve">
+    <value>更新はキャンセルされました。</value>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>更新に失敗しました: {0}</value>
+    <comment>{0} = the reason, possibly a technical error message.</comment>
+  </data>
+  <data name="Update_NoDigest" xml:space="preserve">
+    <value>GitHub がこのダウンロードの SHA-256 チェックサムを公開していないため、検証できません。</value>
+  </data>
+  <data name="Update_DigestMismatch" xml:space="preserve">
+    <value>ダウンロードしたファイルが GitHub の公開している SHA-256 チェックサムと一致しません。</value>
+  </data>
+  <data name="Update_NoExecutable" xml:space="preserve">
+    <value>ポータブル版の更新に AcerCrate.exe が含まれていません。</value>
+  </data>
+  <data name="Update_OldCopyRunning" xml:space="preserve">
+    <value>実行中の Acer Crate が終了しませんでした。</value>
+  </data>
+  <data name="PortableUpdate_Caption" xml:space="preserve">
+    <value>Acer Crate の更新</value>
+    <comment>Message box title.</comment>
+  </data>
+  <data name="PortableUpdate_Failed" xml:space="preserve">
+    <value>Acer Crate を更新できなかったため、以前のバージョンを維持しました。
+
+{0}
+
+詳細: {1}</value>
+    <comment>{0} = the reason; {1} = a log file path.</comment>
+  </data>
+  <data name="Tray_Open" xml:space="preserve">
+    <value>開く</value>
+    <comment>Menu item of the notification area icon.</comment>
+  </data>
+  <data name="Tray_FanMode" xml:space="preserve">
+    <value>ファン モード</value>
+    <comment>Submenu of the notification area icon.</comment>
+  </data>
+  <data name="Tray_OperatingMode" xml:space="preserve">
+    <value>動作モード</value>
+    <comment>Submenu of the notification area icon.</comment>
+  </data>
+  <data name="Tray_Exit" xml:space="preserve">
+    <value>終了</value>
+    <comment>Menu item: quit AcerCrate.</comment>
+  </data>
+  <data name="Tray_Hint_Title" xml:space="preserve">
+    <value>Acer Crate は引き続き実行中です</value>
+    <comment>Title of the Windows notification shown once, the first time closing the window leaves Acer Crate in the notification area.</comment>
+  </data>
+  <data name="Tray_Hint_Message" xml:space="preserve">
+    <value>通知領域に残っています。アイコンをクリックするとウィンドウが開きます。終了するにはアイコンのメニューを使います。</value>
+    <comment>Body of that notification. Notification area = the Windows system tray; "its menu" is the icon's menu, where Exit is.</comment>
+  </data>
+  <data name="GpuClocks_FollowFirmware.Description" xml:space="preserve">
+    <value>ファームウェアがモードごとに設定するオーバークロックを、下のオフセットに加えます。</value>
+    <comment>Under "Acer's overclocking": the firmware's own overclock for each mode is added to the user's offsets set below it.</comment>
+  </data>
+  <data name="GpuClocks_Enabled.Header" xml:space="preserve">
+    <value>オーバークロックを許可</value>
+    <comment>Switch in the GPU overclock section; the warning dialog appears when it is turned on.</comment>
+  </data>
+  <data name="GpuClocks_Enabled.Description" xml:space="preserve">
+    <value>下のオフセットは、これがオンのときだけ適用されます。</value>
+  </data>
+  <data name="GpuClocks_TurnedOffAfterCrash.Title" xml:space="preserve">
+    <value>オーバークロックをオフにしました</value>
+    <comment>Warning bar above the overclocking switch, shown after Acer Crate switched overclocking off at start.</comment>
+  </data>
+  <data name="GpuClocks_TurnedOffAfterCrash.Message" xml:space="preserve">
+    <value>GPU のオーバークロック中に Windows が正常にシャットダウンせずに停止したため、オフセットは再適用されませんでした。オーバークロックを再び許可する前に、オフセットを下げてください。</value>
+  </data>
+  <data name="Navigation_FailedTitle" xml:space="preserve">
+    <value>このページを開けませんでした</value>
+    <comment>Title when navigating to a page fails. The app remains open and offers a retry.</comment>
+  </data>
+  <data name="Navigation_Retry" xml:space="preserve">
+    <value>再試行</value>
+    <comment>Button to retry opening the page after a navigation failure.</comment>
+  </data>
+</root>

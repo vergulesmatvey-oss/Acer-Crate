@@ -9,12 +9,20 @@ $build = Join-Path $root '.acercrate-dev\packaging'
 New-Item -ItemType Directory -Path $build -Force | Out-Null
 $version = ([xml](Get-Content -LiteralPath (Join-Path $root 'Directory.Build.props') -Raw)).Project.PropertyGroup.Version
 if (-not $SkipPublish) {
-    & dotnet publish (Join-Path $root 'src\OpenSense.App\OpenSense.App.csproj') -c Release -r win-x64 -p:RuntimeIdentifiers=win-x64 -p:Platform=x64 -p:UseSharedCompilation=false --self-contained true -m:1 -nr:false -o $publish
+    # Only remove obsolete branded binaries from this generated output directory.
+    if (Test-Path -LiteralPath $publish) {
+        $taskPublishRoot=[IO.Path]::GetFullPath($publish).TrimEnd('\')+'\'
+        Get-ChildItem -LiteralPath $publish -Recurse -File | Where-Object { $_.Name -like 'OpenSense*' } | ForEach-Object {
+            if (-not $_.FullName.StartsWith($taskPublishRoot,[StringComparison]::OrdinalIgnoreCase)) { throw 'Obsolete output escaped the publication directory.' }
+            Remove-Item -LiteralPath $_.FullName -Force
+        }
+    }
+    & dotnet publish (Join-Path $root 'src\AcerCrate.App\AcerCrate.App.csproj') -c Release -r win-x64 -p:RuntimeIdentifiers=win-x64 -p:Platform=x64 -p:UseSharedCompilation=false --self-contained true -m:1 -nr:false -o $publish
     if ($LASTEXITCODE -ne 0) { throw 'Не собрано приложение.' }
-    & dotnet publish (Join-Path $root 'src\OpenSense.Service\OpenSense.Service.csproj') -c Release -r win-x64 -p:UseSharedCompilation=false --self-contained true -m:1 -nr:false -o (Join-Path $publish 'Service')
+    & dotnet publish (Join-Path $root 'src\AcerCrate.Service\AcerCrate.Service.csproj') -c Release -r win-x64 -p:UseSharedCompilation=false --self-contained true -m:1 -nr:false -o (Join-Path $publish 'Service')
     if ($LASTEXITCODE -ne 0) { throw 'Не собрана служба.' }
 }
-foreach ($item in @('AcerCrate.exe','coreclr.dll','hostfxr.dll','Service\OpenSense.Service.exe','Service\coreclr.dll')) {
+foreach ($item in @('AcerCrate.exe','coreclr.dll','hostfxr.dll','Service\AcerCrate.Service.exe','Service\coreclr.dll')) {
     if (-not (Test-Path -LiteralPath (Join-Path $publish $item))) { throw ('Не хватает файла поставки: ' + $item) }
 }
 if (-not $MakeNsis) {
@@ -34,6 +42,7 @@ if (-not $MakeNsis) {
 }
 if (-not (Test-Path -LiteralPath $MakeNsis)) { throw 'Компилятор NSIS не найден.' }
 Copy-Item -LiteralPath (Join-Path $root 'LICENSE') -Destination (Join-Path $publish 'LICENSE.txt') -Force
+foreach ($document in @('README.md','CHANGELOG.md','SECURITY.md')) { Copy-Item -LiteralPath (Join-Path $root $document) -Destination (Join-Path $publish $document) -Force }
 Copy-Item -LiteralPath (Join-Path $root 'ACER-CRATE.md') -Destination (Join-Path $publish 'README.ru.md') -Force
 
 # Corresponding source accompanies the binary in the same installer.
@@ -59,8 +68,10 @@ try {
 
 $excluded = @('AcerCrate.manifest.json','Install-AcerCrate.ps1','Rollback-Service.ps1','Ensure-PowerPlans.ps1','Uninstall.exe')
 $files = @(Get-ChildItem -LiteralPath $publish -Recurse -File | Where-Object {
-    $_.FullName.Substring($publish.Length+1) -notin $excluded
+    $relative = $_.FullName.Substring($publish.Length+1)
+    $relative -notin $excluded -and $relative -notmatch '(^|\\)Logs(\\|$)'
 } | Sort-Object FullName)
+if (@($files | Where-Object Name -like 'OpenSense*').Count -gt 0) { throw 'Obsolete branded files remain in the package.' }
 $entries = @($files | ForEach-Object { @{Path=$_.FullName.Substring($publish.Length+1);Sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash;Length=$_.Length} })
 $manifestPath = Join-Path $publish 'AcerCrate.manifest.json'
 @{Version=[string]$version;Architecture='x64';Files=$entries} | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $manifestPath -Encoding UTF8

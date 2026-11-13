@@ -1,0 +1,2043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Nav_Dashboard.Content" xml:space="preserve">
+    <value>Панель моніторингу</value>
+    <comment>Navigation menu item: the overview page.</comment>
+  </data>
+  <data name="Nav_Fans.Content" xml:space="preserve">
+    <value>Вентилятори</value>
+    <comment>Navigation menu item: fan control page.</comment>
+  </data>
+  <data name="Nav_Lighting.Content" xml:space="preserve">
+    <value>Підсвічування</value>
+    <comment>Navigation menu item: the RGB keyboard lighting page.</comment>
+  </data>
+  <data name="Nav_System.Content" xml:space="preserve">
+    <value>Система</value>
+    <comment>Navigation menu item: the laptop's keyboard, display, graphics, battery, startup and power settings. Like Windows Settings' System page.</comment>
+  </data>
+  <data name="Startup_Connecting.Text" xml:space="preserve">
+    <value>Підключення до ноутбука…</value>
+    <comment>Shown while the app starts.</comment>
+  </data>
+  <data name="Problem_RestartElevated.Content" xml:space="preserve">
+    <value>Перезапустити від імені адміністратора</value>
+    <comment>Button.</comment>
+  </data>
+  <data name="Problem_StartService.Content" xml:space="preserve">
+    <value>Запустити службу</value>
+    <comment>Button: starts the Acer Crate background service.</comment>
+  </data>
+  <data name="Problem_NeedsElevation_Title" xml:space="preserve">
+    <value>Потрібні права адміністратора</value>
+  </data>
+  <data name="Problem_NeedsElevation_Message" xml:space="preserve">
+    <value>Ця портативна копія напряму звертається до керування вентиляторами й підсвічуванням ноутбука, а для цього потрібні права адміністратора. Перезапустіть її від імені адміністратора або інсталюйте Acer Crate, щоб працювати без них.</value>
+  </data>
+  <data name="Problem_ServiceUnavailable_Title" xml:space="preserve">
+    <value>Служба Acer Crate не запущена</value>
+  </data>
+  <data name="Problem_ServiceUnavailable_Message" xml:space="preserve">
+    <value>Acer Crate керує ноутбуком через фонову службу, яку зупинено. Запустіть її (Windows попросить дозвіл) або переінсталюйте Acer Crate, якщо вона постійно зупиняється.</value>
+  </data>
+  <data name="Problem_Unsupported_Title" xml:space="preserve">
+    <value>Ігрову мікропрограму Acer не знайдено</value>
+  </data>
+  <data name="Problem_Unsupported_Message" xml:space="preserve">
+    <value>Цей комп'ютер не надає ігровий інтерфейс WMI від Acer (AcerGamingFunction). Acer Crate підтримує ноутбуки Acer Nitro і Predator.</value>
+    <comment>Keep 'AcerGamingFunction' as is.</comment>
+  </data>
+  <data name="Problem_Failed_Title" xml:space="preserve">
+    <value>Не вдалося запустити Acer Crate</value>
+  </data>
+  <data name="Problem_Failed_Message" xml:space="preserve">
+    <value>Сталася неочікувана помилка. Докладніше в папці журналів.</value>
+  </data>
+  <data name="Session_VersionMismatch" xml:space="preserve">
+    <value>Служба Acer Crate іншої версії ({0}). Переінсталюйте Acer Crate, щоб оновити її.</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Notice_Service_Title" xml:space="preserve">
+    <value>Служба</value>
+    <comment>Banner title: about the Acer Crate background service.</comment>
+  </data>
+  <data name="Notice_Disconnected" xml:space="preserve">
+    <value>Втрачено підключення до служби AcerCrate. Повторне підключення…</value>
+  </data>
+  <data name="Notice_ServiceStartFailed" xml:space="preserve">
+    <value>Служба Acer Crate не запустилася. Докладніше в журналі служби в папці %ProgramData%\Acer Crate\logs.</value>
+    <comment>Keep the folder path as is.</comment>
+  </data>
+  <data name="Notice_FanControl_Title" xml:space="preserve">
+    <value>Керування вентиляторами</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_Keyboard_Title" xml:space="preserve">
+    <value>Клавіатура</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_Lighting_Title" xml:space="preserve">
+    <value>Підсвічування</value>
+    <comment>Title of a banner about the light bars or the logo.</comment>
+  </data>
+  <data name="Notice_Display_Title" xml:space="preserve">
+    <value>Екран</value>
+    <comment>Banner title: the laptop screen.</comment>
+  </data>
+  <data name="Notice_FirmwareAccessDenied" xml:space="preserve">
+    <value>Для доступу до інтерфейсу мікропрограми Acer потрібні права адміністратора.</value>
+  </data>
+  <data name="Notice_ControlLoopError" xml:space="preserve">
+    <value>Помилка керування вентиляторами: {0}</value>
+    <comment>{0} = a technical error message (not translated).</comment>
+  </data>
+  <data name="Notice_OperatingModeRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну режиму роботи ({0}).</value>
+    <comment>{0} = an operating mode name, e.g. Turbo.</comment>
+  </data>
+  <data name="Notice_CoolBoostRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну CoolBoost.</value>
+    <comment>CoolBoost is an Acer feature name: keep it.</comment>
+  </data>
+  <data name="Notice_FanTableRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну кривої вентиляторів.</value>
+  </data>
+  <data name="Notice_FansHandedBack" xml:space="preserve">
+    <value>Температура ЦП недоступна, тому вентилятори переведено назад у режим «Авто».</value>
+    <comment>Auto = the automatic fan mode, as in FanMode_Auto.</comment>
+  </data>
+  <data name="Notice_LightingRejected" xml:space="preserve">
+    <value>Клавіатура відхилила зміну підсвічування.</value>
+  </data>
+  <data name="Notice_LightBarRejected" xml:space="preserve">
+    <value>Світлова смуга відхилила зміну підсвічування.</value>
+  </data>
+  <data name="Notice_LogoRejected" xml:space="preserve">
+    <value>Логотип відхилив зміну підсвічування.</value>
+  </data>
+  <data name="Notice_LightRejected" xml:space="preserve">
+    <value>{0}: зміну підсвічування відхилено.</value>
+    <comment>Notice when a light other than the keyboard, the light bar and the logo refused a change. {0} = its name (e.g. "Lid logo").</comment>
+  </data>
+  <data name="Notice_BacklightTimeoutRejected" xml:space="preserve">
+    <value>Клавіатура відхилила зміну часу вимкнення підсвічування.</value>
+  </data>
+  <data name="Notice_WindowsKeyRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну клавіші Windows.</value>
+  </data>
+  <data name="Notice_FnLockRejected" xml:space="preserve">
+    <value>Прошивка не прийняла зміну блокування Fn.</value>
+    <comment>The firmware rejected the requested Fn lock setting.</comment>
+  </data>
+  <data name="Notice_LcdOverdriveRejected" xml:space="preserve">
+    <value>Екран відхилив зміну overdrive.</value>
+    <comment>Overdrive = LCD overdrive, a screen setting that speeds up pixel response.</comment>
+  </data>
+  <data name="Notice_PowerPlan_Title" xml:space="preserve">
+    <value>Схема живлення</value>
+    <comment>Banner title: a Windows power plan.</comment>
+  </data>
+  <data name="Notice_PowerPlanFailed" xml:space="preserve">
+    <value>Windows не перейшла на схему «{0}».</value>
+    <comment>{0} = a Windows power plan name. Use your language's quotation marks.</comment>
+  </data>
+  <data name="Notice_GpuMode_Title" xml:space="preserve">
+    <value>Режим ГП</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_GpuModeRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну режиму ГП.</value>
+  </data>
+  <data name="Notice_Bios_Title" xml:space="preserve">
+    <value>Налаштування BIOS</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Notice_BiosPasswordSet" xml:space="preserve">
+    <value>Пароль BIOS збережено. Він набуде чинності після перезапуску ноутбука.</value>
+  </data>
+  <data name="Notice_BiosPasswordRemoved" xml:space="preserve">
+    <value>Пароль BIOS видалено. Це набуде чинності після перезапуску ноутбука.</value>
+  </data>
+  <data name="Notice_BiosOff" xml:space="preserve">
+    <value>Налаштування BIOS вимкнено в налаштуваннях.</value>
+  </data>
+  <data name="Notice_BiosUnsupported" xml:space="preserve">
+    <value>Цей BIOS цього не підтримує.</value>
+  </data>
+  <data name="Notice_BiosRejected" xml:space="preserve">
+    <value>BIOS цього не прийняв.</value>
+  </data>
+  <data name="Notice_BiosLocked" xml:space="preserve">
+    <value>Забагато неправильних паролів. Перезапустіть ноутбук, щоб спробувати знову.</value>
+  </data>
+  <data name="Notice_BiosFailed" xml:space="preserve">
+    <value>BIOS не відповів.</value>
+  </data>
+  <data name="Notice_GpuClocks_Title" xml:space="preserve">
+    <value>Розгін ГП</value>
+    <comment>Notice title for problems with the GPU overclock.</comment>
+  </data>
+  <data name="Notice_GpuClocksRejected" xml:space="preserve">
+    <value>Драйвер NVIDIA відхилив зміщення частот.</value>
+  </data>
+  <data name="Notice_OperatingMode_Title" xml:space="preserve">
+    <value>Режим роботи</value>
+    <comment>Title of the toast shown when the Mode key or the power supply changes the operating mode.</comment>
+  </data>
+  <data name="Notice_ModeOnBattery" xml:space="preserve">
+    <value>Від акумулятора: {0}</value>
+    <comment>Toast text: the laptop runs on battery, in operating mode {0} (e.g. "Eco").</comment>
+  </data>
+  <data name="Notice_ModePluggedIn" xml:space="preserve">
+    <value>Зарядний пристрій підключено: {0}</value>
+    <comment>Toast text: the adapter was plugged in, so operating mode {0} runs again (e.g. "Turbo").</comment>
+  </data>
+  <data name="Notice_ModeLowBattery" xml:space="preserve">
+    <value>Низький заряд: {0}, доки акумулятор не зарядиться</value>
+    <comment>Toast text: on AC, but the battery is too low to help the adapter, so operating mode {0} (Balanced or Quiet) runs until it charges.</comment>
+  </data>
+  <data name="Notice_ModeAdapter" xml:space="preserve">
+    <value>Надто слабкий зарядний пристрій: {0}</value>
+    <comment>Toast when the operating mode changed because the adapter can't power every mode (a USB-C charger that is too weak, or the laptop's own limit). {0} = the mode now in use.</comment>
+  </data>
+  <data name="Notice_TurboUnavailable" xml:space="preserve">
+    <value>Для режиму «Турбо» потрібні зарядний пристрій і заряджений акумулятор.</value>
+    <comment>Toast text when the Mode key is set to Turbo on and off, but the laptop is on battery or its battery is too low.</comment>
+  </data>
+  <data name="Notice_TurboNeedsAdapter" xml:space="preserve">
+    <value>Для режиму «Турбо» потрібен потужніший зарядний пристрій, наприклад комплектний.</value>
+    <comment>Toast when the Mode key (set to Turbo) is pressed while the adapter can't power Turbo.</comment>
+  </data>
+  <data name="Notice_Autostart_Title" xml:space="preserve">
+    <value>Запускати разом із Windows</value>
+    <comment>Banner title, same as Settings_StartWithWindows.Header.</comment>
+  </data>
+  <data name="Notice_AutostartFailed" xml:space="preserve">
+    <value>Не вдалося оновити запис автозапуску: {0}</value>
+    <comment>{0} = a technical error message.</comment>
+  </data>
+  <data name="GpuSwitch_DiscreteTitle" xml:space="preserve">
+    <value>Використовувати лише дискретний ГП?</value>
+    <comment>Dialog title. Discrete GPU = the separate NVIDIA graphics chip.</comment>
+  </data>
+  <data name="GpuSwitch_HybridTitle" xml:space="preserve">
+    <value>Перейти на гібридну графіку?</value>
+    <comment>Dialog title.</comment>
+  </data>
+  <data name="GpuSwitch_DiscreteMessage" xml:space="preserve">
+    <value>ГП NVIDIA напряму керуватиме екраном для найкращої продуктивності в іграх, але час роботи від акумулятора скоротиться. Щоб застосувати зміну, потрібно перезапустити Windows.</value>
+  </data>
+  <data name="GpuSwitch_HybridMessage" xml:space="preserve">
+    <value>Екраном керуватиме вбудований ГП, а дискретний вмикатиметься лише за потреби, що заощаджує заряд акумулятора. Щоб застосувати зміну, потрібно перезапустити Windows.</value>
+  </data>
+  <data name="GpuSwitch_AutomaticTitle" xml:space="preserve">
+    <value>Перейти на автоматичний вибір графіки?</value>
+    <comment>Dialog title.</comment>
+  </data>
+  <data name="GpuSwitch_AutomaticMessage" xml:space="preserve">
+    <value>Ноутбук сам вибиратиме, чи керуватиме екраном вбудований, чи дискретний ГП. Щоб застосувати зміну, потрібно перезапустити Windows.</value>
+  </data>
+  <data name="GpuSwitch_RestartNow" xml:space="preserve">
+    <value>Перезапустити зараз</value>
+    <comment>Dialog button: restart Windows now.</comment>
+  </data>
+  <data name="GpuSwitch_RestartLater" xml:space="preserve">
+    <value>Перезапустити пізніше</value>
+    <comment>Dialog button.</comment>
+  </data>
+  <data name="GpuSwitch_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+    <comment>Dialog button.</comment>
+  </data>
+  <data name="Chip_Cpu" xml:space="preserve">
+    <value>ЦП</value>
+    <comment>The processor. Short: used in labels like 'CPU 45°'.</comment>
+  </data>
+  <data name="Chip_Gpu" xml:space="preserve">
+    <value>ГП</value>
+    <comment>The graphics chip. Short: used in labels like 'GPU 45°'.</comment>
+  </data>
+  <data name="Chip_System" xml:space="preserve">
+    <value>Система</value>
+    <comment>Short name of a system (chassis) fan where space is tight, e.g. the tray tooltip: "System 2,000 rpm".</comment>
+  </data>
+  <data name="Fan_Cpu" xml:space="preserve">
+    <value>Вентилятор ЦП</value>
+  </data>
+  <data name="Fan_Gpu" xml:space="preserve">
+    <value>Вентилятор ГП</value>
+  </data>
+  <data name="Fan_Gpu1" xml:space="preserve">
+    <value>Вентилятор ГП 1</value>
+    <comment>The first of two GPU fans, on laptops that have two (Acer's software numbers them the same way).</comment>
+  </data>
+  <data name="Fan_Gpu2" xml:space="preserve">
+    <value>Вентилятор ГП 2</value>
+    <comment>The second GPU fan.</comment>
+  </data>
+  <data name="Fan_System" xml:space="preserve">
+    <value>Системний вентилятор</value>
+    <comment>A fan in the chassis, not on the CPU or GPU. Acer Crate only shows its speed.</comment>
+  </data>
+  <data name="Fan_System1" xml:space="preserve">
+    <value>Системний вентилятор 1</value>
+    <comment>The first of two system fans.</comment>
+  </data>
+  <data name="Fan_System2" xml:space="preserve">
+    <value>Системний вентилятор 2</value>
+    <comment>The second system fan.</comment>
+  </data>
+  <data name="FanShort_Gpu1" xml:space="preserve">
+    <value>ГП 1</value>
+    <comment>Short name of the first GPU fan where space is tight (the tray tooltip), on laptops with two.</comment>
+  </data>
+  <data name="FanShort_Gpu2" xml:space="preserve">
+    <value>ГП 2</value>
+    <comment>Short name of the second GPU fan.</comment>
+  </data>
+  <data name="FanShort_System1" xml:space="preserve">
+    <value>Система 1</value>
+    <comment>Short name of the first of two system fans.</comment>
+  </data>
+  <data name="FanShort_System2" xml:space="preserve">
+    <value>Система 2</value>
+    <comment>Short name of the second system fan.</comment>
+  </data>
+  <data name="FanMode_Auto" xml:space="preserve">
+    <value>Авто</value>
+    <comment>Fan mode: the laptop's firmware controls the fans. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Max" xml:space="preserve">
+    <value>Макс.</value>
+    <comment>Fan mode: all fans at full speed. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Custom" xml:space="preserve">
+    <value>Вручну</value>
+    <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
+  </data>
+  <data name="FanMode_Auto_Description" xml:space="preserve">
+    <value>Вентиляторами керує мікропрограма ноутбука; Acer Crate може додати швидкість, коли стає гаряче.</value>
+  </data>
+  <data name="FanMode_Max_Description" xml:space="preserve">
+    <value>Усі вентилятори на максимальній швидкості.</value>
+  </data>
+  <data name="FanMode_Custom_Description" xml:space="preserve">
+    <value>Швидкість, що додається до швидкості мікропрограми для кожного вентилятора, фіксована або за кривою. За 0 % вентилятором керує мікропрограма, за 100 % він працює на максимальній швидкості.</value>
+  </data>
+  <data name="FanMode_Custom_DescriptionFixed" xml:space="preserve">
+    <value>Власна швидкість кожного вентилятора, фіксована або за кривою, і максимальна швидкість, щойно його чип наближається до температури, за якої починає знижувати частоти. За 0 % вентилятором керує мікропрограма.</value>
+    <comment>Fan mode description on laptops whose firmware takes each fan's speed as it is (not added on top of Auto). "Throttle" = a chip slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="FanBehavior_Auto" xml:space="preserve">
+    <value>Авто (мікропрограма)</value>
+    <comment>What a fan is doing right now: controlled by the laptop's firmware.</comment>
+  </data>
+  <data name="FanBehavior_Max" xml:space="preserve">
+    <value>Максимальна швидкість</value>
+    <comment>What a fan is doing right now.</comment>
+  </data>
+  <data name="FanBehavior_Boost" xml:space="preserve">
+    <value>Авто + {0}</value>
+    <comment>What a fan is doing right now: the firmware's speed plus what Acer Crate adds. {0} = the added speed as a percentage. Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="FanLock_QuietMode" xml:space="preserve">
+    <value>У режимі «Тихий» вентилятори залишаються в режимі «Авто».</value>
+    <comment>Quiet = OperatingMode_Quiet; Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="FanLock_EcoMode" xml:space="preserve">
+    <value>У режимі «Еко» вентилятори залишаються в режимі «Авто».</value>
+    <comment>Banner on the Fans page: in the Eco operating mode the fans stay on Auto (as Acer's software has it).</comment>
+  </data>
+  <data name="FanLock_DustDefender" xml:space="preserve">
+    <value>Вентилятори обертаються у зворотний бік, щоб видути пил. Керування вентиляторами відновиться, коли це завершиться.</value>
+    <comment>Banner on the Fans page while the laptop's DustDefender runs the fans backwards; Acer Crate leaves the fans alone meanwhile.</comment>
+  </data>
+  <data name="DustDefender_Description" xml:space="preserve">
+    <value>Ненадовго обертає вентилятори у зворотний бік, щоб видути пил із радіаторів.</value>
+    <comment>The DustDefender card's description on the Fans page ("DustDefender" is Acer's name for the feature and stays in English).</comment>
+  </data>
+  <data name="DustDefender_Running" xml:space="preserve">
+    <value>Очищення: вентилятори ненадовго обертаються у зворотний бік.</value>
+    <comment>The DustDefender card's description while a run is going.</comment>
+  </data>
+  <data name="DustDefender_Busy" xml:space="preserve">
+    <value>Ноутбук поки що відмовив, як під час великого навантаження. Спробуйте ще раз, коли він простоюватиме.</value>
+    <comment>The DustDefender card's description when the laptop's embedded controller turned a start down (Acer: it does under heavy load).</comment>
+  </data>
+  <data name="DustDefender_Failed" xml:space="preserve">
+    <value>Ноутбук не почав очищення.</value>
+    <comment>The DustDefender card's description when the firmware refused a start.</comment>
+  </data>
+  <data name="Fans_CleanNow.Content" xml:space="preserve">
+    <value>Очистити зараз</value>
+    <comment>Button on the DustDefender card: the fans run backwards for a moment to blow dust out.</comment>
+  </data>
+  <data name="OperatingMode_Eco" xml:space="preserve">
+    <value>Еко</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Quiet" xml:space="preserve">
+    <value>Тихий</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Balanced" xml:space="preserve">
+    <value>Збалансований</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Performance" xml:space="preserve">
+    <value>Продуктивність</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Turbo" xml:space="preserve">
+    <value>Турбо</value>
+    <comment>Acer operating mode name. Short: a segmented button.</comment>
+  </data>
+  <data name="OperatingMode_Eco_Description" xml:space="preserve">
+    <value>Найдовша робота від акумулятора.</value>
+  </data>
+  <data name="OperatingMode_Quiet_Description" xml:space="preserve">
+    <value>Найменше шуму. Вентилятори залишаються в режимі «Авто».</value>
+    <comment>Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="OperatingMode_Balanced_Description" xml:space="preserve">
+    <value>Продуктивність на щодень.</value>
+  </data>
+  <data name="OperatingMode_Performance_Description" xml:space="preserve">
+    <value>Вищі межі потужності. Потрібне живлення від мережі.</value>
+  </data>
+  <data name="OperatingMode_Turbo_Description" xml:space="preserve">
+    <value>Максимальна потужність і охолодження. Потрібне живлення від мережі.</value>
+  </data>
+  <data name="OperatingMode_BatteryModeNote" xml:space="preserve">
+    <value>Від акумулятора: використовується вибраний тут режим, доки ви не підключите зарядний пристрій.</value>
+    <comment>Under the operating mode list while on battery: the list shows the battery's own mode.</comment>
+  </data>
+  <data name="OperatingMode_LowBatteryNote" xml:space="preserve">
+    <value>Акумулятор надто розряджений, щоб допомагати зарядному пристрою, тому режими продуктивності повернуться, коли він зарядиться.</value>
+    <comment>Under the operating mode list on AC when the battery is too low to help the adapter (only Quiet and Balanced are listed then).</comment>
+  </data>
+  <data name="OperatingMode_AdapterNote" xml:space="preserve">
+    <value>Цього зарядного пристрою не вистачає для режимів продуктивності; вони повернуться з потужнішим, наприклад комплектним.</value>
+    <comment>Under the operating modes when the adapter can't power every mode (a USB-C charger that is too weak, or the laptop's own limit), so only the quieter ones are offered.</comment>
+  </data>
+  <data name="PowerSource_PluggedIn" xml:space="preserve">
+    <value>Від мережі</value>
+    <comment>Power source: the charger is connected.</comment>
+  </data>
+  <data name="PowerSource_Battery" xml:space="preserve">
+    <value>Від акумулятора</value>
+    <comment>Power source.</comment>
+  </data>
+  <data name="Gpu_Idle" xml:space="preserve">
+    <value>Простій</value>
+    <comment>Shown instead of the GPU temperature while the graphics chip is powered down. Short.</comment>
+  </data>
+  <data name="Unit_Rpm" xml:space="preserve">
+    <value>об/хв</value>
+    <comment>Unit: revolutions per minute (fan speed). Use your language's usual abbreviation.</comment>
+  </data>
+  <data name="Unit_RpmValue" xml:space="preserve">
+    <value>{0} об/хв</value>
+    <comment>{0} = a fan speed number. Same unit as Unit_Rpm.</comment>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>, </value>
+    <comment>Separates items in a list inside a sentence, e.g. 'Quiet, Balanced, Performance'. Keep the trailing space if your language uses one.</comment>
+  </data>
+  <data name="Dashboard_Title.Text" xml:space="preserve">
+    <value>Панель моніторингу</value>
+    <comment>Page title, same as Nav_Dashboard.Content.</comment>
+  </data>
+  <data name="Dashboard_Failsafe.Title" xml:space="preserve">
+    <value>Вентилятори передано мікропрограмі</value>
+    <comment>Warning banner title.</comment>
+  </data>
+  <data name="Dashboard_Failsafe.Message" xml:space="preserve">
+    <value>Температура ЦП перестала надходити, тому ноутбук сам керує вентиляторами, доки вона не з'явиться знову.</value>
+  </data>
+  <data name="Dashboard_CpuTemperature.Text" xml:space="preserve">
+    <value>Температура ЦП</value>
+    <comment>Tile caption.</comment>
+  </data>
+  <data name="Dashboard_GpuTemperature.Text" xml:space="preserve">
+    <value>Температура ГП</value>
+    <comment>Tile caption.</comment>
+  </data>
+  <data name="Dashboard_LoadDetail" xml:space="preserve">
+    <value>Навантаження {0} · {1}</value>
+    <comment>Under a temperature: {0} = usage percentage (e.g. 45%), {1} = the chip's model name.</comment>
+  </data>
+  <data name="Dashboard_AsleepDetail" xml:space="preserve">
+    <value>У режимі сну · {0}</value>
+    <comment>Under the GPU temperature while the graphics chip is powered down: {0} = its model name.</comment>
+  </data>
+  <data name="Dashboard_Cooling.Text" xml:space="preserve">
+    <value>Охолодження</value>
+    <comment>Card title.</comment>
+  </data>
+  <data name="Dashboard_CoolBoost.Text" xml:space="preserve">
+    <value>Дає змогу режиму «Авто» швидше обертати вентилятори.</value>
+    <comment>Describes CoolBoost (an Acer feature name shown above it). Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="Dashboard_Performance.Text" xml:space="preserve">
+    <value>Продуктивність</value>
+    <comment>Card title.</comment>
+  </data>
+  <data name="Dashboard_PowerPlan.Header" xml:space="preserve">
+    <value>Схема живлення Windows</value>
+    <comment>Label above a list of Windows power plans.</comment>
+  </data>
+  <data name="Dashboard_PowerSource.Text" xml:space="preserve">
+    <value>Джерело живлення</value>
+    <comment>Caption above 'Plugged in' or 'On battery'.</comment>
+  </data>
+  <data name="Dashboard_SystemTemperature.Text" xml:space="preserve">
+    <value>Температура системи</value>
+    <comment>Caption: the laptop's internal temperature.</comment>
+  </data>
+  <data name="Fans_Title.Text" xml:space="preserve">
+    <value>Вентилятори</value>
+    <comment>Page title.</comment>
+  </data>
+  <data name="Fans_AutoBoost.Header" xml:space="preserve">
+    <value>Антитротлінг</value>
+    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
+  </data>
+  <data name="Fans_AutoBoost.Description" xml:space="preserve">
+    <value>Додає швидкість до швидкості мікропрограми, коли чипи нагріваються, і виходить на максимальну швидкість при температурі, за якої процесор починає знижувати частоти.</value>
+    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="Fans_AutoBoostFixed" xml:space="preserve">
+    <value>Вмикає вентилятори на максимальну швидкість, коли чипи наближаються до температури, за якої починають знижувати частоти.</value>
+    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
+  </data>
+  <data name="Fans_CoolBoost.Description" xml:space="preserve">
+    <value>Підвищує власні швидкості вентиляторів мікропрограми, які використовує режим «Авто» і до яких режим «Вручну» додає швидкість.</value>
+    <comment>Under the header "CoolBoost" (an Acer feature name). Auto, Custom = FanMode_Auto, FanMode_Custom.</comment>
+  </data>
+  <data name="Fans_CoolBoostFixed" xml:space="preserve">
+    <value>Підвищує власні швидкості вентиляторів мікропрограми, які використовує режим «Авто».</value>
+    <comment>Under the header "CoolBoost" (an Acer feature name), on laptops where Custom sets each fan's speed itself. Auto = FanMode_Auto.</comment>
+  </data>
+  <data name="Fans_FanTable.Header" xml:space="preserve">
+    <value>Крива вентиляторів</value>
+  </data>
+  <data name="Fans_FanTable.Description" xml:space="preserve">
+    <value>Власні швидкості вентиляторів мікропрограми, які використовує режим «Авто» і до яких режим «Вручну» додає швидкість. ПЗ Acer вибирає швидшу криву для розгону відеокарти.</value>
+  </data>
+  <data name="Fans_FanTableStandard.Content" xml:space="preserve">
+    <value>Стандартна</value>
+  </data>
+  <data name="Fans_FanTableFaster.Content" xml:space="preserve">
+    <value>Швидша</value>
+  </data>
+  <data name="Fans_FanTableFastest.Content" xml:space="preserve">
+    <value>Найшвидша</value>
+  </data>
+  <data name="Fans_BoostFixed.Content" xml:space="preserve">
+    <value>Фіксована</value>
+    <comment>Segmented button per fan in Custom mode: add a fixed amount of speed (the slider below). Very short.</comment>
+  </data>
+  <data name="Fans_BoostCurve.Content" xml:space="preserve">
+    <value>Крива</value>
+    <comment>Segmented button per fan in Custom mode: the added speed follows a temperature curve. Very short.</comment>
+  </data>
+  <data name="Fans_Boost.Header" xml:space="preserve">
+    <value>Додаткова швидкість</value>
+    <comment>Slider label: speed added on top of the firmware's, from 0% (firmware only) to 100% (full speed).</comment>
+  </data>
+  <data name="Fans_SpeedFixed" xml:space="preserve">
+    <value>Швидкість</value>
+    <comment>Slider label: a fan's own speed in Custom mode, from 0% (left to the firmware) to 100% (full speed). Short.</comment>
+  </data>
+  <data name="Fans_Presets.Content" xml:space="preserve">
+    <value>Готові налаштування</value>
+    <comment>Button that opens a list of ready-made fan curves.</comment>
+  </data>
+  <data name="Fans_PresetDefault.Text" xml:space="preserve">
+    <value>За замовчуванням</value>
+    <comment>Fan curve preset name: the curve Auto uses when it speeds up the fans.</comment>
+  </data>
+  <data name="Fans_CurveHelp.Text" xml:space="preserve">
+    <value>Перетягуйте точки, щоб змінити криву · двічі клацніть, щоб додати точку · клацніть правою кнопкою, щоб видалити її · клавіші зі стрілками точно зсувають вибрану точку</value>
+    <comment>Help under the curve editor.</comment>
+  </data>
+  <data name="CurveEditor_Now" xml:space="preserve">
+    <value>Зараз {0} · {1}</value>
+    <comment>Label on the curve editor: {0} = the current temperature, {1} = the speed Acer Crate adds now, as a percentage.</comment>
+  </data>
+  <data name="Fans_Safety.Text" xml:space="preserve">
+    <value>Безпека</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Fans_HandBack.Header" xml:space="preserve">
+    <value>Повертати вентилятори, коли Acer Crate зупиняється</value>
+  </data>
+  <data name="Fans_HandBack.Description" xml:space="preserve">
+    <value>Коли служба Acer Crate зупиняється (або закривається портативна копія), керування знову перебирає на себе сам ноутбук.</value>
+  </data>
+  <data name="Lighting_Title.Text" xml:space="preserve">
+    <value>Підсвічування</value>
+    <comment>Page title: RGB keyboard lighting.</comment>
+  </data>
+  <data name="Lighting_Static.Content" xml:space="preserve">
+    <value>Сталі кольори</value>
+    <comment>Lighting mode: one fixed colour per keyboard zone.</comment>
+  </data>
+  <data name="Lighting_Effect.Content" xml:space="preserve">
+    <value>Ефект</value>
+    <comment>Lighting mode: an animated effect.</comment>
+  </data>
+  <data name="Lighting_PerKey.Content" xml:space="preserve">
+    <value>Для кожної клавіші</value>
+    <comment>Lighting mode: a colour for each key (next to "Static colours" and "Effect").</comment>
+  </data>
+  <data name="Lighting_PerKeyHint.Text" xml:space="preserve">
+    <value>Клацання клавіші виділяє її, Ctrl+клацання додає або прибирає клавішу, а перетягування виділяє кілька. Колір потім отримують виділені клавіші або всі, якщо нічого не виділено.</value>
+    <comment>Help above the per-key editor's buttons.</comment>
+  </data>
+  <data name="Lighting_SelectWasd.Content" xml:space="preserve">
+    <value>WASD</value>
+    <comment>Button that selects the W, A, S and D keys (the name of the key group; keep as is).</comment>
+  </data>
+  <data name="Lighting_SelectArrows.Content" xml:space="preserve">
+    <value>Стрілки</value>
+    <comment>Button that selects the four arrow keys.</comment>
+  </data>
+  <data name="Lighting_SelectFunctionKeys.Content" xml:space="preserve">
+    <value>F1–F12</value>
+    <comment>Button that selects the function keys F1 to F12.</comment>
+  </data>
+  <data name="Lighting_SelectNumbers.Content" xml:space="preserve">
+    <value>Ряд цифр</value>
+    <comment>Button that selects the row of digit keys 1 to 0.</comment>
+  </data>
+  <data name="Lighting_SelectAll.Content" xml:space="preserve">
+    <value>Усі клавіші</value>
+    <comment>Button that selects every key.</comment>
+  </data>
+  <data name="Lighting_SelectNone.Content" xml:space="preserve">
+    <value>Зняти виділення</value>
+    <comment>Button that deselects every key in the per-key editor.</comment>
+  </data>
+  <data name="Lighting_TurnOffKeys.Content" xml:space="preserve">
+    <value>Вимкнути</value>
+    <comment>Button that makes the selected keys (or all, with none selected) dark.</comment>
+  </data>
+  <data name="Lighting_Layout.Header" xml:space="preserve">
+    <value>Розкладка</value>
+    <comment>Which keyboard layout the per-key editor draws (US, UK and Europe, Japanese).</comment>
+  </data>
+  <data name="Layout_Ansi" xml:space="preserve">
+    <value>США (ANSI)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Layout_Iso" xml:space="preserve">
+    <value>Велика Британія та Європа (ISO)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Layout_Jis" xml:space="preserve">
+    <value>Японська (JIS)</value>
+    <comment>Keyboard layout name in the per-key editor.</comment>
+  </data>
+  <data name="Lighting_EffectList.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ефект</value>
+    <comment>Screen-reader name of the list of lighting effects.</comment>
+  </data>
+  <data name="Lighting_Zone" xml:space="preserve">
+    <value>Зона {0}</value>
+    <comment>A keyboard lighting zone: {0} = its number.</comment>
+  </data>
+  <data name="Lighting_NumberedLight" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>A light's name when the laptop has two of that kind: {0} = its name (e.g. "Light bar"), {1} = 1 or 2.</comment>
+  </data>
+  <data name="Light_Keyboard" xml:space="preserve">
+    <value>Клавіатура</value>
+    <comment>Name of the keyboard backlight in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_LightBar" xml:space="preserve">
+    <value>Світлова смуга</value>
+    <comment>Name of the laptop's light bar(s) in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_InfinityMirror" xml:space="preserve">
+    <value>Infinity Mirror</value>
+    <comment>Acer's name for the rear light bar of Predator Helios 16/18 (2024). A product name: keep it as it is.</comment>
+  </data>
+  <data name="Light_Logo" xml:space="preserve">
+    <value>Логотип</value>
+    <comment>Name of the lit logo on the laptop's lid in the Lighting page's list of lights.</comment>
+  </data>
+  <data name="Light_FrontLightBar" xml:space="preserve">
+    <value>Передня світлова смуга</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_LeftLightBar" xml:space="preserve">
+    <value>Ліва світлова смуга</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_RightLightBar" xml:space="preserve">
+    <value>Права світлова смуга</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_RearLightBar" xml:space="preserve">
+    <value>Задня світлова смуга</value>
+    <comment>A light's name (the page's light selector).</comment>
+  </data>
+  <data name="Light_TurboKey" xml:space="preserve">
+    <value>Клавіша Turbo</value>
+    <comment>A light's name: the light in the laptop's Turbo key.</comment>
+  </data>
+  <data name="Light_ModeKey" xml:space="preserve">
+    <value>Клавіша режиму</value>
+    <comment>A light's name: the light in the laptop's Mode key (switches operating modes).</comment>
+  </data>
+  <data name="Light_CoverLogo" xml:space="preserve">
+    <value>Логотип на кришці</value>
+    <comment>A light's name: the logo on the outside of the lid.</comment>
+  </data>
+  <data name="Light_BaseLogo" xml:space="preserve">
+    <value>Логотип на корпусі</value>
+    <comment>A light's name: a logo on the laptop's base.</comment>
+  </data>
+  <data name="Light_MagKey" xml:space="preserve">
+    <value>Клавіші MagForce</value>
+    <comment>A light's name: the lights under the W, A, S and D keys of Predator Helios models (Acer calls these keys MagForce keys; keep "MagForce").</comment>
+  </data>
+  <data name="Light_InfiniteRing" xml:space="preserve">
+    <value>InfiniteRing</value>
+    <comment>A light's name: a ring of light on some Predator laptops (Acer's name for it; keep as is).</comment>
+  </data>
+  <data name="Lighting_ZoneColor.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Вибрати колір</value>
+    <comment>Tooltip.</comment>
+  </data>
+  <data name="Lighting_AllZones.Text" xml:space="preserve">
+    <value>Один колір для всіх зон</value>
+  </data>
+  <data name="Lighting_ApplyToAll.Content" xml:space="preserve">
+    <value>Застосувати до всього підсвічування</value>
+    <comment>Button: gives every other light the nearest look it can show to the one being edited.</comment>
+  </data>
+  <data name="Lighting_Color.Text" xml:space="preserve">
+    <value>Колір</value>
+    <comment>Heading of the colour picker for a light with a single colour (the logo).</comment>
+  </data>
+  <data name="Lighting_Speed.Header" xml:space="preserve">
+    <value>Швидкість</value>
+    <comment>Slider label: animation speed.</comment>
+  </data>
+  <data name="Lighting_Direction.Text" xml:space="preserve">
+    <value>Напрямок</value>
+    <comment>Label: animation direction.</comment>
+  </data>
+  <data name="Lighting_EffectColor.Text" xml:space="preserve">
+    <value>Колір ефекту</value>
+  </data>
+  <data name="Lighting_RandomColor.Content" xml:space="preserve">
+    <value>Випадкові кольори</value>
+    <comment>Check box next to "Effect colour": the effect picks random colours instead.</comment>
+  </data>
+  <data name="Lighting_AnyColor.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Будь-який колір</value>
+    <comment>Tooltip of a button that opens a colour picker.</comment>
+  </data>
+  <data name="Effect_Breathing" xml:space="preserve">
+    <value>Дихання</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Neon" xml:space="preserve">
+    <value>Неон</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Wave" xml:space="preserve">
+    <value>Хвиля</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Shifting" xml:space="preserve">
+    <value>Зсув</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Zoom" xml:space="preserve">
+    <value>Масштаб</value>
+    <comment>Keyboard lighting effect name. Short.</comment>
+  </data>
+  <data name="Effect_Breathing_Description" xml:space="preserve">
+    <value>Колір плавно спалахує та згасає.</value>
+  </data>
+  <data name="Effect_Neon_Description" xml:space="preserve">
+    <value>Перебирає кольори веселки.</value>
+  </data>
+  <data name="Effect_NeonKeyboard_Description" xml:space="preserve">
+    <value>Клавіатура плавно засвічується й гасне червоним, потім зеленим, потім синім.</value>
+    <comment>Description of the Neon effect on a keyboard lit by zones (the embedded controller's), under the effect list. The whole keyboard fades in and out in one colour at a time.</comment>
+  </data>
+  <data name="Effect_Wave_Description" xml:space="preserve">
+    <value>Кольорова хвиля проходить клавішами.</value>
+  </data>
+  <data name="Effect_Shifting_Description" xml:space="preserve">
+    <value>Кольоровий блок рухається клавіатурою.</value>
+  </data>
+  <data name="Effect_Zoom_Description" xml:space="preserve">
+    <value>Колір розходиться від центру.</value>
+  </data>
+  <data name="Effect_Meteor" xml:space="preserve">
+    <value>Метеор</value>
+    <comment>Keyboard lighting effect: streaks of colour move across the keyboard.</comment>
+  </data>
+  <data name="Effect_Meteor_Description" xml:space="preserve">
+    <value>Кольорові смуги проносяться клавіатурою.</value>
+  </data>
+  <data name="Effect_MeteorKeyboard_Description" xml:space="preserve">
+    <value>Кольоровий імпульс пробігає клавіатурою туди й назад.</value>
+    <comment>Description of the Meteor effect on a keyboard lit by zones (the embedded controller's), under the effect list. The colour lights one zone after the other to the far end, then comes back the same way.</comment>
+  </data>
+  <data name="Effect_Twinkling" xml:space="preserve">
+    <value>Мерехтіння</value>
+    <comment>Keyboard lighting effect: parts of the keyboard light up at random and fade.</comment>
+  </data>
+  <data name="Effect_Snake" xml:space="preserve">
+    <value>Змійка</value>
+    <comment>Light bar effect (Infinity Mirror): a band of rainbow colours runs along the bar.</comment>
+  </data>
+  <data name="Effect_Lightning" xml:space="preserve">
+    <value>Блискавка</value>
+    <comment>Light bar effect (Infinity Mirror).</comment>
+  </data>
+  <data name="Effect_Stack" xml:space="preserve">
+    <value>Накопичення</value>
+    <comment>Light bar effect (Infinity Mirror): light builds up zone by zone.</comment>
+  </data>
+  <data name="Effect_MotionPoint" xml:space="preserve">
+    <value>Рухома точка</value>
+    <comment>Light bar effect (Infinity Mirror): a point of light moves along the bar.</comment>
+  </data>
+  <data name="Effect_Ripple" xml:space="preserve">
+    <value>Брижі</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Raindrop" xml:space="preserve">
+    <value>Краплі дощу</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Fireball" xml:space="preserve">
+    <value>Вогняна куля</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Snow" xml:space="preserve">
+    <value>Сніг</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Heartbeat" xml:space="preserve">
+    <value>Серцебиття</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Dazzling" xml:space="preserve">
+    <value>Сліпуче</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Matrix" xml:space="preserve">
+    <value>Матриця</value>
+    <comment>Lighting effect name (after the film's falling green code).</comment>
+  </data>
+  <data name="Effect_Swiping" xml:space="preserve">
+    <value>Змах</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_RowWave" xml:space="preserve">
+    <value>Хвиля рядами</value>
+    <comment>Lighting effect name: a wave that moves row by row.</comment>
+  </data>
+  <data name="Effect_Racing" xml:space="preserve">
+    <value>Перегони</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_Sprouting" xml:space="preserve">
+    <value>Паросток</value>
+    <comment>Lighting effect name: light grows like a sprout.</comment>
+  </data>
+  <data name="Effect_Disco" xml:space="preserve">
+    <value>Диско</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_PingPong" xml:space="preserve">
+    <value>Пінг-понг</value>
+    <comment>Lighting effect name.</comment>
+  </data>
+  <data name="Effect_LightShow" xml:space="preserve">
+    <value>Світлове шоу</value>
+    <comment>Lighting effect name: the light's effects in turn.</comment>
+  </data>
+  <data name="Effect_FollowOperatingMode" xml:space="preserve">
+    <value>Режим роботи</value>
+    <comment>Lighting effect name: the firmware colours the light by the operating mode (Quiet, Balanced, Performance, ...).</comment>
+  </data>
+  <data name="Effect_Combo" xml:space="preserve">
+    <value>Комбінація</value>
+    <comment>Lighting effect name: several effects at once.</comment>
+  </data>
+  <data name="Effect_Rainbow" xml:space="preserve">
+    <value>Веселка</value>
+    <comment>Lighting effect name (MagForce keys).</comment>
+  </data>
+  <data name="Effect_Slash" xml:space="preserve">
+    <value>Розсік</value>
+    <comment>Lighting effect name (MagForce keys): a slash of light across the keys.</comment>
+  </data>
+  <data name="Effect_Star" xml:space="preserve">
+    <value>Зірки</value>
+    <comment>Lighting effect name (MagForce keys).</comment>
+  </data>
+  <data name="Effect_Blasting" xml:space="preserve">
+    <value>Вибух</value>
+    <comment>Lighting effect name (MagForce keys): colour bursts out.</comment>
+  </data>
+  <data name="Effect_Twinkling_Description" xml:space="preserve">
+    <value>Частини клавіатури спалахують у випадковому порядку й згасають.</value>
+  </data>
+  <data name="Effect_TwinklingKeyboard_Description" xml:space="preserve">
+    <value>Уся клавіатура блимає.</value>
+    <comment>Description of the Twinkling effect on a keyboard lit by zones (the embedded controller's), under the effect list. All zones switch on and off together, with no fading.</comment>
+  </data>
+  <data name="Effect_Snake_Description" xml:space="preserve">
+    <value>Смуга кольорів веселки біжить світловою смугою.</value>
+  </data>
+  <data name="Effect_SnakeColor_Description" xml:space="preserve">
+    <value>Кольорова лінія звивається підсвічуванням.</value>
+    <comment>Description of the Snake effect where it takes a colour (keyboards, logos), under the effect list.</comment>
+  </data>
+  <data name="Effect_Lightning_Description" xml:space="preserve">
+    <value>Світло спалахує, як блискавка.</value>
+  </data>
+  <data name="Effect_Stack_Description" xml:space="preserve">
+    <value>Світло накопичується зона за зоною.</value>
+  </data>
+  <data name="Effect_MotionPoint_Description" xml:space="preserve">
+    <value>Світла точка рухається світловою смугою.</value>
+  </data>
+  <data name="Effect_ZoomIn_Description" xml:space="preserve">
+    <value>Світло сходиться до центру.</value>
+    <comment>The Infinity Mirror's Zoom (Acer names it Zoom there too).</comment>
+  </data>
+  <data name="Effect_Ripple_Description" xml:space="preserve">
+    <value>Кольорові кола розходяться навсібіч.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Raindrop_Description" xml:space="preserve">
+    <value>Кольорові краплі падають і згасають.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Fireball_Description" xml:space="preserve">
+    <value>Вогняна куля пролітає підсвічуванням.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Snow_Description" xml:space="preserve">
+    <value>Сніжинки світла повільно падають.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Heartbeat_Description" xml:space="preserve">
+    <value>Світло б'ється, як серце.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Dazzling_Description" xml:space="preserve">
+    <value>Яскраві іскри спалахують усюди.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Matrix_Description" xml:space="preserve">
+    <value>Потоки світла ллються вниз.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Swiping_Description" xml:space="preserve">
+    <value>Колір пробігає туди й назад.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_RowWave_Description" xml:space="preserve">
+    <value>Колір котиться ряд за рядом.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Racing_Description" xml:space="preserve">
+    <value>Вогні ганяються одне за одним.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Sprouting_Description" xml:space="preserve">
+    <value>Світло росте знизу вгору.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Disco_Description" xml:space="preserve">
+    <value>Кольори блимають, як на танцполі.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_PingPong_Description" xml:space="preserve">
+    <value>Світлова точка стрибає з боку в бік.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_LightShow_Description" xml:space="preserve">
+    <value>Ефекти змінюють один одного.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_FollowOperatingMode_Description" xml:space="preserve">
+    <value>Колір показує поточний режим роботи.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Combo_Description" xml:space="preserve">
+    <value>Кілька ефектів одночасно.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Rainbow_Description" xml:space="preserve">
+    <value>Клавіші світяться кольорами веселки.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Slash_Description" xml:space="preserve">
+    <value>Світло розсікає клавіші.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Star_Description" xml:space="preserve">
+    <value>Клавіші мерехтять, як зірки.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Effect_Blasting_Description" xml:space="preserve">
+    <value>Колір спалахує й згасає.</value>
+    <comment>Effect description, under the effect list.</comment>
+  </data>
+  <data name="Direction_Left" xml:space="preserve">
+    <value>Ліворуч</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Right" xml:space="preserve">
+    <value>Праворуч</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Up" xml:space="preserve">
+    <value>Угору</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Direction_Down" xml:space="preserve">
+    <value>Униз</value>
+    <comment>Animation direction. Short.</comment>
+  </data>
+  <data name="Brightness_Off" xml:space="preserve">
+    <value>Вимк.</value>
+    <comment>Keyboard backlight brightness: off. Short: shown next to 25%, 50%...</comment>
+  </data>
+  <data name="System_Title.Text" xml:space="preserve">
+    <value>Система</value>
+    <comment>Page title, same as Nav_System.Content.</comment>
+  </data>
+  <data name="System_Keyboard.Text" xml:space="preserve">
+    <value>Клавіатура</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_BacklightAutoOff.Header" xml:space="preserve">
+    <value>Автовимкнення підсвічування</value>
+    <comment>Keyboard backlight setting.</comment>
+  </data>
+  <data name="System_BacklightAutoOff.Description" xml:space="preserve">
+    <value>Вимикати підсвічування клавіатури, якщо протягом 30 секунд нічого не вводиться.</value>
+  </data>
+  <data name="System_WindowsKey.Header" xml:space="preserve">
+    <value>Клавіші Windows і контекстного меню</value>
+    <comment>The Windows logo key and the Menu (application) key.</comment>
+  </data>
+  <data name="System_FnLock.Header" xml:space="preserve">
+    <value>Блокування Fn</value>
+    <comment>Keyboard Fn lock toggle, shown only when the firmware reports support.</comment>
+  </data>
+  <data name="System_WindowsKey.Description" xml:space="preserve">
+    <value>Вимкніть, щоб клавіші Windows і контекстного меню не переривали ігри.</value>
+  </data>
+  <data name="System_ModeKey.Header" xml:space="preserve">
+    <value>Клавіша режиму</value>
+    <comment>System page, Keyboard section: the laptop's Mode key (it switches the operating mode). Shown once the key has been pressed.</comment>
+  </data>
+  <data name="System_ModeKey.Description" xml:space="preserve">
+    <value>Що робить клавіша режиму на ноутбуці.</value>
+    <comment>Description of the Mode key setting.</comment>
+  </data>
+  <data name="System_ModeKeyCycle.Content" xml:space="preserve">
+    <value>Перемикати режими по колу</value>
+    <comment>Mode key choice: each press goes to the next operating mode (Balanced, Performance, Turbo, Quiet; on battery Balanced and Eco).</comment>
+  </data>
+  <data name="System_ModeKeyTurbo.Content" xml:space="preserve">
+    <value>Вмикати й вимикати «Турбо»</value>
+    <comment>Mode key choice: a press turns Turbo on, the next one goes back to the mode before.</comment>
+  </data>
+  <data name="System_StickyKeys.Header" xml:space="preserve">
+    <value>Залипання клавіш</value>
+    <comment>The Windows accessibility feature: use its official Windows name in your language.</comment>
+  </data>
+  <data name="System_StickyKeys.Description" xml:space="preserve">
+    <value>Клавіші-модифікатори залишаються натиснутими після відпускання; натисніть Shift п'ять разів, щоб увімкнути або вимкнути.</value>
+  </data>
+  <data name="System_Display.Text" xml:space="preserve">
+    <value>Екран</value>
+    <comment>Section title: the laptop screen.</comment>
+  </data>
+  <data name="System_LcdOverdrive.Header" xml:space="preserve">
+    <value>LCD overdrive</value>
+    <comment>Screen setting that speeds up pixel response.</comment>
+  </data>
+  <data name="System_LcdOverdrive.Description" xml:space="preserve">
+    <value>Для вбудованого екрана ноутбука (не для зовнішніх моніторів): швидший відгук пікселів і менше розмиття в русі в іграх. Найкраще працює з найвищою частотою оновлення екрана; вимкніть, якщо бачите ореоли за рухомими об'єктами.</value>
+  </data>
+  <data name="System_Graphics.Text" xml:space="preserve">
+    <value>Графіка</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_GpuMode.Header" xml:space="preserve">
+    <value>Режим ГП</value>
+    <comment>Setting: hybrid or discrete graphics.</comment>
+  </data>
+  <data name="System_GpuMode.Description" xml:space="preserve">
+    <value>«Гібридний» заощаджує заряд акумулятора, використовуючи для екрана вбудований ГП. «Дискретний» підключає ГП NVIDIA напряму для найкращої продуктивності в іграх. Застосовується після перезапуску.</value>
+    <comment>Hybrid, Discrete = System_GpuHybrid, System_GpuDiscrete.</comment>
+  </data>
+  <data name="System_GpuHybrid.Content" xml:space="preserve">
+    <value>Гібридний</value>
+    <comment>GPU mode: both graphics chips (NVIDIA Optimus). Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuDiscrete.Content" xml:space="preserve">
+    <value>Дискретний</value>
+    <comment>GPU mode: only the NVIDIA graphics chip. Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuAutomatic.Content" xml:space="preserve">
+    <value>Автоматичний</value>
+    <comment>GPU mode: the laptop chooses which graphics chip drives the display (Acer: Automatic Selection). Short: a segmented button.</comment>
+  </data>
+  <data name="System_GpuRestart.Title" xml:space="preserve">
+    <value>Перезапустіть, щоб змінити режим ГП</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="System_GpuRestart.Message" xml:space="preserve">
+    <value>Новий режим ГП набуде чинності після перезапуску Windows.</value>
+  </data>
+  <data name="System_RestartNow.Content" xml:space="preserve">
+    <value>Перезапустити зараз</value>
+    <comment>Button: restart Windows now.</comment>
+  </data>
+  <data name="System_GpuClocks.Header" xml:space="preserve">
+    <value>Розгін ГП</value>
+    <comment>Expander on the System page: clock offsets for the NVIDIA GPU, per operating mode.</comment>
+  </data>
+  <data name="GpuClocks_Reset.Content" xml:space="preserve">
+    <value>Скинути</value>
+    <comment>Button next to "GPU overclock": sets every offset back to 0.</comment>
+  </data>
+  <data name="GpuClocks_FollowFirmware.Header" xml:space="preserve">
+    <value>Розгін від Acer</value>
+    <comment>Switch in the GPU overclock section, on laptops whose firmware has its own GPU overclock for each operating mode (2024+ Predators). Keep "Acer".</comment>
+  </data>
+  <data name="GpuClocks_Core.Header" xml:space="preserve">
+    <value>Ядро (МГц)</value>
+    <comment>Number box label: the GPU core clock offset, in MHz.</comment>
+  </data>
+  <data name="GpuClocks_Memory.Header" xml:space="preserve">
+    <value>Пам'ять (МГц)</value>
+    <comment>Number box label: the GPU memory clock offset, in MHz.</comment>
+  </data>
+  <data name="GpuClocks_Footer.Text" xml:space="preserve">
+    <value>Зміщення пам'яті рахуються вдвічі, як у MSI Afterburner: +100 підвищує частоту пам'яті на 50 МГц.</value>
+    <comment>Note under the GPU overclock rows. MSI Afterburner is a product name.</comment>
+  </data>
+  <data name="GpuClocks_Always" xml:space="preserve">
+    <value>Завжди</value>
+    <comment>The only row of GPU offsets on laptops without operating modes: they apply all the time.</comment>
+  </data>
+  <data name="GpuClocks_InUse" xml:space="preserve">
+    <value>Використовується зараз</value>
+    <comment>Under the operating mode whose GPU offsets apply right now.</comment>
+  </data>
+  <data name="GpuClocks_Firmware" xml:space="preserve">
+    <value>Від Acer: ядро {0} МГц, пам'ять {1} МГц</value>
+    <comment>Under an operating mode in the GPU overclock section: the firmware's own offsets for that mode. {0} = core offset, {1} = memory offset (signed numbers, e.g. +150).</comment>
+  </data>
+  <data name="GpuClocks_Description" xml:space="preserve">
+    <value>Підвищує тактові частоти ГП.</value>
+    <comment>Under "GPU overclock" while no offsets are set in the operating mode in force.</comment>
+  </data>
+  <data name="GpuClocks_WaitingForLimits" xml:space="preserve">
+    <value>Межі ГП з'являться, коли він попрацює.</value>
+    <comment>Under "GPU overclock" until the NVIDIA driver has reported which offsets it accepts (it is only asked while the GPU is on).</comment>
+  </data>
+  <data name="GpuClocks_Pending" xml:space="preserve">
+    <value>Застосується, коли ГП знову запрацює.</value>
+    <comment>Under "GPU overclock" while offsets are set but the GPU is powered down (it is not woken to apply them).</comment>
+  </data>
+  <data name="GpuClocks_Applied" xml:space="preserve">
+    <value>Застосовано: ядро {0} МГц, пам'ять {1} МГц</value>
+    <comment>Under "GPU overclock": the offsets in force. {0} = core, {1} = memory offset, with their sign (e.g. +150, 0).</comment>
+  </data>
+  <data name="GpuClocks_NotApplied" xml:space="preserve">
+    <value>Драйвер NVIDIA не прийняв ці зміщення.</value>
+    <comment>Under "GPU overclock" when the driver did not take the offsets.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Title" xml:space="preserve">
+    <value>Розігнати ГП?</value>
+    <comment>Dialog title before the first GPU offset is set.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Message" xml:space="preserve">
+    <value>Частоти, вищі за задані NVIDIA, можуть спричиняти вильоти ігор, зависання або перезапуск ноутбука. Якщо так станеться, зменште зміщення.</value>
+    <comment>Dialog text before the first GPU offset is set.</comment>
+  </data>
+  <data name="GpuClocks_Confirm_Overclock" xml:space="preserve">
+    <value>Розігнати</value>
+    <comment>The dialog's button that goes ahead with the overclock.</comment>
+  </data>
+  <data name="System_Battery.Text" xml:space="preserve">
+    <value>Акумулятор</value>
+    <comment>Section header on the System page.</comment>
+  </data>
+  <data name="System_BatteryHealth.Header" xml:space="preserve">
+    <value>Стан акумулятора</value>
+  </data>
+  <data name="BatteryHealth_Capacity" xml:space="preserve">
+    <value>{0} % початкової ємності ({1} з {2} Вт·год)</value>
+    <comment>{0} = percent, {1} = what it holds now, {2} = what it held new (watt-hours).</comment>
+  </data>
+  <data name="BatteryHealth_CapacityRelative" xml:space="preserve">
+    <value>{0} % початкової ємності</value>
+    <comment>{0} = percent. For batteries that don't report watt-hours.</comment>
+  </data>
+  <data name="BatteryHealth_Cycles" xml:space="preserve">
+    <value>Циклів заряджання: {0}</value>
+    <comment>{0} = how many times the battery has been fully charged, as it counts.</comment>
+  </data>
+  <data name="System_ChargeLimit.Header" xml:space="preserve">
+    <value>Припинення заряджання на 80 %</value>
+  </data>
+  <data name="System_ChargeLimit.Description" xml:space="preserve">
+    <value>Постійно повний акумулятор зношується швидше. Варто ввімкнути, якщо ноутбук майже завжди підключений до мережі.</value>
+  </data>
+  <data name="System_Calibration.Header" xml:space="preserve">
+    <value>Калібрування акумулятора</value>
+  </data>
+  <data name="System_Calibration.Description" xml:space="preserve">
+    <value>Повністю заряджає акумулятор, розряджає й заряджає знову, щоб показаний заряд був точним. Триває кілька годин.</value>
+  </data>
+  <data name="System_CalibrationStart.Content" xml:space="preserve">
+    <value>Відкалібрувати</value>
+  </data>
+  <data name="System_CalibrationStop.Content" xml:space="preserve">
+    <value>Зупинити</value>
+  </data>
+  <data name="System_UsbCharging.Header" xml:space="preserve">
+    <value>Заряджання USB-пристроїв у вимкненому стані</value>
+  </data>
+  <data name="System_UsbCharging.Description" xml:space="preserve">
+    <value>USB-порти заряджають телефони й інші пристрої, коли ноутбук вимкнено, доки заряд акумулятора не знизиться до вибраного тут рівня.</value>
+  </data>
+  <data name="UsbCharging_Floor" xml:space="preserve">
+    <value>До {0} % заряду</value>
+    <comment>An item of the list next to "Charge USB devices while off": charging stops when the battery falls to {0} percent.</comment>
+  </data>
+  <data name="System_Startup.Text" xml:space="preserve">
+    <value>Завантаження</value>
+    <comment>Section header on the System page: what the laptop does when it is switched on (boot), not apps that start with Windows.</comment>
+  </data>
+  <data name="System_BootAnimation.Header" xml:space="preserve">
+    <value>Анімація та звук під час завантаження</value>
+  </data>
+  <data name="System_BootAnimation.Description" xml:space="preserve">
+    <value>Анімація та звук під час увімкнення ноутбука на моделях, які їх мають. Діє з наступного завантаження.</value>
+    <comment>Not every laptop has an animation or a sound, and Acer Crate can't tell which do, so the text says so.</comment>
+  </data>
+  <data name="System_BootLogo.Header" xml:space="preserve">
+    <value>Логотип під час завантаження</value>
+  </data>
+  <data name="System_BootLogoAcer.Text" xml:space="preserve">
+    <value>Логотип Acer</value>
+    <comment>Shown in place of a thumbnail while the firmware shows Acer's own logo.</comment>
+  </data>
+  <data name="System_BootLogoRestore.Content" xml:space="preserve">
+    <value>Повернути логотип Acer</value>
+    <comment>Button: removes the custom picture so Acer's logo shows again.</comment>
+  </data>
+  <data name="System_BootLogoChoose.Content" xml:space="preserve">
+    <value>Вибрати зображення</value>
+  </data>
+  <data name="Calibration_Charging" xml:space="preserve">
+    <value>Калібрування з {0}: заряджання, {1} %</value>
+    <comment>Next to the Stop button while the battery calibrates. {0} = when it started (a time), {1} = battery percent.</comment>
+  </data>
+  <data name="Calibration_Discharging" xml:space="preserve">
+    <value>Калібрування з {0}: розряджання, {1} %</value>
+    <comment>Next to the Stop button while the battery calibrates. {0} = when it started (a time), {1} = battery percent.</comment>
+  </data>
+  <data name="Calibration_Running" xml:space="preserve">
+    <value>Калібрування з {0}</value>
+    <comment>Next to the Stop button while the battery calibrates and Windows can't tell the battery's charge. {0} = when it started (a time).</comment>
+  </data>
+  <data name="Calibration_Confirm_Title" xml:space="preserve">
+    <value>Відкалібрувати акумулятор?</value>
+  </data>
+  <data name="Calibration_Confirm_Message" xml:space="preserve">
+    <value>Це триває кілька годин. Не від'єднуйте адаптер увесь цей час: від'єднання зупиняє калібрування. До його завершення ноутбук не перейде в режим сну, навіть із закритою кришкою.</value>
+  </data>
+  <data name="Calibration_Confirm_Start" xml:space="preserve">
+    <value>Почати калібрування</value>
+    <comment>The dialog's button that starts the calibration.</comment>
+  </data>
+  <data name="Calibration_NeedsAc" xml:space="preserve">
+    <value>Під'єднайте адаптер, щоб відкалібрувати акумулятор.</value>
+  </data>
+  <data name="Calibration_AlreadyRunning" xml:space="preserve">
+    <value>Акумулятор уже калібрується.</value>
+  </data>
+  <data name="Calibration_Rejected" xml:space="preserve">
+    <value>Мікропрограма відхилила калібрування акумулятора.</value>
+  </data>
+  <data name="BootLogo_Description" xml:space="preserve">
+    <value>Зображення GIF або JPEG, що показується під час увімкнення ноутбука, розміром до {0} × {1} пікселів і 35 МБ, з кольором до 24 біт. Кожен кадр GIF показується щонайменше 30 мс.</value>
+    <comment>Under "Boot logo". {0} × {1} = the largest width and height, in pixels (40 % of the laptop screen's). 35 MB is Acer's file limit (35,000,000 bytes); the BIOS shows each frame of an animated GIF for 30 ms or longer.</comment>
+  </data>
+  <data name="BootLogo_DescriptionAnySize" xml:space="preserve">
+    <value>Зображення GIF або JPEG, що показується під час увімкнення ноутбука, розміром до 40 % ширини й висоти екрана і 35 МБ, з кольором до 24 біт. Кожен кадр GIF показується щонайменше 30 мс.</value>
+    <comment>Under "Boot logo" while the laptop screen's resolution is unknown (e.g. the lid is closed). 35 MB is Acer's file limit (35,000,000 bytes); the BIOS shows each frame of an animated GIF for 30 ms or longer.</comment>
+  </data>
+  <data name="BootLogo_BiosDefaults" xml:space="preserve">
+    <value>Завантаження стандартних налаштувань у BIOS видаляє зображення.</value>
+  </data>
+  <data name="BootLogo_Confirm_Title" xml:space="preserve">
+    <value>Використати цей логотип під час завантаження?</value>
+  </data>
+  <data name="BootLogo_Confirm_Message" xml:space="preserve">
+    <value>Він з'явиться під час наступного увімкнення ноутбука.</value>
+  </data>
+  <data name="BootLogo_Confirm_MessageWithAnimation" xml:space="preserve">
+    <value>Він з'явиться під час наступного увімкнення ноутбука. Буде ввімкнено анімацію під час завантаження, у якій показується логотип.</value>
+    <comment>Used instead of BootLogo_Confirm_Message while the boot animation is off: the firmware shows the logo as part of it.</comment>
+  </data>
+  <data name="BootLogo_Confirm_Use" xml:space="preserve">
+    <value>Використати</value>
+    <comment>The dialog's button that makes the picture the boot logo.</comment>
+  </data>
+  <data name="BootLogo_NotGifOrJpeg" xml:space="preserve">
+    <value>Виберіть зображення GIF або JPEG.</value>
+  </data>
+  <data name="BootLogo_FileTooLarge" xml:space="preserve">
+    <value>Файл зображення більший за 35 МБ.</value>
+    <comment>Acer's limit is 35,000,000 bytes.</comment>
+  </data>
+  <data name="BootLogo_TooManyPixels" xml:space="preserve">
+    <value>Розмір зображення {0} × {1} пікселів. Логотип під час завантаження цього ноутбука може бути не більшим за {2} × {3} пікселів.</value>
+    <comment>{0} × {1} = the picture's width and height; {2} × {3} = the largest this laptop's boot logo can be.</comment>
+  </data>
+  <data name="BootLogo_ColorDepth" xml:space="preserve">
+    <value>Зображення використовує 32-бітний колір або більше. Збережіть його з 24-бітним кольором (RGB) і спробуйте ще раз.</value>
+    <comment>The firmware takes pictures with fewer than 32 bits per pixel (e.g. not CMYK JPEGs).</comment>
+  </data>
+  <data name="BootLogo_NotBaseline" xml:space="preserve">
+    <value>BIOS показує лише стандартні (baseline) JPEG, а Windows не вдалося перетворити це зображення. Збережіть його як стандартний JPEG і спробуйте ще раз.</value>
+  </data>
+  <data name="BootLogo_ScreenUnknown" xml:space="preserve">
+    <value>Acer Crate не вдається прочитати роздільну здатність екрана ноутбука, щоб перевірити розмір зображення. Відкрийте кришку й спробуйте ще раз.</value>
+    <comment>Windows doesn't list the built-in screen, usually because the lid is closed.</comment>
+  </data>
+  <data name="BootLogo_NoSpace" xml:space="preserve">
+    <value>У системному розділі EFI недостатньо вільного місця для цього зображення.</value>
+  </data>
+  <data name="BootLogo_WriteFailed" xml:space="preserve">
+    <value>Не вдалося зберегти логотип під час завантаження.</value>
+  </data>
+  <data name="BootLogo_RestoreFailed" xml:space="preserve">
+    <value>Не вдалося повернути логотип Acer.</value>
+  </data>
+  <data name="BootLogo_ReadFailed" xml:space="preserve">
+    <value>Не вдалося прочитати зображення: {0}</value>
+    <comment>{0} = the error from Windows.</comment>
+  </data>
+  <data name="Notice_Battery_Title" xml:space="preserve">
+    <value>Акумулятор</value>
+  </data>
+  <data name="Notice_ChargeLimitRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну межі заряджання.</value>
+  </data>
+  <data name="Notice_UsbChargingRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну заряджання через USB.</value>
+  </data>
+  <data name="Notice_CalibrationFinished" xml:space="preserve">
+    <value>Калібрування акумулятора завершено.</value>
+  </data>
+  <data name="Notice_CalibrationInterrupted" xml:space="preserve">
+    <value>Калібрування акумулятора зупинилося, бо ноутбук перейшов у режим сну або вимкнувся.</value>
+  </data>
+  <data name="Notice_CalibrationStoppedUnplugged" xml:space="preserve">
+    <value>Калібрування акумулятора зупинилося, бо адаптер від'єднали.</value>
+  </data>
+  <data name="Notice_Startup_Title" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="Notice_BootAnimationRejected" xml:space="preserve">
+    <value>Мікропрограма відхилила зміну анімації під час завантаження.</value>
+  </data>
+  <data name="System_Power.Text" xml:space="preserve">
+    <value>Живлення</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="System_Bios.Text" xml:space="preserve">
+    <value>BIOS</value>
+    <comment>Section header on the System page; BIOS is not translated.</comment>
+  </data>
+  <data name="System_BiosRestart.Title" xml:space="preserve">
+    <value>Перезапустіть, щоб застосувати зміни BIOS</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="System_BiosRestart.Message" xml:space="preserve">
+    <value>Зміни BIOS набудуть чинності після перезапуску ноутбука.</value>
+  </data>
+  <data name="System_BiosSettings.Header" xml:space="preserve">
+    <value>Налаштування BIOS</value>
+    <comment>Expander on the System page that opens to every BIOS setting.</comment>
+  </data>
+  <data name="Bios_SetPassword.Content" xml:space="preserve">
+    <value>Задати…</value>
+    <comment>Button on a BIOS password setting; opens a dialog to type the new password.</comment>
+  </data>
+  <data name="Bios_RemovePassword.Content" xml:space="preserve">
+    <value>Видалити…</value>
+    <comment>Button on a BIOS password setting; takes the password away after a question.</comment>
+  </data>
+  <data name="Bios_LoadDefaults.Content" xml:space="preserve">
+    <value>Завантажити типові значення BIOS</value>
+    <comment>Button under the BIOS settings: puts every BIOS setting back to Acer's defaults.</comment>
+  </data>
+  <data name="Bios_LoadUserDefaults.Content" xml:space="preserve">
+    <value>Завантажити збережені значення</value>
+    <comment>Button under the BIOS settings: loads the defaults the user saved in the BIOS setup.</comment>
+  </data>
+  <data name="BiosSettings_Footer.Text" xml:space="preserve">
+    <value>Назви та значення взяті з самого BIOS, англійською. Зміна набуде чинності після перезапуску ноутбука.</value>
+    <comment>Under the list of BIOS settings.</comment>
+  </data>
+  <data name="Bios_StatusIdle" xml:space="preserve">
+    <value>Розгорніть, щоб прочитати налаштування з BIOS.</value>
+    <comment>Under "BIOS settings" before it is opened.</comment>
+  </data>
+  <data name="Bios_StatusReading" xml:space="preserve">
+    <value>Читання BIOS…</value>
+    <comment>Under "BIOS settings" while the BIOS is being read.</comment>
+  </data>
+  <data name="Bios_StatusCount" xml:space="preserve">
+    <value>Знайдено налаштувань: {0}</value>
+    <comment>{0} = how many settings the BIOS listed.</comment>
+  </data>
+  <data name="Bios_StatusNone" xml:space="preserve">
+    <value>Цей BIOS не надає Windows жодних налаштувань.</value>
+    <comment>Under "BIOS settings" when the BIOS lists none.</comment>
+  </data>
+  <data name="Bios_Dangerous" xml:space="preserve">
+    <value>Небезпечно: неправильне значення може перешкодити запуску ноутбука.</value>
+    <comment>Under a dangerous BIOS setting that can be changed.</comment>
+  </data>
+  <data name="Bios_DangerousLocked" xml:space="preserve">
+    <value>Небезпечно. Щоб змінити, увімкніть у налаштуваннях «Увімкнути небезпечні налаштування BIOS».</value>
+    <comment>Under a dangerous BIOS setting while dangerous BIOS settings are off in Settings; "Enable dangerous BIOS settings" is that setting's name.</comment>
+  </data>
+  <data name="BiosPassword_Title" xml:space="preserve">
+    <value>Пароль BIOS</value>
+    <comment>Dialog title asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosPassword_Message" xml:space="preserve">
+    <value>BIOS запитує пароль адміністратора, перш ніж дозволити змінювати налаштування.</value>
+    <comment>In the dialog asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosPassword_Wrong" xml:space="preserve">
+    <value>Пароль неправильний. Спробуйте ще раз.</value>
+    <comment>In the dialog asking for the BIOS supervisor password, after a wrong one.</comment>
+  </data>
+  <data name="BiosPassword_Continue" xml:space="preserve">
+    <value>Продовжити</value>
+    <comment>Button of the dialog asking for the BIOS supervisor password.</comment>
+  </data>
+  <data name="BiosNewPassword_Title" xml:space="preserve">
+    <value>Новий пароль BIOS</value>
+    <comment>Dialog title for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Message" xml:space="preserve">
+    <value>{0}: введіть новий пароль двічі. BIOS приймає лише літери, цифри та символи англійської клавіатури.</value>
+    <comment>In the dialog for setting a BIOS password. {0} = the BIOS's name for the setting, in English (for example "Set Supervisor Password").</comment>
+  </data>
+  <data name="BiosNewPassword_First" xml:space="preserve">
+    <value>Новий пароль</value>
+    <comment>Label of the first box in the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Again" xml:space="preserve">
+    <value>Повторіть пароль</value>
+    <comment>Label of the second box in the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosNewPassword_Set" xml:space="preserve">
+    <value>Задати пароль</value>
+    <comment>Button of the dialog for setting a BIOS password.</comment>
+  </data>
+  <data name="BiosPasswordSave_Title" xml:space="preserve">
+    <value>Зберегти пароль BIOS?</value>
+    <comment>Dialog title before a BIOS password is saved.</comment>
+  </data>
+  <data name="BiosPasswordSave_Message" xml:space="preserve">
+    <value>{0}: BIOS використовуватиме цей пароль від наступного запуску. Якщо ви його забудете, можете втратити доступ до налаштування BIOS.</value>
+    <comment>Dialog text before a BIOS password is saved. {0} = the BIOS's name for the setting, in English (for example "Set Supervisor Password").</comment>
+  </data>
+  <data name="BiosPasswordSave_Save" xml:space="preserve">
+    <value>Зберегти пароль</value>
+    <comment>Button of the dialog that saves a BIOS password.</comment>
+  </data>
+  <data name="BiosDanger_Title" xml:space="preserve">
+    <value>Змінити небезпечний параметр?</value>
+    <comment>Dialog title before a dangerous BIOS setting changes.</comment>
+  </data>
+  <data name="BiosDanger_Message" xml:space="preserve">
+    <value>{0} буде встановлено на {1} після перезапуску ноутбука.
+
+Неправильне значення може перешкодити запуску ноутбука або позбавити його зв'язку з клавіатурою, накопичувачем чи портами. Продовжуйте, лише якщо знаєте, що це робить.</value>
+    <comment>Dialog text before a dangerous BIOS setting changes. {0} = the setting's name, {1} = the new value, both as the BIOS gives them (English). Two line breaks.</comment>
+  </data>
+  <data name="BiosDanger_Change" xml:space="preserve">
+    <value>Змінити</value>
+    <comment>Button of the dialog that goes ahead with a dangerous BIOS setting change.</comment>
+  </data>
+  <data name="BiosDefaults_Title" xml:space="preserve">
+    <value>Завантажити типові значення Acer?</value>
+    <comment>Dialog title before Acer's BIOS defaults are loaded.</comment>
+  </data>
+  <data name="BiosDefaults_Message" xml:space="preserve">
+    <value>Після перезапуску ноутбука всі налаштування BIOS повернуться до типових значень Acer, зокрема ті, які Acer Crate не показує.</value>
+    <comment>Dialog text before Acer's BIOS defaults are loaded.</comment>
+  </data>
+  <data name="BiosUserDefaults_Title" xml:space="preserve">
+    <value>Завантажити збережені вами значення?</value>
+    <comment>Dialog title before the defaults the user saved in the BIOS setup are loaded.</comment>
+  </data>
+  <data name="BiosUserDefaults_Message" xml:space="preserve">
+    <value>Після перезапуску ноутбука всі налаштування BIOS повернуться до типових значень, збережених у налаштуванні BIOS, зокрема ті, які Acer Crate не показує.</value>
+    <comment>Dialog text before the defaults the user saved in the BIOS setup are loaded.</comment>
+  </data>
+  <data name="BiosDefaults_Load" xml:space="preserve">
+    <value>Завантажити</value>
+    <comment>Button of the dialogs that go ahead with loading BIOS defaults.</comment>
+  </data>
+  <data name="System_PowerPlan.Header" xml:space="preserve">
+    <value>Схема живлення</value>
+    <comment>Windows power plan setting.</comment>
+  </data>
+  <data name="System_PowerPlan.Description" xml:space="preserve">
+    <value>Схема живлення Windows, яка використовується.</value>
+  </data>
+  <data name="Settings_Title.Text" xml:space="preserve">
+    <value>Настройки</value>
+    <comment>Page title.</comment>
+  </data>
+  <data name="Settings_Startup.Text" xml:space="preserve">
+    <value>Запуск</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_StartWithWindows.Header" xml:space="preserve">
+    <value>Запускати разом із Windows</value>
+  </data>
+  <data name="Settings_StartWithWindows.Description" xml:space="preserve">
+    <value>Відкриває Acer Crate в області сповіщень під час входу. Керування вентиляторами від цього не залежить.</value>
+    <comment>Notification area = the Windows system tray.</comment>
+  </data>
+  <data name="Settings_NitroSenseKey.Header" xml:space="preserve">
+    <value>Відкривати клавішею NitroSense</value>
+    <comment>NitroSense is Acer's app; the laptop has a key for it. Keep the name.</comment>
+  </data>
+  <data name="Settings_NitroSenseKey.Description" xml:space="preserve">
+    <value>Клавіша NitroSense на клавіатурі відкриває Acer Crate так само, як відкривала NitroSense. Працює, коли Acer Crate перебуває в області сповіщень.</value>
+  </data>
+  <data name="Settings_OpenShortcut.Header" xml:space="preserve">
+    <value>Відкривати сполученням клавіш</value>
+    <comment>Setting under Settings_NitroSenseKey.Header: a key or key combination chosen by the user opens AcerCrate.</comment>
+  </data>
+  <data name="Settings_ShortcutHelp" xml:space="preserve">
+    <value>Клавіша або сполучення, що відкриває Acer Crate звідусіль.</value>
+    <comment>Description of Settings_OpenShortcut.Header.</comment>
+  </data>
+  <data name="Settings_ShortcutTaken" xml:space="preserve">
+    <value>Це сполучення вже використовує інша програма. Виберіть інше.</value>
+    <comment>Shown instead of Settings_ShortcutHelp when Windows refuses the chosen shortcut (another app has it).</comment>
+  </data>
+  <data name="Settings_ShortcutNone" xml:space="preserve">
+    <value>Не задано</value>
+    <comment>On the shortcut button when no shortcut is chosen. Short.</comment>
+  </data>
+  <data name="Settings_ShortcutRecording" xml:space="preserve">
+    <value>Натисніть клавішу…</value>
+    <comment>On the shortcut button while it waits for the user to press the key or combination. Short.</comment>
+  </data>
+  <data name="Settings_ShortcutClear.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Видалити сполучення</value>
+    <comment>Tooltip of the ✕ button next to the shortcut.</comment>
+  </data>
+  <data name="Settings_CloseToTray.Header" xml:space="preserve">
+    <value>Продовжувати роботу після закриття вікна</value>
+  </data>
+  <data name="Settings_CloseToTray.Description" xml:space="preserve">
+    <value>Після закриття вікна значок залишається в області сповіщень. Вийти можна через його меню.</value>
+  </data>
+  <data name="Settings_Appearance.Text" xml:space="preserve">
+    <value>Вигляд</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_Language.Header" xml:space="preserve">
+    <value>Мова</value>
+    <comment>Setting: the app's language.</comment>
+  </data>
+  <data name="Language_System" xml:space="preserve">
+    <value>Використовувати системний параметр</value>
+    <comment>First entry in the language list: follow the Windows language.</comment>
+  </data>
+  <data name="Settings_LanguageRestart.Title" xml:space="preserve">
+    <value>Перезапустіть, щоб змінити мову</value>
+    <comment>Banner title.</comment>
+  </data>
+  <data name="Settings_LanguageRestart.Message" xml:space="preserve">
+    <value>Acer Crate відобразить нову мову після перезапуску.</value>
+  </data>
+  <data name="Settings_LanguageRestartNow.Content" xml:space="preserve">
+    <value>Перезапустити зараз</value>
+    <comment>Button: restart Acer Crate now.</comment>
+  </data>
+  <data name="Settings_Theme.Header" xml:space="preserve">
+    <value>Тема</value>
+    <comment>Setting: light or dark colours.</comment>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Використовувати системний параметр</value>
+    <comment>Theme choice: follow Windows.</comment>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Світла</value>
+    <comment>Theme choice.</comment>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Темна</value>
+    <comment>Theme choice.</comment>
+  </data>
+  <data name="Settings_Fahrenheit.Header" xml:space="preserve">
+    <value>Показувати температуру за Фаренгейтом</value>
+  </data>
+  <data name="Settings_Laptop.Text" xml:space="preserve">
+    <value>Ваш ноутбук</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_UnknownModel" xml:space="preserve">
+    <value>Ноутбук Acer</value>
+    <comment>Shown when the laptop's model name is unknown.</comment>
+  </data>
+  <data name="Settings_Bios" xml:space="preserve">
+    <value>BIOS {0}</value>
+    <comment>{0} = the BIOS version.</comment>
+  </data>
+  <data name="Settings_BiosUnknown" xml:space="preserve">
+    <value>Версія BIOS невідома</value>
+  </data>
+  <data name="Settings_Sensors.Header" xml:space="preserve">
+    <value>Датчики температури</value>
+  </data>
+  <data name="Settings_SensorSources" xml:space="preserve">
+    <value>ЦП: {0}
+ГП: {1}</value>
+    <comment>Two lines: {0}, {1} = where each temperature comes from (Sensor_* texts).</comment>
+  </data>
+  <data name="Sensor_IntelPackage" xml:space="preserve">
+    <value>Датчик корпусу Intel (TjMax {0} °C)</value>
+    <comment>The Intel CPU's own temperature sensor. {0} = a temperature. Keep 'TjMax'.</comment>
+  </data>
+  <data name="Sensor_AmdTctl" xml:space="preserve">
+    <value>Датчик AMD Tctl</value>
+    <comment>The AMD CPU's own temperature sensor. Keep 'Tctl'.</comment>
+  </data>
+  <data name="Sensor_NvidiaDriver" xml:space="preserve">
+    <value>Драйвер NVIDIA</value>
+    <comment>Temperature read from the NVIDIA graphics driver.</comment>
+  </data>
+  <data name="Sensor_GraphicsDriver" xml:space="preserve">
+    <value>Графічний драйвер (через Windows)</value>
+    <comment>Where the GPU temperature comes from: the GPU's driver, read through Windows (as Task Manager does).</comment>
+  </data>
+  <data name="Sensor_EmbeddedController" xml:space="preserve">
+    <value>Вбудований контролер</value>
+    <comment>The laptop's embedded controller (EC) chip, which also reports temperatures.</comment>
+  </data>
+  <data name="Sensor_EmbeddedControllerBecause" xml:space="preserve">
+    <value>Вбудований контролер ({0})</value>
+    <comment>{0} = why the chip's own sensor isn't used (one of the SensorProblem_* texts).</comment>
+  </data>
+  <data name="SensorProblem_NotX86Cpu" xml:space="preserve">
+    <value>процесор не x86</value>
+    <comment>Reason in parentheses after 'Embedded controller': starts lowercase in English.</comment>
+  </data>
+  <data name="SensorProblem_UnsupportedCpuVendor" xml:space="preserve">
+    <value>непідтримуваний виробник процесора: {0}</value>
+    <comment>Reason in parentheses. {0} = a CPU vendor code such as 'GenuineIntel'.</comment>
+  </data>
+  <data name="SensorProblem_NoPackageSensor" xml:space="preserve">
+    <value>у цього процесора Intel немає датчика температури корпусу</value>
+    <comment>Reason in parentheses.</comment>
+  </data>
+  <data name="SensorProblem_ImplausibleTjMax" xml:space="preserve">
+    <value>процесор повідомив неправдоподібне значення TjMax: {0} °C</value>
+    <comment>Reason in parentheses. Keep 'TjMax'. {0} = a number.</comment>
+  </data>
+  <data name="SensorProblem_NoReading" xml:space="preserve">
+    <value>датчик не відповів</value>
+    <comment>Reason in parentheses.</comment>
+  </data>
+  <data name="SensorProblem_PciLockUnavailable" xml:space="preserve">
+    <value>не вдалося відкрити спільне блокування PCI: {0}</value>
+    <comment>Reason in parentheses. {0} = a technical error message.</comment>
+  </data>
+  <data name="SensorProblem_NoDiscreteGpu" xml:space="preserve">
+    <value>дискретний ГП не знайдено</value>
+    <comment>Why the GPU temperature comes from the embedded controller: Windows lists no graphics card.</comment>
+  </data>
+  <data name="SensorProblem_GpuAdapterUnavailable" xml:space="preserve">
+    <value>Windows не може відкрити ГП ({0})</value>
+    <comment>Why the GPU temperature comes from the embedded controller. {0} = the error code.</comment>
+  </data>
+  <data name="SensorProblem_PawnIONotInstalled" xml:space="preserve">
+    <value>PawnIO не інстальовано</value>
+    <comment>Reason in parentheses. PawnIO is a driver's name: keep it.</comment>
+  </data>
+  <data name="SensorProblem_PawnIOUnavailable" xml:space="preserve">
+    <value>не вдалося відкрити PawnIO ({0})</value>
+    <comment>Reason in parentheses. {0} = an error code.</comment>
+  </data>
+  <data name="SensorProblem_PawnIOModuleRefused" xml:space="preserve">
+    <value>PawnIO відхилив модуль ({0})</value>
+    <comment>Reason in parentheses. {0} = a module name and an error code.</comment>
+  </data>
+  <data name="Settings_GetPawnIO.Content" xml:space="preserve">
+    <value>Інсталюйте PawnIO для точних показників ЦП</value>
+    <comment>Link. PawnIO is a driver's name: keep it.</comment>
+  </data>
+  <data name="Settings_OperatingModes.Header" xml:space="preserve">
+    <value>Режими роботи</value>
+    <comment>Setting: use Acer's operating modes (Eco, Quiet, Balanced...).</comment>
+  </data>
+  <data name="Settings_MagKey.Header" xml:space="preserve">
+    <value>Підсвічування клавіш MagForce</value>
+    <comment>Setting in "Your laptop": whether the W, A, S and D keys' own lights (Acer's MagForce keys) are offered on the Lighting page.</comment>
+  </data>
+  <data name="Settings_MagKey.Description" xml:space="preserve">
+    <value>Власне підсвічування під W, A, S і D, визначається за назвою моделі ноутбука. Перемкніть, якщо для вашого це не так.</value>
+    <comment>Under "MagForce key lights".</comment>
+  </data>
+  <data name="Settings_BiosSettings.Header" xml:space="preserve">
+    <value>Увімкнути налаштування BIOS</value>
+    <comment>Setting in "Your laptop": lets Acer Crate show and change the BIOS's own settings.</comment>
+  </data>
+  <data name="Settings_BiosSettings.Description" xml:space="preserve">
+    <value>Показує налаштування BIOS на сторінці «Система» та дозволяє Acer Crate їх змінювати. Зміна набуде чинності після перезапуску ноутбука.</value>
+    <comment>Under "Enable BIOS settings".</comment>
+  </data>
+  <data name="Settings_DangerousBiosSettings.Header" xml:space="preserve">
+    <value>Увімкнути небезпечні налаштування BIOS</value>
+    <comment>Setting shown once BIOS settings are enabled: also allows the dangerous ones.</comment>
+  </data>
+  <data name="Settings_DangerousBiosSettings.Description" xml:space="preserve">
+    <value>Дозволяє також налаштування, через які ноутбук може не запуститися або втратити зв'язок з клавіатурою, накопичувачем чи портами. Лише для тих, хто знає, що вони роблять.</value>
+    <comment>Under "Enable dangerous BIOS settings".</comment>
+  </data>
+  <data name="BiosDangerousEnable_Title" xml:space="preserve">
+    <value>Увімкнути небезпечні налаштування BIOS?</value>
+    <comment>First dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousEnable_Message" xml:space="preserve">
+    <value>Ці налаштування можуть перешкодити запуску ноутбука, позбавити його зв'язку з клавіатурою, накопичувачем чи портами або бути незворотними. Неправильне значення може призвести до того, що ноутбук потребуватиме ремонту.</value>
+    <comment>Text of the first dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousEnable_Continue" xml:space="preserve">
+    <value>Продовжити</value>
+    <comment>Button of the first dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Title" xml:space="preserve">
+    <value>Ви впевнені?</value>
+    <comment>Title of the second dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Message" xml:space="preserve">
+    <value>Остання перевірка. Коли це ввімкнено, Acer Crate може змінювати налаштування, через які ноутбук може не запуститися. Вмикайте, лише якщо знаєте, що вони роблять.</value>
+    <comment>Text of the second dialog when "Enable dangerous BIOS settings" is switched on.</comment>
+  </data>
+  <data name="BiosDangerousSure_Enable" xml:space="preserve">
+    <value>Увімкнути</value>
+    <comment>Button of the second dialog when "Enable dangerous BIOS settings" is switched on: goes ahead.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Supported" xml:space="preserve">
+    <value>{0}, як їх пропонує програмне забезпечення Acer для цієї моделі. {1}</value>
+    <comment>{0} = a list of operating mode names; {1} = Settings_OperatingModes_CoolBoost or Settings_OperatingModes_Default.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Unused" xml:space="preserve">
+    <value>Мікропрограма повідомляє про режими {0}, але програмне забезпечення Acer не використовує їх на цій моделі, і вони можуть нічого не змінювати. {1}</value>
+    <comment>{0} = a list of operating mode names; {1} = Settings_OperatingModes_CoolBoost or Settings_OperatingModes_Default.</comment>
+  </data>
+  <data name="Settings_OperatingModes_CoolBoost" xml:space="preserve">
+    <value>Поки їх вимкнено, доступний CoolBoost.</value>
+    <comment>They = the operating modes.</comment>
+  </data>
+  <data name="Settings_OperatingModes_Default" xml:space="preserve">
+    <value>Поки їх вимкнено, ноутбук залишається в стандартному режимі.</value>
+    <comment>They = the operating modes.</comment>
+  </data>
+  <data name="Settings_Updates.Text" xml:space="preserve">
+    <value>Оновлення</value>
+    <comment>Section title: app updates.</comment>
+  </data>
+  <data name="Settings_CheckNow.Content" xml:space="preserve">
+    <value>Перевірити зараз</value>
+    <comment>Button: check for updates now.</comment>
+  </data>
+  <data name="Settings_AutoUpdate.Header" xml:space="preserve">
+    <value>Автоматично перевіряти наявність оновлень</value>
+  </data>
+  <data name="Settings_AutoUpdate.Description" xml:space="preserve">
+    <value>Раз на день, у випусках проєкту на GitHub. Перед інсталяцією завантажені файли звіряються з контрольною сумою SHA-256, яку публікує GitHub.</value>
+  </data>
+  <data name="Settings_Troubleshooting.Text" xml:space="preserve">
+    <value>Усунення неполадок</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_Diagnostics.Header" xml:space="preserve">
+    <value>Діагностика</value>
+  </data>
+  <data name="Settings_Diagnostics.Description" xml:space="preserve">
+    <value>Необроблені відповіді мікропрограми під час визначення можливостей. Додавайте їх, повідомляючи про проблему або нову модель.</value>
+    <comment>The copied diagnostics stay in English for the developers.</comment>
+  </data>
+  <data name="Settings_Copy.Content" xml:space="preserve">
+    <value>Копіювати</value>
+    <comment>Button: copy the diagnostics to the clipboard.</comment>
+  </data>
+  <data name="Settings_Copied" xml:space="preserve">
+    <value>Скопійовано</value>
+    <comment>Shown on the Copy button (Settings_Copy.Content) for a moment after the diagnostics were copied to the clipboard. Short.</comment>
+  </data>
+  <data name="Settings_ServiceLogs.Content" xml:space="preserve">
+    <value>Журнали служби</value>
+    <comment>Button: opens the background service's log folder.</comment>
+  </data>
+  <data name="Settings_AppLogs.Content" xml:space="preserve">
+    <value>Журнали програми</value>
+    <comment>Button: opens the app's log folder.</comment>
+  </data>
+  <data name="Settings_About.Text" xml:space="preserve">
+    <value>Про програму</value>
+    <comment>Section title.</comment>
+  </data>
+  <data name="Settings_AboutAcerCrate.Description" xml:space="preserve">
+    <value>Керування вентиляторами, продуктивністю й підсвічуванням ноутбуків Acer Nitro і Predator з відкритим кодом.</value>
+  </data>
+  <data name="Settings_Version" xml:space="preserve">
+    <value>Версія {0}</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Settings_Mode_Portable" xml:space="preserve">
+    <value>Портативна копія: працює від імені адміністратора й сама керує ноутбуком, поки відкрита.</value>
+  </data>
+  <data name="Settings_Mode_Installed" xml:space="preserve">
+    <value>Інстальовано: служба Acer Crate керує ноутбуком від запуску системи, незалежно від того, чи відкрите це вікно.</value>
+  </data>
+  <data name="Settings_Trademarks.Text" xml:space="preserve">
+    <value>Acer Crate є незалежним проєктом, не пов'язаним з Acer і не схваленим нею. Acer, Nitro, Predator і NitroSense є товарними знаками Acer Inc. Випущено за ліцензією GNU General Public License v3.0 або новішою.</value>
+    <comment>Legal notice: translate faithfully and keep the names.</comment>
+  </data>
+  <data name="Update_Install.Content" xml:space="preserve">
+    <value>Оновити зараз</value>
+    <comment>Button: download and install the update.</comment>
+  </data>
+  <data name="Update_WhatsNew.Content" xml:space="preserve">
+    <value>Що нового</value>
+    <comment>Link to the release notes.</comment>
+  </data>
+  <data name="Update_Skip.Content" xml:space="preserve">
+    <value>Пропустити цю версію</value>
+    <comment>Link.</comment>
+  </data>
+  <data name="Update_BannerTitle" xml:space="preserve">
+    <value>Доступна версія Acer Crate {0}</value>
+    <comment>{0} = a version number.</comment>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>Завантаження… {0}</value>
+    <comment>{0} = progress as a percentage.</comment>
+  </data>
+  <data name="Update_NoAsset" xml:space="preserve">
+    <value>У цьому випуску немає файлу для цієї копії; відкрийте сторінку випуску.</value>
+  </data>
+  <data name="Update_InstallerHint" xml:space="preserve">
+    <value>Натисніть «Оновити зараз», щоб інсталювати оновлення й знову відкрити Acer Crate (Windows попросить дозвіл).</value>
+    <comment>'Update now' = Update_Install.Content.</comment>
+  </data>
+  <data name="Update_PortableHint" xml:space="preserve">
+    <value>Натисніть «Оновити зараз», щоб замінити цю портативну копію й знову відкрити її.</value>
+    <comment>'Update now' = Update_Install.Content.</comment>
+  </data>
+  <data name="Update_Checking" xml:space="preserve">
+    <value>Перевірка оновлень…</value>
+  </data>
+  <data name="Update_UpToDate" xml:space="preserve">
+    <value>Оновлень немає. {0}</value>
+    <comment>{0} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_Skipped" xml:space="preserve">
+    <value>Версію {0} пропущено. {1}</value>
+    <comment>{0} = a version number; {1} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_Available" xml:space="preserve">
+    <value>Доступна версія {0}. {1}</value>
+    <comment>{0} = a version number; {1} = Update_LastChecked or Update_NotChecked.</comment>
+  </data>
+  <data name="Update_LastChecked" xml:space="preserve">
+    <value>Остання перевірка: {0}.</value>
+    <comment>{0} = a date and time.</comment>
+  </data>
+  <data name="Update_NotChecked" xml:space="preserve">
+    <value>Ще не перевірялося.</value>
+  </data>
+  <data name="Update_OpenToUpdate" xml:space="preserve">
+    <value>Відкрийте Acer Crate, щоб оновити.</value>
+    <comment>Notification balloon.</comment>
+  </data>
+  <data name="Update_CheckFailed" xml:space="preserve">
+    <value>Не вдалося перевірити наявність оновлень: {0}</value>
+    <comment>{0} = a technical error message.</comment>
+  </data>
+  <data name="Update_Cancelled" xml:space="preserve">
+    <value>Оновлення скасовано.</value>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>Не вдалося оновити: {0}</value>
+    <comment>{0} = the reason, possibly a technical error message.</comment>
+  </data>
+  <data name="Update_NoDigest" xml:space="preserve">
+    <value>GitHub не опублікував контрольну суму SHA-256 для цього файлу, тому його не можна перевірити.</value>
+  </data>
+  <data name="Update_DigestMismatch" xml:space="preserve">
+    <value>Завантажений файл не збігається з контрольною сумою SHA-256, опублікованою GitHub.</value>
+  </data>
+  <data name="Update_NoExecutable" xml:space="preserve">
+    <value>Портативне оновлення не містить AcerCrate.exe.</value>
+  </data>
+  <data name="Update_OldCopyRunning" xml:space="preserve">
+    <value>Запущений Acer Crate не закрився.</value>
+  </data>
+  <data name="PortableUpdate_Caption" xml:space="preserve">
+    <value>Оновлення Acer Crate</value>
+    <comment>Message box title.</comment>
+  </data>
+  <data name="PortableUpdate_Failed" xml:space="preserve">
+    <value>Не вдалося оновити Acer Crate, тому збережено попередню версію.
+
+{0}
+
+Докладніше: {1}</value>
+    <comment>{0} = the reason; {1} = a log file path.</comment>
+  </data>
+  <data name="Tray_Open" xml:space="preserve">
+    <value>Відкрити</value>
+    <comment>Menu item of the notification area icon.</comment>
+  </data>
+  <data name="Tray_FanMode" xml:space="preserve">
+    <value>Режим вентиляторів</value>
+    <comment>Submenu of the notification area icon.</comment>
+  </data>
+  <data name="Tray_OperatingMode" xml:space="preserve">
+    <value>Режим роботи</value>
+    <comment>Submenu of the notification area icon.</comment>
+  </data>
+  <data name="Tray_Exit" xml:space="preserve">
+    <value>Вихід</value>
+    <comment>Menu item: quit AcerCrate.</comment>
+  </data>
+  <data name="Tray_Hint_Title" xml:space="preserve">
+    <value>Acer Crate і далі працює</value>
+    <comment>Title of the Windows notification shown once, the first time closing the window leaves Acer Crate in the notification area.</comment>
+  </data>
+  <data name="Tray_Hint_Message" xml:space="preserve">
+    <value>Він залишається в області сповіщень. Клацніть значок, щоб відкрити вікно, або вийдіть через його меню.</value>
+    <comment>Body of that notification. Notification area = the Windows system tray; "its menu" is the icon's menu, where Exit is.</comment>
+  </data>
+  <data name="GpuClocks_FollowFirmware.Description" xml:space="preserve">
+    <value>Розгін, який мікропрограма задає для кожного режиму, додається до зсувів нижче.</value>
+    <comment>Under "Acer's overclocking": the firmware's own overclock for each mode is added to the user's offsets set below it.</comment>
+  </data>
+  <data name="GpuClocks_Enabled.Header" xml:space="preserve">
+    <value>Дозволити розгін</value>
+    <comment>Switch in the GPU overclock section; the warning dialog appears when it is turned on.</comment>
+  </data>
+  <data name="GpuClocks_Enabled.Description" xml:space="preserve">
+    <value>Зміщення нижче застосовуються, лише поки це ввімкнено.</value>
+  </data>
+  <data name="GpuClocks_TurnedOffAfterCrash.Title" xml:space="preserve">
+    <value>Розгін вимкнено</value>
+    <comment>Warning bar above the overclocking switch, shown after Acer Crate switched overclocking off at start.</comment>
+  </data>
+  <data name="GpuClocks_TurnedOffAfterCrash.Message" xml:space="preserve">
+    <value>Windows зупинилася без нормального завершення роботи, поки ГП був розігнаний, тому зміщення не було застосовано знову. Зменште їх, перш ніж знову дозволити розгін.</value>
+  </data>
+  <data name="Navigation_FailedTitle" xml:space="preserve">
+    <value>Не вдалося відкрити цю сторінку</value>
+    <comment>Title when navigating to a page fails. The app remains open and offers a retry.</comment>
+  </data>
+  <data name="Navigation_Retry" xml:space="preserve">
+    <value>Спробувати знову</value>
+    <comment>Button to retry opening the page after a navigation failure.</comment>
+  </data>
+</root>
