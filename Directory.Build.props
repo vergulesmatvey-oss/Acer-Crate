@@ -7,7 +7,7 @@
     <LangVersion>latest</LangVersion>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <RestoreConfigFile>$(MSBuildThisFileDirectory)NuGet.Config</RestoreConfigFile>
     <Authors>OpenSense contributors</Authors>
     <Company>Acer Crate</Company>

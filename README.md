@@ -1,10 +1,10 @@
-# Acer Crate 1.1.0
+# Acer Crate 1.1.1
 
 A Windows application for cooling, performance modes, monitoring, keyboard lighting, and a personal game library, developed and checked on an Acer Nitro AN515-58. This is an independent project, not an official Acer product.
 
 ## Download and install
 
-Download `AcerCrate-1.1.0-Setup-x64.exe` from [Releases](https://github.com/vergulesmatvey-oss/Acer-Crate/releases). The installer defaults to `D:\Acer Crate`, allows another folder, and includes the .NET and Windows App SDK runtimes. Administrator approval is needed to install the control service; the installed interface normally runs without elevation.
+Download `AcerCrate-1.1.1-Setup-x64.exe` from [Releases](https://github.com/vergulesmatvey-oss/Acer-Crate/releases). The installer defaults to `D:\Acer Crate`, allows another folder, and includes the .NET and Windows App SDK runtimes. Administrator approval is needed to install the control service. The installed interface normally runs without elevation.
 
 Avoid running another program that simultaneously controls the same fans or firmware settings. Existing user settings and presets are retained when updating. Uninstalling is available in Windows settings and inside Acer Crate.
 

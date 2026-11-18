@@ -12,7 +12,7 @@ SetCompressor /SOLID zlib
 !define APP_EXE "AcerCrate.exe"
 !define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\AcerCrate"
 !ifndef VERSION
-  !define VERSION "1.1.0"
+  !define VERSION "1.1.1"
 !endif
 Name "${APP_NAME}"
 OutFile "${OUTPUT}"
