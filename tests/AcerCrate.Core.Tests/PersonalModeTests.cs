@@ -27,10 +27,12 @@ public sealed class PersonalModeTests
     [InlineData(LaptopMode.Performance, OperatingMode.Performance)]
     public void Personal_modes_keep_the_users_fan_settings(LaptopMode basis, OperatingMode native)
     {
-        var profile = new ControlProfile { Mode = FanControlMode.Custom, Manual = new Dictionary<FanId, ManualFanSetting> { [FanId.Cpu] = new(68, true) } };
+        var profile = new ControlProfile { Mode = FanControlMode.Custom, ProcessorLimitPercent = 72, Manual = new Dictionary<FanId, ManualFanSetting> { [FanId.Cpu] = new(68, true) } };
         var result = PersonalMode.Prepare(profile, basis, Caps);
         Assert.Equal(FanControlMode.Custom, result.Mode);
         Assert.Equal(new ManualFanSetting(68, true), result.ManualFor(FanId.Cpu));
+        Assert.Equal(72, result.ProcessorLimitPercent);
+        Assert.Null(LaptopModePolicy.Select(result, basis, Caps).ProcessorLimitPercent);
         Assert.Equal(native, result.OperatingMode);
         Assert.True(LaptopModePolicy.ManualAllowed(result));
     }

@@ -118,6 +118,7 @@ FunctionEnd
 
 Function un.onInit
   SetRegView 64
+  StrCpy $PowerShell "$WINDIR\Sysnative\WindowsPowerShell\v1.0\powershell.exe"
 FunctionEnd
 
 Section "Uninstall"
@@ -125,10 +126,22 @@ Section "Uninstall"
     ExecWait '"$INSTDIR\${APP_EXE}" --exit'
   IfFileExists "$INSTDIR\${APP_EXE}" 0 +2
     ExecWait '"$INSTDIR\${APP_EXE}" --disable-autostart'
-  ReadRegStr $0 HKLM "SYSTEM\CurrentControlSet\Services\AcerCrate" "ImagePath"
-  ${If} $0 == '$\"$INSTDIR\Service\AcerCrate.Service.exe$\"'
+  ReadRegStr $1 HKLM "SYSTEM\CurrentControlSet\Services\AcerCrate" "ImagePath"
+  ${If} $1 == '$\"$INSTDIR\Service\AcerCrate.Service.exe$\"'
     nsExec::ExecToLog '"$SYSDIR\net.exe" stop AcerCrate'
     Pop $0
+  ${EndIf}
+  InitPluginsDir
+  SetOutPath "$PLUGINSDIR"
+  File "Ensure-PowerPlans.ps1"
+  nsExec::ExecToLog '"$PowerShell" -NoProfile -ExecutionPolicy Bypass -File "$PLUGINSDIR\Ensure-PowerPlans.ps1" -Remove'
+  Pop $Result
+  ${If} $Result != 0
+    MessageBox MB_OK|MB_ICONSTOP "$(CratePowerCleanupFailed)" /SD IDOK
+    SetErrorLevel 1
+    Abort
+  ${EndIf}
+  ${If} $1 == '$\"$INSTDIR\Service\AcerCrate.Service.exe$\"'
     nsExec::ExecToLog '"$SYSDIR\sc.exe" delete AcerCrate'
     Pop $0
   ${EndIf}

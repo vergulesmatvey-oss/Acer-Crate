@@ -1,4 +1,5 @@
 using System.Text;
+using AcerCrate.Core.Control;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.System.Power;
@@ -36,6 +37,17 @@ public sealed record PowerPlan(Guid Id, string Name);
 /// <summary>Classic Windows power plans (what NitroSense switches on models without operating modes).</summary>
 public static class PowerPlans
 {
+    internal static readonly Guid Balanced = new("381b4222-f694-41f0-9685-ff5bb260df2e");
+    private static readonly Guid Processor = new("54533251-82be-4824-96c1-47b60b740d00");
+    private static readonly Guid MinimumProcessorState = new("893dee8e-2bef-41e0-89c6-b55d0929964c");
+    private static readonly Guid MaximumProcessorState = new("bc5038f7-23e0-4960-96da-33abaf5935ec");
+    private static readonly (Guid Min, Guid Max)[] AdditionalProcessorClasses =
+    [
+        (new("893dee8e-2bef-41e0-89c6-b55d0929964d"), new("bc5038f7-23e0-4960-96da-33abaf5935ed")),
+        (new("893dee8e-2bef-41e0-89c6-b55d0929964e"), new("bc5038f7-23e0-4960-96da-33abaf5935ee")),
+    ];
+    private static readonly Guid ProcessorBoostMode = new("be337238-0d82-4146-a960-4f3749d470c7");
+
     public static unsafe IReadOnlyList<PowerPlan> List()
     {
         var plans = new List<PowerPlan>();
@@ -82,6 +94,66 @@ public static class PowerPlans
 
     public static unsafe bool SetActive(Guid id) =>
         PInvoke.PowerSetActiveScheme(default, &id) == WIN32_ERROR.ERROR_SUCCESS;
+
+    internal static unsafe bool ConfigureProcessorLimit(Guid source, int percent)
+    {
+        var id = ProcessorPowerLimit.SchemeId;
+        if (Active() != id)
+        {
+            if (!DeleteProcessorLimit()) return false;
+            var destination = &id;
+            if (PInvoke.PowerDuplicateScheme(default, &source, &destination) != WIN32_ERROR.ERROR_SUCCESS)
+                return false;
+            var name = Encoding.Unicode.GetBytes("Acer Crate - CPU limit\0");
+            fixed (byte* raw = name)
+            {
+                if (PInvoke.PowerWriteFriendlyName(default, &id, null, null, raw, (uint)name.Length) != WIN32_ERROR.ERROR_SUCCESS)
+                {
+                    DeleteProcessorLimit();
+                    return false;
+                }
+            }
+        }
+        if (!WriteProcessorSetting(id, MinimumProcessorState, ProcessorPowerLimit.MinimumPercent) ||
+            !WriteProcessorSetting(id, MaximumProcessorState, (uint)percent) ||
+            !WriteProcessorSetting(id, ProcessorBoostMode, 0))
+            return false;
+
+        // Hybrid CPUs have separate settings for their additional efficiency classes.
+        foreach (var (min, max) in AdditionalProcessorClasses)
+        {
+            if (HasProcessorSetting(id, max) &&
+                (!WriteProcessorSetting(id, min, ProcessorPowerLimit.MinimumPercent) ||
+                 !WriteProcessorSetting(id, max, (uint)percent)))
+                return false;
+        }
+        return true;
+    }
+
+    private static unsafe bool HasProcessorSetting(Guid id, Guid setting)
+    {
+        var subgroup = Processor;
+        uint value;
+        return PInvoke.PowerReadACValueIndex(default, &id, &subgroup, &setting, &value) == WIN32_ERROR.ERROR_SUCCESS;
+    }
+
+    private static unsafe bool WriteProcessorSetting(Guid id, Guid setting, uint value)
+    {
+        var subgroup = Processor;
+        uint ac, dc;
+        return PInvoke.PowerWriteACValueIndex(default, &id, &subgroup, &setting, value) == WIN32_ERROR.ERROR_SUCCESS &&
+            PInvoke.PowerWriteDCValueIndex(default, &id, &subgroup, &setting, value) == 0 &&
+            PInvoke.PowerReadACValueIndex(default, &id, &subgroup, &setting, &ac) == WIN32_ERROR.ERROR_SUCCESS && ac == value &&
+            PInvoke.PowerReadDCValueIndex(default, &id, &subgroup, &setting, &dc) == 0 && dc == value;
+    }
+
+    internal static unsafe bool DeleteProcessorLimit()
+    {
+        var id = ProcessorPowerLimit.SchemeId;
+        if (Active() is not { } active || active == id) return false;
+        var result = (WIN32_ERROR)PInvoke.PowerDeleteScheme(default, &id);
+        return result is WIN32_ERROR.ERROR_SUCCESS or WIN32_ERROR.ERROR_FILE_NOT_FOUND or WIN32_ERROR.ERROR_NOT_FOUND;
+    }
 
     private static unsafe string ReadName(Guid id)
     {

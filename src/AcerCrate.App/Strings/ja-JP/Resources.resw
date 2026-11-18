@@ -373,9 +373,6 @@
     <value>カスタム</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>ノート PC のファームウェアがファンを管理します。高温時には Acer Crate が速度を上乗せできます。</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>すべてのファンを最高速度で回します。</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>ファン</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>スロットリング防止</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>チップが熱くなるにつれてファームウェアの速度に上乗せし、プロセッサーが性能を落とし始める温度で最高速度に達します。</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>チップが性能を落とし始める温度に近づくと、ファンを最高速度で回します。</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>ファームウェア自身のファン速度を上げます。「自動」モードはこの速度を使い、「カスタム」モードはこれに上乗せします。</value>

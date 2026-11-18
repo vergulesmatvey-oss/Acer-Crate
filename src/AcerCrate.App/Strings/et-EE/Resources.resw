@@ -373,9 +373,6 @@
     <value>Käsitsi</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Sülearvuti püsivara juhib ventilaatoreid; Acer Crate saab kuumaga kiirust lisada.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Kõik ventilaatorid täiskiirusel.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Ventilaatorid</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Piiramise vältimine</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Lisab kiipide soojenedes püsivara kiirusele kiirust ja jõuab täiskiiruseni temperatuuril, mil protsessor hakkab jõudlust piirama.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Paneb ventilaatorid täiskiirusel tööle, kui kiibid lähenevad temperatuurile, mil need hakkavad jõudlust piirama.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Tõstab püsivara enda ventilaatorikiirusi, mida kasutab režiim Auto ja millele režiim Käsitsi kiirust lisab.</value>

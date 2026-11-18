@@ -1834,5 +1834,233 @@
     "Ru": "Ctrl+Alt+F занято другим приложением. Переключение режимов не зарегистрировано.",
     "En": "Ctrl+Alt+F is already used by another application. The mode shortcut was not registered.",
     "Uk": "Ctrl+Alt+F зайнято іншою програмою. Перемикання режимів не зареєстровано."
+  },
+  {
+    "Id": "Voltage",
+    "Ru": "Напряжение",
+    "En": "Voltage",
+    "Uk": "Напруга"
+  },
+  {
+    "Id": "CpuVoltageUnavailable",
+    "Ru": "Датчик напряжения CPU недоступен.",
+    "En": "CPU voltage sensor unavailable.",
+    "Uk": "Датчик напруги CPU недоступний."
+  },
+  {
+    "Id": "Volts",
+    "Ru": "В",
+    "En": "V",
+    "Uk": "В"
+  },
+  {
+    "Id": "ProcessorLimitPercent",
+    "Ru": "Предел процессора, %",
+    "En": "Processor limit, %",
+    "Uk": "Обмеження процесора, %"
+  },
+  {
+    "Id": "ProcessorLimitHelp",
+    "Ru": "100% использует настройки штатной схемы. При меньшем пределе турбо отключается. Напряжением управляет прошивка.",
+    "En": "100% uses the base power plan. Lower limits disable turbo boost. The firmware manages voltage.",
+    "Uk": "100% використовує базову схему живлення. За нижчого обмеження турбо вимикається. Напругою керує мікропрограма."
+  },
+  {
+    "Id": "ProcessorLimitScheme",
+    "Ru": "Ограничение процессора",
+    "En": "Processor limit",
+    "Uk": "Обмеження процесора"
+  },
+  {
+    "Id": "ProcessorLimitActive",
+    "Ru": "Предел процессора {0}% · турбо отключено",
+    "En": "Processor limit {0}% · turbo off",
+    "Uk": "Обмеження процесора {0}% · турбо вимкнено"
+  },
+  {
+    "Id": "ProcessorLimitUnavailable",
+    "Ru": "Ограничение процессора недоступно.",
+    "En": "Processor limits are unavailable.",
+    "Uk": "Обмеження процесора недоступне."
+  },
+  {
+    "Id": "ProcessorLimitError",
+    "Ru": "Windows не подтвердила изменение ограничения процессора.",
+    "En": "Windows did not confirm the processor limit change.",
+    "Uk": "Windows не підтвердила зміну обмеження процесора."
+  },
+  {
+    "Id": "ThermalPowerProtection",
+    "Ru": "Защита от перегрева · предел CPU 5%",
+    "En": "Thermal protection · CPU limited to 5%",
+    "Uk": "Захист від перегрівання · CPU обмежено до 5%"
+  },
+  {
+    "Id": "ThermalPowerProtectionError",
+    "Ru": "Windows не подтвердила защитное ограничение процессора.",
+    "En": "Windows did not confirm the thermal CPU limit.",
+    "Uk": "Windows не підтвердила обмеження CPU для захисту від перегрівання."
+  },
+  {
+    "Id": "MicrophoneNoise",
+    "Ru": "Шум у микрофона",
+    "En": "Noise at the microphone",
+    "Uk": "Шум біля мікрофона"
+  },
+  {
+    "Id": "MicrophoneNoiseHelp",
+    "Ru": "Микрофон измеряет весь звук рядом с ноутбуком. Для шкалы дБ SPL нужен эталонный замер.",
+    "En": "The microphone measures all sound near the laptop. The dB SPL scale needs a reference measurement.",
+    "Uk": "Мікрофон вимірює весь звук поруч із ноутбуком. Для шкали дБ SPL потрібне еталонне вимірювання."
+  },
+  {
+    "Id": "MicrophoneStart",
+    "Ru": "Измерить шум",
+    "En": "Measure noise",
+    "Uk": "Виміряти шум"
+  },
+  {
+    "Id": "MicrophoneStop",
+    "Ru": "Остановить замер",
+    "En": "Stop measuring",
+    "Uk": "Зупинити вимірювання"
+  },
+  {
+    "Id": "MicrophoneCalibrate",
+    "Ru": "Калибровать",
+    "En": "Calibrate",
+    "Uk": "Відкалібрувати"
+  },
+  {
+    "Id": "MicrophoneUnavailable",
+    "Ru": "Микрофон недоступен. Проверьте разрешение Windows.",
+    "En": "Microphone unavailable. Check Windows microphone access.",
+    "Uk": "Мікрофон недоступний. Перевірте дозвіл Windows."
+  },
+  {
+    "Id": "MicrophoneDisconnected",
+    "Ru": "Микрофон перестал передавать данные.",
+    "En": "The microphone stopped sending data.",
+    "Uk": "Мікрофон перестав передавати дані."
+  },
+  {
+    "Id": "MicrophoneDbfs",
+    "Ru": "{0:0.0} дБFS",
+    "En": "{0:0.0} dBFS",
+    "Uk": "{0:0.0} дБFS"
+  },
+  {
+    "Id": "MicrophoneSpl",
+    "Ru": "≈ {0:0.0} дБ SPL",
+    "En": "≈ {0:0.0} dB SPL",
+    "Uk": "≈ {0:0.0} дБ SPL"
+  },
+  {
+    "Id": "MicrophoneReference",
+    "Ru": "Показание шумомера, дБ SPL",
+    "En": "Sound level meter reading, dB SPL",
+    "Uk": "Показ шумоміра, дБ SPL"
+  },
+  {
+    "Id": "MicrophoneReferenceHelp",
+    "Ru": "Введите показание шумомера, расположенного рядом с микрофоном.",
+    "En": "Enter the reading from a sound level meter positioned next to the microphone.",
+    "Uk": "Введіть показ шумоміра, розташованого поруч із мікрофоном."
+  },
+  {
+    "Id": "FirmwareFanControl",
+    "Ru": "Вентиляторами управляет прошивка ноутбука.",
+    "En": "The laptop firmware manages the fans.",
+    "Uk": "Вентиляторами керує мікропрограма ноутбука."
+  },
+  {
+    "Id": "HomeGames",
+    "Ru": "Игры",
+    "En": "Games",
+    "Uk": "Ігри"
+  },
+  {
+    "Id": "HomeLibrary",
+    "Ru": "Библиотека",
+    "En": "Library",
+    "Uk": "Бібліотека"
+  },
+  {
+    "Id": "HomeAddGame",
+    "Ru": "Добавить игру",
+    "En": "Add game",
+    "Uk": "Додати гру"
+  },
+  {
+    "Id": "HomeApplication",
+    "Ru": "Приложение",
+    "En": "Application",
+    "Uk": "Застосунок"
+  },
+  {
+    "Id": "HomeUnpin",
+    "Ru": "Убрать с главной",
+    "En": "Unpin from Home",
+    "Uk": "Відкріпити з головної"
+  },
+  {
+    "Id": "HomeGameActions",
+    "Ru": "Действия для {0}",
+    "En": "Actions for {0}",
+    "Uk": "Дії для {0}"
+  },
+  {
+    "Id": "HomePinFailed",
+    "Ru": "Не удалось закрепить игру.",
+    "En": "Could not pin the game.",
+    "Uk": "Не вдалося закріпити гру."
+  },
+  {
+    "Id": "HomeLibrarySearch",
+    "Ru": "Поиск по библиотеке",
+    "En": "Search library",
+    "Uk": "Пошук у бібліотеці"
+  },
+  {
+    "Id": "HomePickFileHint",
+    "Ru": "Выберите файл приложения или ярлык.",
+    "En": "Choose an application file or shortcut.",
+    "Uk": "Виберіть файл застосунку або ярлик."
+  },
+  {
+    "Id": "HomePin",
+    "Ru": "Закрепить",
+    "En": "Pin",
+    "Uk": "Закріпити"
+  },
+  {
+    "Id": "HomePickFile",
+    "Ru": "Выбрать файл…",
+    "En": "Browse files…",
+    "Uk": "Вибрати файл…"
+  },
+  {
+    "Id": "HomeCancel",
+    "Ru": "Отмена",
+    "En": "Cancel",
+    "Uk": "Скасувати"
+  },
+  {
+    "Id": "HomeLaunchFailed",
+    "Ru": "Не удалось запустить {0}.",
+    "En": "Could not open {0}.",
+    "Uk": "Не вдалося запустити {0}."
+  },
+  {
+    "Id": "HomeLaunchGame",
+    "Ru": "Запустить {0}",
+    "En": "Launch {0}",
+    "Uk": "Запустити {0}"
+  },
+  {
+    "Id": "HomeLoad",
+    "Ru": "Нагрузка",
+    "En": "Load",
+    "Uk": "Навантаження"
   }
 ]

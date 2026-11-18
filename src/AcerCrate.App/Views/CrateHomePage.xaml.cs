@@ -20,14 +20,14 @@ public sealed partial class CrateHomePage : Page
     private readonly SettingsService settings = App.Current.Services.GetRequiredService<SettingsService>();
     private string? lastArtwork = "";
     private (string? Custom, string? Query, string? Device, bool Download)? artworkKey;
-    private readonly List<(string Name, StackPanel Row, TextBlock Caption, PinnedProgressBar Bar)> driveRows = [];
     private int artworkRequest;
-    public LightingViewModel Lighting { get; } = App.Current.Services.GetRequiredService<LightingViewModel>();
+    private bool stacked;
     public MonitorViewModel Monitor => monitor;
 
     public CrateHomePage()
     {
         InitializeComponent();
+        HomeModes.PlaceFeedbackIn(ModeFeedback);
         timer = DispatcherQueue.CreateTimer();
         timer.Interval = TimeSpan.FromSeconds(1);
         timer.Tick += (_, _) => Refresh();
@@ -40,11 +40,29 @@ public sealed partial class CrateHomePage : Page
         UiActivity.Track(this, timer, Refresh);
     }
 
+    private void OnOverviewSizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        var narrow = e.NewSize.Width < 920;
+        if (stacked == narrow) return;
+
+        stacked = narrow;
+        Grid.SetColumnSpan(Hero, narrow ? 2 : 1);
+        Grid.SetColumn(MonitorArea, narrow ? 0 : 1);
+        Grid.SetColumnSpan(MonitorArea, narrow ? 2 : 1);
+        Grid.SetRow(MonitorArea, narrow ? 1 : 0);
+        Grid.SetColumn(ModeFeedback, narrow ? 0 : 1);
+        Grid.SetColumnSpan(ModeFeedback, narrow ? 2 : 1);
+        Grid.SetRow(ModeFeedback, narrow ? 2 : 1);
+        OverviewColumns.ColumnSpacing = narrow ? 0 : 44;
+        MonitorArea.Margin = new Thickness(0, narrow ? 30 : 0, 0, 0);
+        LaptopImage.Height = narrow ? 198 : 214;
+    }
+
     private void AnimateEntrance()
     {
         if (!CrateAppearance.AnimationsEnabled) return;
         var motion = new Microsoft.UI.Xaml.Media.Animation.Storyboard();
-        foreach (var panel in new[] { Hero, MonitorArea })
+        foreach (var panel in new[] { Hero, MonitorArea, ModeFeedback })
         {
             var fade = new Microsoft.UI.Xaml.Media.Animation.DoubleAnimation
             {
@@ -61,11 +79,14 @@ public sealed partial class CrateHomePage : Page
     private void Refresh()
     {
         var preview = App.Current.Options.Preview;
-        Model.Text = preview ? "Acer Crate" : session.DeviceName ?? "Acer Nitro";
+        var device = session.DeviceName ?? (preview ? "Acer Nitro AN515-58" : null);
+        Model.Text = (device ?? "Acer Nitro").ToUpperInvariant();
         CpuName.Text = session.CpuName ?? "";
         GpuName.Text = session.GpuName ?? "";
+        CpuName.Visibility = CpuName.Text.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+        GpuName.Visibility = GpuName.Text.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
         timer.Interval = TimeSpan.FromSeconds(Math.Clamp(settings.Current.Ui.UiRefreshSeconds, 1, 3));
-        _ = UpdateArtworkAsync();
+        _ = UpdateArtworkAsync(device);
         var sample = session.Latest;
         bool fresh = sample is not null && DateTime.UtcNow - sample.Timestamp.ToUniversalTime() < TimeSpan.FromSeconds(6);
         CpuLoad.Text = fresh ? monitor.CpuLoadText : "—";
@@ -74,8 +95,11 @@ public sealed partial class CrateHomePage : Page
         GpuTemp.Text = fresh ? monitor.GpuTemperatureText : "—";
         CpuLoadBar.Value = fresh ? sample!.CpuLoad ?? 0 : 0;
         GpuLoadBar.Value = fresh ? sample!.GpuLoad ?? 0 : 0;
+        CpuTemperatureBar.Value = fresh ? sample!.CpuTemperature ?? 0 : 0;
+        GpuTemperatureBar.Value = fresh ? sample!.GpuTemperature ?? 0 : 0;
         Supply.Text = fresh ? sample!.OnAcPower ? T("Сеть") : T("Батарея") : "—";
         GpuState.Text = fresh ? sample!.GpuAsleep ? T("Простой") : T("Активна") : "—";
+        GpuVoltage.Text = fresh && sample!.GpuVoltage is { } volts ? $"{volts:0.000} {T("В")}" : "—";
         if (preview) return;
         var memory = new MemoryStatus { Size = (uint)Marshal.SizeOf<MemoryStatus>() };
         if (GlobalMemoryStatusEx(ref memory) && memory.Total > 0)
@@ -101,7 +125,6 @@ public sealed partial class CrateHomePage : Page
             {
                 ulong total = 0, free = 0;
                 var names = new List<string>();
-                var items = new List<(string Name, ulong Used, ulong Total)>();
                 foreach (var disk in DriveInfo.GetDrives())
                 {
                     try
@@ -113,40 +136,15 @@ public sealed partial class CrateHomePage : Page
                         total += (ulong)size;
                         free += (ulong)Math.Clamp(available, 0, size);
                         names.Add(disk.Name.TrimEnd('\\'));
-                        items.Add((disk.Name.TrimEnd('\\'), (ulong)(size - available), (ulong)size));
                     }
                     catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { }
                 }
-                return (Total: total, Free: free, Names: string.Join(" + ", names), Items: items);
+                return (Total: total, Free: free, Names: string.Join(" + ", names));
             });
             Disk.Text = totals.Total > 0 ? Capacity(totals.Total - totals.Free, totals.Total) + $" · {100.0 * (totals.Total - totals.Free) / totals.Total:0}%" : "—";
             DiskBar.Value = totals.Total > 0 ? 100.0 * (totals.Total - totals.Free) / totals.Total : 0;
             DiskLabel.Text = totals.Total > 0 ? T("Диски · ") + totals.Names : T("Локальные диски");
-            if (!driveRows.Select(row => row.Name).SequenceEqual(totals.Items.Select(drive => drive.Name)))
-            {
-                DriveDetails.Children.Clear();
-                driveRows.Clear();
-                foreach (var drive in totals.Items)
-                {
-                    var row = new StackPanel { Spacing = 6 };
-                    var caption = new TextBlock { FontSize = 12 };
-                    var bar = new PinnedProgressBar
-                    {
-                        Minimum = 0, Maximum = 100, Height = 3, CornerRadius = new CornerRadius(0),
-                        Foreground = (Microsoft.UI.Xaml.Media.Brush)Application.Current.Resources["CrateAccent"]
-                    };
-                    row.Children.Add(caption);
-                    row.Children.Add(bar);
-                    driveRows.Add((drive.Name, row, caption, bar));
-                    DriveDetails.Children.Add(row);
-                }
-            }
-            for (var i = 0; i < totals.Items.Count; i++)
-            {
-                var drive = totals.Items[i];
-                driveRows[i].Caption.Text = drive.Name + " · " + Capacity(drive.Used, drive.Total) + $" · {100.0 * drive.Used / drive.Total:0}%";
-                driveRows[i].Bar.Value = 100.0 * drive.Used / drive.Total;
-            }
+
         }
         catch (IOException) { Disk.Text = "—"; DiskBar.Value = 0; }
         finally { readingDisks = false; }
@@ -155,20 +153,21 @@ public sealed partial class CrateHomePage : Page
     private void OnSettingsChanged(AcerCrate.Core.Settings.UserSettings _) =>
         DispatcherQueue.TryEnqueue(() => { if (IsLoaded && App.Current.IsWindowVisible) Refresh(); });
 
-    private async Task UpdateArtworkAsync()
+    private async Task UpdateArtworkAsync(string? device)
     {
         var ui = settings.Current.Ui;
-        var key = (ui.CustomLaptopImage, ui.ArtworkModelQuery, session.DeviceName, ui.DownloadModelArtwork);
+        var key = (ui.CustomLaptopImage, ui.ArtworkModelQuery, device, ui.DownloadModelArtwork);
         if (artworkKey == key) return;
         artworkKey = key;
         var request = ++artworkRequest;
-        var path = await ModelArtwork.ResolveAsync(ui, session.DeviceName);
+        var path = await ModelArtwork.ResolveAsync(ui, device);
         if (request != artworkRequest || !IsLoaded) return;
+        var match = string.IsNullOrWhiteSpace(ui.CustomLaptopImage) ? ModelArtwork.Match(ui.ArtworkModelQuery ?? device) : null;
+        var familyCaption = match is { IsExact: false }
+            ? CrateUi.L("Series illustration · configuration may differ", "Изображение серии · комплектация может отличаться") : "";
         if (path == lastArtwork)
         {
-            if (LaptopImage.Source is not null)
-                ArtworkStatus.Text = ModelArtwork.Match(ui.ArtworkModelQuery ?? session.DeviceName) is { IsExact: false } && string.IsNullOrWhiteSpace(ui.CustomLaptopImage)
-                    ? AcerCrate.App.Controls.CrateUi.L("Series illustration · configuration may differ", "Изображение серии · комплектация может отличаться") : "";
+            SetArtworkCaption(!LaptopImage.HasPhoto ? T("Изображение можно выбрать в настройках") : familyCaption);
             return;
         }
         lastArtwork = path;
@@ -178,23 +177,24 @@ public sealed partial class CrateHomePage : Page
                 ? await Pictures.FromBytesAsync(await File.ReadAllBytesAsync(path), 520)
                 : null;
             if (request != artworkRequest) return;
-            LaptopImage.Source = image;
-            LaptopImage.Visibility = image is not null ? Visibility.Visible : Visibility.Collapsed;
-            var match = string.IsNullOrWhiteSpace(ui.CustomLaptopImage) ? ModelArtwork.Match(ui.ArtworkModelQuery ?? session.DeviceName) : null;
-            ArtworkStatus.Text = image is null ? T("Изображение можно выбрать в настройках")
-                : match is { IsExact: false } ? AcerCrate.App.Controls.CrateUi.L("Series illustration · configuration may differ", "Изображение серии · комплектация может отличаться") : "";
+            LaptopImage.Show(image, match?.Entry.Framing, match?.Entry.Title ?? device);
+            SetArtworkCaption(image is null ? T("Изображение можно выбрать в настройках") : familyCaption);
         }
-        catch (IOException)
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             if (request != artworkRequest) return;
-            LaptopImage.Visibility = Visibility.Collapsed;
-            ArtworkStatus.Text = T("Выберите другое изображение в настройках");
+            LaptopImage.Show(null, null, null);
+            SetArtworkCaption(T("Выберите другое изображение в настройках"));
         }
     }
 
-    private static string Rpm(int? rpm) => rpm is {} speed ? F("{0:N0} об/мин", speed) : "—";
+    private void SetArtworkCaption(string caption)
+    {
+        ArtworkStatus.Text = caption;
+        ArtworkStatus.Visibility = caption.Length > 0 ? Visibility.Visible : Visibility.Collapsed;
+    }
+
     private static string Capacity(ulong used, ulong total) => F("{0:0.#} / {1:0.#} ГиБ", used / 1073741824.0, total / 1073741824.0);
-    private void OpenLighting(object sender, RoutedEventArgs e) => Navigate("lighting");
     private void OpenCooling(object sender, RoutedEventArgs e) => Navigate("fans");
     private void OpenMonitoring(object sender, RoutedEventArgs e) => Navigate("monitoring");
     private static void Navigate(string page) => App.Current.Services.GetRequiredService<NavigationService>().Navigate(page);

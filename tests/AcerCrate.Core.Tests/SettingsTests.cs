@@ -80,7 +80,7 @@ public sealed class SettingsTests : IDisposable
         var loaded = new SettingsStore<MachineSettings>(SettingsPath).Load();
 
         Assert.Equal(FanControlMode.Max, loaded.Profile.Mode);
-        Assert.True(loaded.Profile.AutoBoost);
+        Assert.False(loaded.Profile.AutoBoost);
         Assert.Equal(AntiThrottle.Cpu(ThermalLimits.IntelCpuDefault), loaded.Profile.CurveFor(FanId.Cpu).Curve);
     }
 

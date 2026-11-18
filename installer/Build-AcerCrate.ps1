@@ -1,11 +1,12 @@
-﻿param([switch]$SkipPublish,[string]$MakeNsis,[switch]$PrepareOnly)
+﻿param([switch]$SkipPublish,[string]$MakeNsis,[switch]$PrepareOnly,[string]$OutputDirectory)
 $ErrorActionPreference = 'Stop'
 $root = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 . (Join-Path $PSScriptRoot 'Use-BuildEnvironment.ps1')
-$output = Join-Path $root '.acercrate-dev\outputs'
+$output = if ($OutputDirectory) { [IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $root '.acercrate-dev\outputs' }
 New-Item -ItemType Directory -Path $output -Force | Out-Null
 $publish = Join-Path $output 'AcerCrate'
-$build = Join-Path $root '.acercrate-dev\packaging'
+$defaultBuild = Join-Path $root '.acercrate-dev\packaging'
+$build = if ($OutputDirectory) { Join-Path $output 'packaging' } else { $defaultBuild }
 New-Item -ItemType Directory -Path $build -Force | Out-Null
 $version = ([xml](Get-Content -LiteralPath (Join-Path $root 'Directory.Build.props') -Raw)).Project.PropertyGroup.Version
 if (-not $SkipPublish) {
@@ -30,7 +31,7 @@ if (-not $MakeNsis) {
     if ($command) { $MakeNsis = $command.Source }
 }
 if (-not $MakeNsis) {
-    $tools = Join-Path $build 'tools'
+    $tools = Join-Path $defaultBuild 'tools'
     $MakeNsis = Join-Path $tools 'nsis-3.13\makensis.exe'
     if (-not (Test-Path -LiteralPath $MakeNsis)) {
         New-Item -ItemType Directory -Path $tools -Force | Out-Null

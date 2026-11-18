@@ -61,11 +61,6 @@
 
             <InfoBar IsClosable="False" IsOpen="{x:Bind Fans.IsLocked, Mode=OneWay}" Visibility="{x:Bind Fans.IsLocked, Mode=OneWay}" Message="{x:Bind Fans.LockReason, Mode=OneWay}" Severity="Informational" />
 
-            <!-- Auto: the firmware, boosted along a fixed curve when it gets hot (full speed where Custom speeds are the fans' own) -->
-            <toolkit:SettingsCard x:Uid="Fans_AutoBoost" Description="{x:Bind Fans.AutoBoostDescription, Mode=OneWay}" HeaderIcon="{ui:FontIcon Glyph=}" Visibility="{x:Bind Fans.IsAuto, Mode=OneWay}">
-                <ToggleSwitch IsEnabled="{x:Bind Fans.ManualAllowed, Mode=OneWay}" IsOn="{x:Bind Fans.AutoBoostEnabled, Mode=TwoWay}" />
-            </toolkit:SettingsCard>
-
             <!-- CoolBoost raises the firmware's own speed: Auto uses it, Custom adds to it (unless Custom speeds are the fans' own) -->
             <toolkit:SettingsCard Description="{x:Bind Fans.CoolBoostDescription, Mode=OneWay}" Header="CoolBoost" HeaderIcon="{ui:FontIcon Glyph=}" Visibility="{x:Bind Fans.ShowCoolBoost, Mode=OneWay}">
                 <ToggleSwitch IsEnabled="{x:Bind Fans.ManualAllowed, Mode=OneWay}" IsOn="{x:Bind Fans.CoolBoost, Mode=TwoWay}" />

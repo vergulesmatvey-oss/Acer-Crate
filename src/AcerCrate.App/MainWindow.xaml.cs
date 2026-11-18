@@ -57,8 +57,8 @@ public sealed partial class MainWindow : Window
         ApplyCustomization();
         settings.Changed += _ => DispatcherQueue.TryEnqueue(ApplyCustomization);
         Nav.PaneOpened += (_, _) => AnimateSidebarItem(Nav.SelectedItem as NavigationViewItem);
-        Nav.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, (_, _) => UpdateSidebarDivider());
-        UpdateSidebarDivider();
+        Nav.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, (_, _) => UpdateSidebar());
+        UpdateSidebar();
 
 
         ApplyTheme(settingsPage.Theme);
@@ -206,8 +206,12 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void UpdateSidebarDivider() =>
+    private void UpdateSidebar()
+    {
         SidebarDivider.Margin = new Thickness(Nav.IsPaneOpen ? Nav.OpenPaneLength : Nav.CompactPaneLength, 0, 0, 0);
+        foreach (var item in Nav.MenuItems.Concat(Nav.FooterMenuItems).OfType<AcerCrate.App.Controls.CrateNavItem>())
+            item.SetCompact(!Nav.IsPaneOpen);
+    }
 
     private static void AnimateSidebarItem(NavigationViewItem? item)
     {

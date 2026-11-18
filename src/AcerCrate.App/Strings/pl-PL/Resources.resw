@@ -373,9 +373,6 @@
     <value>Ręczny</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Oprogramowanie układowe laptopa zarządza wentylatorami; Acer Crate może dodać prędkości, gdy robi się gorąco.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Wszystkie wentylatory z pełną prędkością.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Wentylatory</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Ochrona przed dławieniem</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Dodaje prędkość do prędkości oprogramowania układowego, gdy układy się nagrzewają, i osiąga pełną prędkość w temperaturze, w której procesor zaczyna dławić wydajność.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Uruchamia wentylatory z pełną prędkością, gdy układy zbliżają się do temperatury, w której zaczynają dławić wydajność.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Podnosi własne prędkości wentylatorów oprogramowania układowego, z których korzysta tryb Auto i do których tryb Ręczny dodaje prędkość.</value>

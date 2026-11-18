@@ -16,13 +16,14 @@ internal sealed unsafe class WindowsGpuSensor : ITemperatureSensor
     private readonly string _hardwareId;
     private uint _adapter;
     private long _nextReopen;
+    private long _nextVoltageQuery;
 
     private WindowsGpuSensor(string hardwareId) => _hardwareId = hardwareId;
 
     public SensorStatus Status { get; } = new(ChipSensor.GraphicsDriver);
 
     /// <summary>Opens the GPU's adapter in Windows' graphics kernel, without asking the GPU anything.</summary>
-    public static ITemperatureSensor? TryOpen(GpuAdapter gpu, Action<SensorProblem, string?>? fail = null)
+    public static WindowsGpuSensor? TryOpen(GpuAdapter gpu, Action<SensorProblem, string?>? fail = null)
     {
         var sensor = new WindowsGpuSensor(gpu.PnpHardwareId);
         var status = sensor.Open(gpu);
@@ -51,6 +52,25 @@ internal sealed unsafe class WindowsGpuSensor : ITemperatureSensor
             return null;
         }
         return perf.Temperature > 0 ? perf.Temperature / 10.0 : null;
+    }
+
+    public double? ReadVoltage()
+    {
+        var now = Environment.TickCount64;
+        if (now < _nextVoltageQuery || (_adapter == 0 && !Reopen())) return null;
+
+        D3DKMT_NODE_PERFDATA perf = default;
+        var query = new D3DKMT_QUERYADAPTERINFO
+        {
+            hAdapter = _adapter,
+            Type = KMTQUERYADAPTERINFOTYPE.KMTQAITYPE_NODEPERFDATA,
+            pPrivateDriverData = &perf,
+            PrivateDriverDataSize = (uint)sizeof(D3DKMT_NODE_PERFDATA),
+        };
+        if (Succeeded(D3DKMTQueryAdapterInfo(&query)) && perf.Voltage is >= 100 and <= 3000)
+            return perf.Voltage / 1000.0;
+        _nextVoltageQuery = now + (long)ReopenInterval.TotalMilliseconds;
+        return null;
     }
 
     private NTSTATUS Open(GpuAdapter gpu)

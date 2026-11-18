@@ -373,9 +373,6 @@
     <value>Custom</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>The laptop's firmware manages the fans; Acer Crate can add speed when it gets hot.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>All fans at full speed.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Fans</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Anti-throttle</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Adds speed on top of the firmware's as the chips heat up, reaching full speed at the temperature where the processor starts to throttle.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Runs the fans at full speed as the chips near the temperature where they start to throttle.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Raises the firmware's own fan speeds, which Auto uses and Custom adds to.</value>

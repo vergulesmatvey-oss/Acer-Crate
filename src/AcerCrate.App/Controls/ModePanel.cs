@@ -21,8 +21,20 @@ public sealed class ModePanel : StackPanel
     private readonly TextBlock selected = Label();
     private readonly TextBlock actual = Label();
     private readonly TextBlock windows = Label();
+    private readonly StackPanel feedback = new() { Spacing = 9 };
     private readonly List<Button> buttons = [];
     private readonly List<Border> selectionLayers = [];
+    private readonly Border selectorRule = new()
+    {
+        Height = 1, VerticalAlignment = VerticalAlignment.Bottom, IsHitTestVisible = false,
+        Opacity = .65, Visibility = Visibility.Collapsed,
+    };
+
+    public bool ShowSelectionRule
+    {
+        get => selectorRule.Visibility == Visibility.Visible;
+        set => selectorRule.Visibility = value ? Visibility.Visible : Visibility.Collapsed;
+    }
     private TextBlock? personalLabel;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer timer;
     private readonly Dictionary<Button, bool> highlights = [];
@@ -32,19 +44,22 @@ public sealed class ModePanel : StackPanel
 
     public ModePanel()
     {
-        MaxWidth = 660;
+        MaxWidth = 960;
         HorizontalAlignment = HorizontalAlignment.Stretch;
-        Spacing = 7;
-        Children.Add(new TextBlock { Text = T("Режим работы"), FontSize = 13, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
-        var selector = new Grid { MinWidth = 460, MaxWidth = 660 };
+        Spacing = 9;
+        Children.Add(new TextBlock { Text = T("Режим работы"), FontSize = 15, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
+        var selector = new Grid { ColumnSpacing = 5 };
         string[] titles = [T("Тихий"), T("Баланс"), T("Производительность"), ModeTitle(settings.Current.PersonalMode.Name)];
         string[] glyphs = ["\uE708", "\uE945", "\uE7C1", "\uE713"];
+        selectorRule.Background = (Brush)Application.Current.Resources["CrateMeterTrack"];
+        Grid.SetColumnSpan(selectorRule, titles.Length);
+        selector.Children.Add(selectorRule);
         for (var i = 0; i < titles.Length; i++)
         {
             selector.ColumnDefinitions.Add(new ColumnDefinition());
-            var content = new StackPanel { Spacing = 6, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(12, 7, 12, 7) };
+            var content = new StackPanel { Spacing = 6, HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(5, 8, 5, 8) };
             content.Children.Add(new FontIcon { Glyph = glyphs[i], FontSize = 20 });
-            var label = new TextBlock { Text = titles[i], FontSize = 12, TextWrapping = TextWrapping.Wrap, TextAlignment = TextAlignment.Center, MaxLines = 2, TextTrimming = TextTrimming.CharacterEllipsis };
+            var label = new TextBlock { Text = titles[i], FontSize = 11, TextWrapping = TextWrapping.Wrap, TextAlignment = TextAlignment.Center, MaxLines = 2, TextTrimming = TextTrimming.CharacterEllipsis };
             content.Children.Add(label);
             if (i == 3) personalLabel = label;
             var highlight = new Border { IsHitTestVisible = false, BorderThickness = new Thickness(0, 0, 0, 2) };
@@ -55,12 +70,11 @@ public sealed class ModePanel : StackPanel
             layers.Children.Add(content);
             var button = new Button
             {
-                Content = layers, Tag = i, MinHeight = 64, Padding = new Thickness(0),
+                Content = layers, Tag = i, MinHeight = 68, Padding = new Thickness(0),
                 Style = (Style)Application.Current.Resources["ModeButtonStyle"],
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
-                BorderBrush = new SolidColorBrush(Color.FromArgb(90, 128, 128, 128)),
-                CornerRadius = new CornerRadius(2), BorderThickness = new Thickness(0, 0, 0, 2)
+                CornerRadius = new CornerRadius(2), BorderThickness = new Thickness(0)
             };
             Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(button, titles[i]);
             button.Click += Choose;
@@ -69,16 +83,17 @@ public sealed class ModePanel : StackPanel
             buttons.Add(button);
         }
         Children.Add(selector);
-        Children.Add(status);
+        feedback.Children.Add(status);
         var details = new StackPanel { Spacing = 5 };
         details.Children.Add(selected);
         details.Children.Add(actual);
         details.Children.Add(windows);
-        Children.Add(new Expander
+        feedback.Children.Add(new Expander
         {
             Header = T("Состояние устройства"), Content = details, IsExpanded = false,
             HorizontalAlignment = HorizontalAlignment.Stretch, Padding = new Thickness(0)
         });
+        Children.Add(feedback);
         timer = DispatcherQueue.CreateTimer();
         timer.Tick += (_, _) => Refresh();
         UiActivity.Track(this, timer, Refresh);
@@ -93,6 +108,13 @@ public sealed class ModePanel : StackPanel
             settings.Changed -= OnSettingsChanged;
             StopSelectionAnimations();
         };
+    }
+
+    // The home layout aligns at the selector and places its feedback on the next grid row.
+    internal void PlaceFeedbackIn(Panel host)
+    {
+        if (Children.Remove(feedback))
+            host.Children.Add(feedback);
     }
 
     private void OnSettingsChanged(AcerCrate.Core.Settings.UserSettings _) => DispatcherQueue.TryEnqueue(() =>
@@ -151,12 +173,15 @@ public sealed class ModePanel : StackPanel
         actual.Text = T("Прошивка · ") + (telemetry?.OperatingMode is {} native ? AcerCrate.App.Localization.Names.OperatingMode(native) : T("ожидание данных"));
         var activeScheme = telemetry?.ActivePowerScheme;
         var scheme = Enumerable.Range(0, 3).FirstOrDefault(i => ModePowerSchemes.Id((LaptopMode)i) == activeScheme, -1);
-        windows.Text = "Windows · " + (scheme >= 0 ? "Acer Crate — " + names[scheme] : T("другая схема"));
+        windows.Text = "Windows · " + (scheme >= 0 ? "Acer Crate — " + names[scheme] :
+            activeScheme == ProcessorPowerLimit.SchemeId ? T("Ограничение процессора") : T("другая схема"));
         var fresh = telemetry is not null && DateTime.UtcNow - telemetry.Timestamp.ToUniversalTime() < TimeSpan.FromSeconds(7);
         status.Text = error ?? (App.Current.Options.Preview ? T("Просмотр интерфейса") :
             applying ? T("Применение…") :
             !fresh ? T("Ожидание связи с устройством") :
             telemetry!.PowerSchemeError is {} schemeError ? T(schemeError) :
+            telemetry.ThermalPowerProtection ? T("Защита от перегрева · предел CPU 5%") :
+            telemetry.ProcessorLimitPercent is { } limit ? F("Предел процессора {0}% · турбо отключено", limit) :
             telemetry.Failsafe ? T("Охлаждением управляет прошивка") :
             !telemetry.ControlConfirmed || telemetry.AppliedProfile is not {} applied || !AcerCrate.Core.Settings.PersonalMode.Equivalent(applied, profile) ? T("Параметры пока не подтверждены") :
             profile.OperatingMode is null ? T("Программный профиль") :
@@ -167,7 +192,8 @@ public sealed class ModePanel : StackPanel
         if (accent != lastAccent) { highlights.Clear(); lastAccent = accent; }
         for (var i = 0; i < buttons.Count; i++)
         {
-            var active = i == 3 ? personalSelected : !personalSelected && profile.LaptopMode == (LaptopMode)i;
+            var active = App.Current.Options.Preview && ShowSelectionRule ? i == (int)LaptopMode.Quiet :
+                i == 3 ? personalSelected : !personalSelected && profile.LaptopMode == (LaptopMode)i;
             if (!highlights.TryGetValue(buttons[i], out var previous) || previous != active)
             {
                 var initialized = highlights.ContainsKey(buttons[i]);

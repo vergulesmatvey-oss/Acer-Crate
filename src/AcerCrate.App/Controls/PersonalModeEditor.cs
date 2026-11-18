@@ -15,7 +15,15 @@ public sealed partial class PersonalModeEditor : UserControl
     private readonly TextBox name = new() { Header = T("Название вашего режима"), MaxLength = 32 };
     private readonly ComboBox basis = new() { Header = T("Штатная основа"), ItemsSource = new[] { T("Тихий"), T("Баланс"), T("Производительность") }, HorizontalAlignment = HorizontalAlignment.Stretch };
     private readonly ComboBox cooling = new() { Header = T("Охлаждение"), ItemsSource = new[] { T("Автоматика"), T("Максимум"), T("Ручное") }, HorizontalAlignment = HorizontalAlignment.Stretch };
-    private readonly ToggleSwitch autoBoost = new() { Header = T("Усиление автоматики при нагреве") };
+    private readonly NumberBox processorLimit = new()
+    {
+        Header = T("Предел процессора, %"),
+        Minimum = ProcessorPowerLimit.MinimumPercent,
+        Maximum = 100,
+        SmallChange = 1,
+        LargeChange = 10,
+        SpinButtonPlacementMode = NumberBoxSpinButtonPlacementMode.Inline,
+    };
     private readonly ToggleSwitch coolBoost = new() { Header = "CoolBoost" };
     private readonly ToggleSwitch includeLighting = new() { Header = T("Сохранить текущую подсветку") };
     private readonly ToggleSwitch includePower = new() { Header = T("Сохранить настройки зарядки и USB-питания") };
@@ -32,7 +40,9 @@ public sealed partial class PersonalModeEditor : UserControl
         name.Text = saved.Name; panel.Children.Add(name);
         basis.SelectedIndex = (int)(saved.Profile?.LaptopMode ?? LaptopMode.Balanced); panel.Children.Add(basis);
         cooling.SelectedIndex = (int)draft.Mode; panel.Children.Add(cooling);
-        autoBoost.IsOn = draft.AutoBoost; panel.Children.Add(autoBoost);
+        processorLimit.Value = draft.ProcessorLimitPercent ?? 100;
+        panel.Children.Add(processorLimit);
+        panel.Children.Add(CrateUi.Text(T("100% использует настройки штатной схемы. При меньшем пределе турбо отключается. Напряжением управляет прошивка."), 12, .65));
         coolBoost.IsOn = draft.CoolBoost == true; coolBoost.Visibility = session.Capabilities.CoolBoost ? Visibility.Visible : Visibility.Collapsed; panel.Children.Add(coolBoost);
         foreach (var fan in session.Capabilities.ControllableFans)
         {
@@ -63,7 +73,8 @@ public sealed partial class PersonalModeEditor : UserControl
         {
             draft = session.Settings.Profile;
             basis.SelectedIndex = (int)(draft.LaptopMode ?? LaptopMode.Balanced); cooling.SelectedIndex = (int)draft.Mode;
-            autoBoost.IsOn = draft.AutoBoost; coolBoost.IsOn = draft.CoolBoost == true;
+            processorLimit.Value = draft.ProcessorLimitPercent ?? 100;
+            coolBoost.IsOn = draft.CoolBoost == true;
             foreach (var row in rows) { row.Percent.Value = draft.ManualFor(row.Id).Percent; row.Curve.IsOn = draft.ManualFor(row.Id).UseCurve; }
             Refresh(); message.Text = T("Текущие параметры скопированы в редактор.");
         };
@@ -86,9 +97,8 @@ public sealed partial class PersonalModeEditor : UserControl
     private void Refresh()
     {
         var quiet = basis.SelectedIndex == (int)LaptopMode.Quiet;
-        if (quiet) { cooling.SelectedIndex = 0; autoBoost.IsOn = false; }
+        if (quiet) cooling.SelectedIndex = 0;
         cooling.IsEnabled = !quiet;
-        autoBoost.Visibility = !quiet && cooling.SelectedIndex == 0 ? Visibility.Visible : Visibility.Collapsed;
         coolBoost.Visibility = !quiet && session.Capabilities.CoolBoost ? Visibility.Visible : Visibility.Collapsed;
         foreach (var row in rows) { row.Row.Visibility = !quiet && cooling.SelectedIndex == 2 ? Visibility.Visible : Visibility.Collapsed; row.Percent.IsEnabled = !row.Curve.IsOn; }
     }
@@ -101,7 +111,9 @@ public sealed partial class PersonalModeEditor : UserControl
             if (title.Length == 0) throw new InvalidOperationException(T("Введите название режима."));
             var profile = PersonalMode.Prepare(draft with
             {
-                Mode = (FanControlMode)Math.Clamp(cooling.SelectedIndex, 0, 2), AutoBoost = autoBoost.IsOn,
+                Mode = (FanControlMode)Math.Clamp(cooling.SelectedIndex, 0, 2),
+                ProcessorLimitPercent = double.IsFinite(processorLimit.Value) && processorLimit.Value < 100
+                    ? (int)Math.Round(processorLimit.Value) : null,
                 CoolBoost = session.Capabilities.CoolBoost ? coolBoost.IsOn : null,
                 Manual = rows.ToDictionary(r => r.Id, r => new ManualFanSetting((int)r.Percent.Value, r.Curve.IsOn))
             }, (LaptopMode)Math.Clamp(basis.SelectedIndex, 0, 2), session.Capabilities);

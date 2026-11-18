@@ -45,6 +45,17 @@ public sealed class ModelArtworkCatalogTests
         {
             Assert.Equal(Path.GetFileName(entry.File), entry.File);
             foreach (var code in entry.Models) Assert.True(models.Add(code), code);
+            var frame = Assert.IsType<ArtworkFraming>(entry.Framing);
+            Assert.Equal(4, frame.Bounds.Length);
+            Assert.All(frame.Bounds, value => Assert.InRange(value, 0d, 1d));
+            Assert.True(frame.Bounds[2] > 0 && frame.Bounds[3] > 0, entry.File);
+            Assert.InRange(frame.Bounds[0] + frame.Bounds[2], 0d, 1d);
+            Assert.InRange(frame.Bounds[1] + frame.Bounds[3], 0d, 1d);
+            if (frame.Outline is { } outline)
+            {
+                Assert.True(outline.Length >= 6 && outline.Length % 2 == 0, entry.File);
+                Assert.All(outline, value => Assert.InRange(value, 0d, 1d));
+            }
             var data = File.ReadAllBytes(Path.Combine(folder, entry.File));
             Assert.InRange(data.Length, 1000, 4 * 1024 * 1024);
             var png = data.AsSpan(0, 4).SequenceEqual(new byte[] { 137, 80, 78, 71 });

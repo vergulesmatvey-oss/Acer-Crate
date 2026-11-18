@@ -20,6 +20,8 @@ public sealed record GameEntry
 
 public static partial class GameLibrary
 {
+    public const int HomeLimit = 3;
+
     public static bool IsLauncherUri(string? value) => Uri.TryCreate(value, UriKind.Absolute, out var uri) &&
         uri.Scheme is "steam" or "com.epicgames.launcher" && !value.Any(char.IsControl);
 
@@ -33,6 +35,32 @@ public static partial class GameLibrary
     }
 
     private static string Identity(GameEntry game) => game.LaunchUri ?? Path.GetFullPath(game.Executable);
+
+    public static IReadOnlyList<GameEntry> HomeGames(UserSettings settings) => (settings.HomeGameIds ?? [])
+        .Distinct(StringComparer.Ordinal)
+        .Select(id => settings.Games.FirstOrDefault(game => game.Id == id && game.CanLaunch))
+        .OfType<GameEntry>()
+        .Take(HomeLimit)
+        .ToArray();
+
+    public static UserSettings PinToHome(UserSettings settings, GameEntry game)
+    {
+        if (!game.CanLaunch) return settings;
+        var pinned = HomeGames(settings);
+        if (pinned.Count >= HomeLimit) return settings;
+
+        var identity = Identity(game);
+        var existing = settings.Games.FirstOrDefault(entry => entry.CanLaunch &&
+            string.Equals(Identity(entry), identity, StringComparison.OrdinalIgnoreCase));
+        var entry = existing ?? game;
+        if (pinned.Any(item => item.Id == entry.Id)) return settings;
+
+        return settings with
+        {
+            Games = existing is null ? [.. settings.Games, entry] : settings.Games,
+            HomeGameIds = [.. pinned.Select(item => item.Id), entry.Id],
+        };
+    }
 
     public static GameEntry? SteamManifest(string text)
     {

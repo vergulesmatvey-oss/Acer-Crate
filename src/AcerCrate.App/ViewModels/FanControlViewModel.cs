@@ -149,14 +149,8 @@ public sealed partial class FanControlViewModel : ObservableObject
     /// fan at full speed where Anti-throttle would boost it, and CoolBoost only changes Auto.
     /// </summary>
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(ModeDescription), nameof(AutoBoostDescription), nameof(CoolBoostDescription))]
+    [NotifyPropertyChangedFor(nameof(ModeDescription), nameof(CoolBoostDescription))]
     public partial bool FixedSpeeds { get; set; }
-
-    /// <summary>Auto boosts the fans near the chips' limits (<see cref="AntiThrottle"/>).</summary>
-    [ObservableProperty]
-    public partial bool AutoBoostEnabled { get; set; } = true;
-
-    public string AutoBoostDescription => Strings.Get(FixedSpeeds ? "Fans_AutoBoostFixed" : "Fans_AutoBoost/Description");
 
     public string CoolBoostDescription => Strings.Get(FixedSpeeds ? "Fans_CoolBoostFixed" : "Fans_CoolBoost/Description");
 
@@ -254,7 +248,6 @@ public sealed partial class FanControlViewModel : ObservableObject
         OnPropertyChanged(nameof(ManualAllowed));
         FixedSpeeds = caps.FixedFanSpeeds;
         ModeIndex = (int)profile.Mode;
-        AutoBoostEnabled = profile.AutoBoost;
 
         ManualFans.Clear();
         var percentHeader = Strings.Get(caps.FixedFanSpeeds ? "Fans_SpeedFixed" : "Fans_Boost/Header");
@@ -364,7 +357,6 @@ public sealed partial class FanControlViewModel : ObservableObject
             SchedulePush();
     }
 
-    partial void OnAutoBoostEnabledChanged(bool value) => SchedulePush();
 
     partial void OnCoolBoostChanged(bool value) => SchedulePush();
 
@@ -422,7 +414,7 @@ public sealed partial class FanControlViewModel : ObservableObject
     }
 
     public CoolingPreset CapturePreset() => new(
-        Mode, AutoBoostEnabled, ManualFans.ToDictionary(f => f.Id, f => f.ToSetting()),
+        Mode, false, ManualFans.ToDictionary(f => f.Id, f => f.ToSetting()),
         ManualFans.ToDictionary(f => f.Id, f => f.Curve.ToSetting()));
 
     public async Task RestorePresetAsync(CoolingPreset preset)
@@ -439,7 +431,7 @@ public sealed partial class FanControlViewModel : ObservableObject
         var profile = current with
         {
             Mode = ModeIndex >= 0 ? Mode : current.Mode,
-            AutoBoost = AutoBoostEnabled,
+            AutoBoost = false,
             Manual = ManualFans.ToDictionary(f => f.Id, f => f.ToSetting()),
             Curves = ManualFans.ToDictionary(f => f.Id, f => f.Curve.ToSetting()),
             CoolBoost = CoolBoostAvailable ? CoolBoost : current.CoolBoost,

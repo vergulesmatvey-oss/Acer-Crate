@@ -13,7 +13,8 @@ public sealed record PersonalMode
     public LightingConfig? Lighting { get; init; }
     public PowerSettings? Power { get; init; }
 
-    public bool Matches(ControlProfile profile) => Profile is not null && Equivalent(Profile, profile);
+    public bool Matches(ControlProfile profile) => Profile is not null &&
+        Equivalent(LaptopModePolicy.Normalize(Profile), LaptopModePolicy.Normalize(profile));
 
     public static bool Equivalent<T>(T left, T right) => JsonNode.DeepEquals(
         JsonSerializer.SerializeToNode(left, SettingsJson.Options), JsonSerializer.SerializeToNode(right, SettingsJson.Options));

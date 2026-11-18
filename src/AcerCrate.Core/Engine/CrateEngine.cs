@@ -25,6 +25,7 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
 
     private readonly IMachine _machine;
     private readonly ModePowerSchemes? _modePowerSchemes;
+    private readonly ProcessorPowerLimit? _processorPowerLimit;
     private readonly ILogger<CrateEngine> _log;
     private readonly SettingsStore<MachineSettings> _store;
     private readonly SettingsStore<RuntimeState> _runtimeStore;
@@ -65,8 +66,11 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
         _settings = _store.Load().Upgrade();
         if (_settings.Profile.LaptopMode is not null)
             _settings = _settings with { Profile = _settings.LastSuccessfulProfile ?? new ControlProfile() };
+        _settings = _settings with { Profile = LaptopModePolicy.Normalize(_settings.Profile) };
         _runtimeStore = new SettingsStore<RuntimeState>(Path.Combine(Path.GetDirectoryName(settingsPath)!, "state.json"));
         _runtime = _runtimeStore.Load();
+        if (machine.ProcessorPowerPlans is { } processorPlans)
+            _processorPowerLimit = new ProcessorPowerLimit(processorPlans, _runtime.ProcessorLimitPreviousScheme, SaveProcessorLimitScheme);
         _saveTimer = new Timer(_ => Flush(), null, Timeout.Infinite, Timeout.Infinite);
     }
 
@@ -96,6 +100,7 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
             _transport = _machine.OpenFirmware();
             if (!new AcerDevice(_transport).IsPresent)
             {
+                RestoreProcessorPower();
                 _state = EngineState.Unsupported;
                 LogUnsupported();
                 return;
@@ -299,6 +304,25 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
         }
     }
 
+    private bool SaveProcessorLimitScheme(Guid? previous)
+    {
+        lock (_runtimeGate)
+        {
+            var updated = _runtime with { ProcessorLimitPreviousScheme = previous };
+            try
+            {
+                _runtimeStore.Save(updated);
+                _runtime = updated;
+                return true;
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                LogSaveFailed(ex, _runtimeStore.Path);
+                return false;
+            }
+        }
+    }
+
     private EngineSnapshot Snapshot() => new()
     {
         EngineVersion = Version,
@@ -355,19 +379,25 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
             controller.GpuOverclockApplied -= OnGpuOverclockApplied; // after: resetting the clocks clears it in state.json
         }
         _controller = null;
+        RestoreProcessorPower();
     }
+
+    private void RestoreProcessorPower()
+    {
+        if (_processorPowerLimit is { HasLease: true } limit && !limit.Apply(null).Confirmed)
+            LogProcessorPowerRestoreFailed();
+    }
+
+    [LoggerMessage(LogLevel.Warning, "Could not restore the Windows power scheme after releasing the Acer Crate processor limit.")]
+    private partial void LogProcessorPowerRestoreFailed();
 
     private void OnTelemetry(Telemetry telemetry)
     {
-        var latest = telemetry with { Battery = _powerService?.Telemetry() };
         var profile = Current.Profile;
-        if (profile.LaptopMode is {} mode && latest.AppliedProfile == profile && latest.ControlConfirmed && _modePowerSchemes is {} schemes)
-        {
-            var result = schemes.Apply(mode);
-            latest = latest with { ActivePowerScheme=result.Active, PowerSchemeError=result.Error, ControlConfirmed=latest.ControlConfirmed && result.Confirmed };
-        }
+        var latest = ApplyPowerPolicy(telemetry with { Battery = _powerService?.Telemetry() }, profile);
         _latest = latest;
-        if (profile.LaptopMode is not null && latest.AppliedProfile == profile && latest.ControlConfirmed && !latest.Failsafe && profile.Mode == latest.EffectiveMode &&
+        if (profile.LaptopMode is not null && latest.AppliedProfile == profile && latest.ControlConfirmed && !latest.Failsafe &&
+            !latest.ThermalPowerProtection && profile.Mode == latest.EffectiveMode &&
             (profile.OperatingMode is null || latest.OperatingMode == profile.OperatingMode) &&
             (profile.CoolBoost is null || latest.CoolBoost == profile.CoolBoost) &&
             latest.Fans.All(f => f.Behavior == FanBehavior.Auto || profile.Mode != FanControlMode.Auto) &&
@@ -375,6 +405,48 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
             UpdateSettings(s => s with { LastSuccessfulProfile = profile });
         NoteSensorGlitch();
         TelemetryUpdated?.Invoke(this, latest);
+    }
+
+    private Telemetry ApplyPowerPolicy(Telemetry telemetry, ControlProfile profile)
+    {
+        var personalLimit = telemetry.AppliedProfile?.ProcessorLimitPercent;
+        if (_processorPowerLimit is not { } limit)
+            return personalLimit is null ? ApplyModePowerScheme(telemetry, profile) :
+                telemetry with { ControlConfirmed = false, PowerSchemeError = "Ограничение процессора недоступно." };
+
+        var overheating = limit.Observe(telemetry.CpuTemperature, telemetry.Timestamp);
+        var percent = overheating ? ProcessorPowerLimit.MinimumPercent : personalLimit;
+        var hasLease = limit.HasLease;
+        if (percent is null && !hasLease)
+            return ApplyModePowerScheme(telemetry, profile);
+        if (!overheating && !hasLease)
+            telemetry = ApplyModePowerScheme(telemetry, profile);
+
+        var result = limit.Apply(percent);
+        telemetry = telemetry with
+        {
+            ActivePowerScheme = result.Active,
+            ProcessorLimitPercent = result.Percent,
+            ThermalPowerProtection = overheating,
+            ControlConfirmed = telemetry.ControlConfirmed && result.Confirmed,
+            PowerSchemeError = result.Confirmed ? telemetry.PowerSchemeError :
+                overheating ? "Windows не подтвердила защитное ограничение процессора." :
+                "Windows не подтвердила изменение ограничения процессора.",
+        };
+        if (percent is not null || !result.Confirmed)
+            return telemetry;
+
+        _modePowerSchemes?.Reset();
+        return ApplyModePowerScheme(telemetry, profile);
+    }
+
+    private Telemetry ApplyModePowerScheme(Telemetry telemetry, ControlProfile profile)
+    {
+        if (profile.LaptopMode is not { } mode || telemetry.AppliedProfile != profile ||
+            !telemetry.ControlConfirmed || _modePowerSchemes is not { } schemes)
+            return telemetry;
+        var result = schemes.Apply(mode);
+        return telemetry with { ActivePowerScheme = result.Active, PowerSchemeError = result.Error, ControlConfirmed = result.Confirmed };
     }
 
     private void OnNotice(ControlNotice notice)
@@ -391,7 +463,7 @@ public sealed partial class CrateEngine : ICrateService, IDisposable
         var firmware = _firmware!;
         UpdateSettings(s => s with
         {
-            Profile = firmware.ToProfile(s.Profile),
+            Profile = LaptopModePolicy.Normalize(firmware.ToProfile(s.Profile)),
             Keyboard = s.Keyboard with
             {
                 BacklightAutoOff = _keyboardAtStart?.BacklightAutoOff,

@@ -373,9 +373,6 @@
     <value>Manuel</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Le firmware de l’ordinateur portable gère les ventilateurs ; Acer Crate peut ajouter de la vitesse quand il chauffe.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Tous les ventilateurs à pleine vitesse.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Ventilateurs</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Anti-bridage</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Ajoute de la vitesse à celle du firmware à mesure que les puces chauffent, jusqu’à la pleine vitesse à la température où le processeur commence à brider ses performances.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Fait tourner les ventilateurs à pleine vitesse quand les puces approchent de la température où elles commencent à brider leurs performances.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Augmente les vitesses propres des ventilateurs gérées par le firmware, qu’utilise le mode Auto et auxquelles le mode Manuel ajoute de la vitesse.</value>

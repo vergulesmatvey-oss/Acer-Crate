@@ -262,10 +262,10 @@ public class FanControlServiceTests
     }
 
     [Fact]
-    public void Auto_boosts_only_when_hot()
+    public void Legacy_auto_boost_setting_leaves_hot_fans_to_the_firmware()
     {
         var now = new DateTime(2026, 9, 24, 12, 0, 0, DateTimeKind.Utc);
-        var (service, fw, _) = Create(new ControlProfile(), clock: () => now);
+        var (service, fw, _) = Create(new ControlProfile { AutoBoost = true }, clock: () => now);
 
         fw.CpuTemp = 60;
         fw.GpuTemp = 50;
@@ -274,12 +274,13 @@ public class FanControlServiceTests
         Assert.Equal(FanBehavior.Auto, fw.Behavior[3]);
         Assert.Empty(fw.Speed);
 
-        fw.CpuTemp = 91; // half way from 88 to 94 °C, for TjMax 100 °C
+        fw.CpuTemp = 100;
+        fw.GpuTemp = 86;
         now += FanControlService.CurveInterval;
         service.Tick();
-        Assert.Equal(FanBehavior.Custom, fw.Behavior[0]);
-        Assert.Equal(50, fw.Speed[1]);
-        Assert.Equal(FanBehavior.Auto, fw.Behavior[3]); // the GPU fan follows the GPU, still cool
+        Assert.Equal(FanBehavior.Auto, fw.Behavior[0]);
+        Assert.Equal(FanBehavior.Auto, fw.Behavior[3]);
+        Assert.Empty(fw.Speed);
     }
 
     [Fact]
@@ -292,7 +293,7 @@ public class FanControlServiceTests
         fw.CpuTemp = 91;
         fw.GpuTemp = 50;
         service.Tick();
-        Assert.Equal(FanBehavior.Max, fw.Behavior[0]);
+        Assert.Equal(FanBehavior.Auto, fw.Behavior[0]);
         Assert.Equal(FanBehavior.Auto, fw.Behavior[3]);
 
         service.Update(new ControlProfile
@@ -310,32 +311,28 @@ public class FanControlServiceTests
     }
 
     [Fact]
-    public void Auto_boosts_by_the_limits_the_chips_report()
+    public void Telemetry_carries_the_limits_the_chips_report()
     {
         var cpu = new FakeCpuSensor { Temperature = 89, Limit = 92 }; // a TCC offset of 8 °C: full speed from 86 °C
         var gpu = new FakeGpuSensor { Temperature = 80, Limit = 83 };
         var sensors = new DirectSensors(cpu, gpu, new FakeGpuPowerState { On = true }, cpu.Status, gpu.Status);
-        var (service, fw, _) = Create(new ControlProfile(), sensors: sensors);
+        var (service, _, _) = Create(new ControlProfile(), sensors: sensors);
 
         service.Tick();
 
-        Assert.Equal(100, fw.Speed[1]);
-        Assert.Equal(50, fw.Speed[4]); // 3 °C under the GPU's limit
         Assert.Equal(new ThermalLimits(92, 83), service.Latest!.Limits);
     }
 
     [Fact]
-    public void Without_reported_limits_auto_goes_by_the_usual_ones()
+    public void Without_reported_limits_telemetry_carries_the_defaults()
     {
         var gpu = new FakeGpuSensor { Temperature = 84 };
         var sensors = new DirectSensors(new FakeCpuSensor { Temperature = 89 }, gpu, new FakeGpuPowerState { On = true }, SensorStatus.NotUsed, gpu.Status,
             cpuDefaultLimit: ThermalLimits.AmdCpuDefault);
-        var (service, fw, _) = Create(new ControlProfile(), sensors: sensors);
+        var (service, _, _) = Create(new ControlProfile(), sensors: sensors);
 
         service.Tick();
 
-        Assert.Equal(100, fw.Speed[1]); // AMD's lowest limit, 95 °C: full speed from 89 °C
-        Assert.Equal(50, fw.Speed[4]); // NVIDIA's 87 °C
         Assert.Equal(new ThermalLimits(ThermalLimits.AmdCpuDefault, ThermalLimits.GpuDefault), service.Latest!.Limits);
     }
 

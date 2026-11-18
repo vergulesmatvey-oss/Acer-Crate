@@ -373,9 +373,6 @@
     <value>Tùy chỉnh</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Chương trình cơ sở của máy quản lý quạt; Acer Crate có thể tăng thêm tốc độ khi máy nóng.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Tất cả quạt chạy hết tốc độ.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Quạt</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Chống bóp xung</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Cộng thêm tốc độ vào tốc độ của chương trình cơ sở khi chip nóng lên, và đạt hết tốc độ ở nhiệt độ mà bộ xử lý bắt đầu tự giảm hiệu năng.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Cho quạt chạy hết tốc độ khi chip gần tới nhiệt độ mà chúng bắt đầu tự giảm hiệu năng.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Tăng tốc độ quạt riêng của chương trình cơ sở, vốn được chế độ Tự động sử dụng và được chế độ Tùy chỉnh cộng thêm.</value>

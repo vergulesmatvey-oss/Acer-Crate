@@ -6,9 +6,10 @@
         <ResourceDictionary x:Key="Default">
             <SolidColorBrush x:Key="CrateRail" Color="#0C0F0F" />
             <SolidColorBrush x:Key="CrateSurface" Color="#000000" />
-            <SolidColorBrush x:Key="CrateCard" Color="#101616" />
-            <SolidColorBrush x:Key="CrateCardStroke" Color="#242B2A" />
+            <SolidColorBrush x:Key="CrateCard" Color="#111414" />
+            <SolidColorBrush x:Key="CrateCardStroke" Color="#272C2B" />
             <SolidColorBrush x:Key="CrateRule" Color="#353A39" />
+            <SolidColorBrush x:Key="CrateMeterTrack" Color="#535958" />
             <SolidColorBrush x:Key="CrateAccent" Color="#12E1D2" />
             <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#0C0F0F" />
             <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#000000" />
@@ -72,6 +73,7 @@
             <SolidColorBrush x:Key="CrateCard" Color="#FFFFFF" />
             <SolidColorBrush x:Key="CrateCardStroke" Color="#DCE1DF" />
             <SolidColorBrush x:Key="CrateRule" Color="#C8CFCD" />
+            <SolidColorBrush x:Key="CrateMeterTrack" Color="#9EA7A4" />
             <SolidColorBrush x:Key="CrateAccent" Color="#007F78" />
             <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#E9ECEB" />
             <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#FAFBFA" />
@@ -135,6 +137,7 @@
             <SolidColorBrush x:Key="CrateCard" Color="#000000" />
             <SolidColorBrush x:Key="CrateCardStroke" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="CrateRule" Color="#FFFFFF" />
+            <SolidColorBrush x:Key="CrateMeterTrack" Color="{ThemeResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="CrateAccent" Color="#FFFF00" />
             <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="#000000" />
             <SolidColorBrush x:Key="NavigationViewContentBackground" Color="#000000" />
@@ -152,15 +155,34 @@
     <Color x:Key="TemperatureCriticalColor">#FF4D4D</Color>
 
     <x:Double x:Key="PageMaxWidth">1600</x:Double>
-    <Thickness x:Key="PagePadding">36,20,36,36</Thickness>
+    <Thickness x:Key="PagePadding">36,24,36,36</Thickness>
     <x:Double x:Key="SectionSpacing">24</x:Double>
 
     <Style x:Key="CardStyle" TargetType="Border">
         <Setter Property="Background" Value="{ThemeResource CrateCard}" />
         <Setter Property="BorderBrush" Value="{ThemeResource CrateCardStroke}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="CornerRadius" Value="8" />
         <Setter Property="Padding" Value="20" />
+    </Style>
+
+    <Style x:Key="CrateMeterStyle" TargetType="ProgressBar">
+        <Setter Property="Height" Value="5" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="100" />
+        <Setter Property="Foreground" Value="{ThemeResource CrateAccent}" />
+        <Setter Property="Background" Value="{ThemeResource CrateMeterTrack}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid>
+                        <Rectangle Height="1" VerticalAlignment="Bottom" Fill="{TemplateBinding Background}" />
+                        <Path x:Name="MeterFill" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Fill="{TemplateBinding Foreground}" IsHitTestVisible="False" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="ModeButtonStyle" TargetType="Button">

@@ -24,11 +24,13 @@ public sealed class DirectSensors : IDisposable
     public static DirectSensors None { get; } = new(null, null, null, SensorStatus.NotUsed, SensorStatus.NotUsed);
 
     private readonly IDisposable? _library;
+    private readonly WindowsGpuSensor? _windowsGpu;
     private readonly int _cpuDefaultLimit;
 
     /// <param name="cpuDefaultLimit">The CPU's limit when its sensor doesn't report one: Intel's usual TjMax unless given.</param>
     internal DirectSensors(ITemperatureSensor? cpu, ITemperatureSensor? gpu, IGpuPowerState? gpuPower, SensorStatus cpuStatus, SensorStatus gpuStatus,
-        IGpuClockControl? gpuClocks = null, IDisposable? library = null, int cpuDefaultLimit = ThermalLimits.IntelCpuDefault)
+        IGpuClockControl? gpuClocks = null, IDisposable? library = null, int cpuDefaultLimit = ThermalLimits.IntelCpuDefault,
+        WindowsGpuSensor? windowsGpu = null)
     {
         Cpu = cpu;
         Gpu = gpu;
@@ -38,6 +40,7 @@ public sealed class DirectSensors : IDisposable
         GpuClocks = gpuClocks;
         _library = library;
         _cpuDefaultLimit = cpuDefaultLimit;
+        _windowsGpu = windowsGpu;
     }
 
     public ITemperatureSensor? Cpu { get; }
@@ -72,6 +75,8 @@ public sealed class DirectSensors : IDisposable
     public double? ReadCpu() => Read(Cpu, status => CpuStatus = status);
 
     public double? ReadGpu() => Read(Gpu, status => GpuStatus = status);
+
+    public double? ReadGpuVoltage() => _windowsGpu?.ReadVoltage();
 
     /// <summary>What the log should hear about a reading the CPU's sensor discarded since the last call, or null.</summary>
     public string? TakeCpuGlitchNote() => Cpu?.TakeGlitchNote();
@@ -123,17 +128,18 @@ public sealed class DirectSensors : IDisposable
         ITemperatureSensor? gpu = nvml is null ? null : TryOpen(() => NvmlGpuSensor.TryOpen(nvml),
             ex => gpuFailure = SensorStatus.Failed(SensorProblem.NoReading, ex.Message));
         var clocks = nvml is null ? null : TryOpen(() => NvmlGpuClocks.TryOpen(nvml, discrete?.PnpHardwareId ?? ""), _ => { });
-        if (gpu is null && discrete is not null)
-            gpu = TryOpen(() => WindowsGpuSensor.TryOpen(discrete, (problem, detail) => gpuFailure = SensorStatus.Failed(problem, detail)),
+        var windowsGpu = discrete is null ? null :
+            TryOpen(() => WindowsGpuSensor.TryOpen(discrete, (problem, detail) => gpuFailure = SensorStatus.Failed(problem, detail)),
                 ex => gpuFailure = SensorStatus.Failed(SensorProblem.NoReading, ex.Message));
-        else if (gpu is null)
+        gpu ??= windowsGpu;
+        if (gpu is null && discrete is null)
             gpuFailure = SensorStatus.Failed(SensorProblem.NoDiscreteGpu);
 
         // Only needed to know when the driver may be asked. One GPU can be listed twice (e.g. again for a virtual display).
         var onlyGpu = adapters.Select(a => a.PnpHardwareId).Distinct().Count() == 1;
         var gpuPower = gpu is not null && discrete is not null ? TryOpen(() => WindowsGpuPowerState.TryOpen(discrete, onlyGpu), _ => { }) : null;
         return new DirectSensors(cpu, gpu, gpuPower, cpu?.Status ?? cpuFailure ?? SensorStatus.NotUsed, gpu?.Status ?? gpuFailure ?? SensorStatus.NotUsed,
-            clocks, nvml, DefaultCpuLimit());
+            clocks, nvml, DefaultCpuLimit(), windowsGpu);
     }
 
     private static int DefaultCpuLimit()
@@ -165,6 +171,7 @@ public sealed class DirectSensors : IDisposable
     {
         Cpu?.Dispose();
         Gpu?.Dispose();
+        if (!ReferenceEquals(Gpu, _windowsGpu)) _windowsGpu?.Dispose();
         _library?.Dispose();
     }
 }

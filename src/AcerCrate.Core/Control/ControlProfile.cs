@@ -9,7 +9,7 @@ namespace AcerCrate.Core.Control;
 /// </summary>
 public enum FanControlMode
 {
-    /// <summary>Firmware controls the fans; AcerCrate boosts them near the chips' limits (<see cref="AntiThrottle"/>), unless that is turned off.</summary>
+    /// <summary>The firmware controls the fans.</summary>
     Auto,
 
     /// <summary>All fans at full speed.</summary>
@@ -37,8 +37,11 @@ public sealed record ControlProfile
     public int SensorIntervalSeconds { get; init; } = 1;
     public FanControlMode Mode { get; init; } = FanControlMode.Auto;
 
-    /// <summary>Auto adds speed near the chips' limits (<see cref="AntiThrottle"/>).</summary>
-    public bool AutoBoost { get; init; } = true;
+    /// <summary>Legacy setting retained for older profiles. Automatic cooling now always follows the firmware.</summary>
+    public bool AutoBoost { get; init; }
+
+    /// <summary>Optional Windows maximum processor state for a personal mode.</summary>
+    public int? ProcessorLimitPercent { get; init; }
 
     public IReadOnlyDictionary<FanId, ManualFanSetting> Manual { get; init; } = new Dictionary<FanId, ManualFanSetting>
     {
@@ -85,9 +88,6 @@ public sealed record ControlProfile
     public ManualFanSetting ManualFor(FanId fan) => Manual.GetValueOrDefault(fan) ?? new ManualFanSetting();
 
     public CurveFanSetting CurveFor(FanId fan) => Curves.GetValueOrDefault(fan) ?? DefaultCurve(fan);
-
-    /// <summary>AcerCrate adds speed on top of the firmware's in <paramref name="mode"/> (as opposed to leaving Auto alone).</summary>
-    public bool Boosts(FanControlMode mode) => mode == FanControlMode.Custom || (mode == FanControlMode.Auto && AutoBoost);
 
     /// <summary>A curve nobody has set yet: Auto's, for the usual limits (the app offers the laptop's own as a preset).</summary>
     private static CurveFanSetting DefaultCurve(FanId fan) => new(AntiThrottle.For(FanChannel.Get(fan).Chip, ThermalLimits.Default));

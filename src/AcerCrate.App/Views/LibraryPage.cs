@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.Storage.Pickers;
 using AcerCrate.App.Controls;
 using AcerCrate.App.Services;
 using AcerCrate.Core.Settings;
@@ -89,16 +88,14 @@ public sealed partial class LibraryPage : Page
     private async Task AddAsync()
     {
         var window = App.Current.Services.GetRequiredService<MainWindow>();
-        var picker = new FileOpenPicker(window.AppWindow.Id);
-        picker.FileTypeFilter.Add(".exe"); picker.FileTypeFilter.Add(".lnk");
-        var file = await picker.PickSingleFileAsync();
-        if (file is null) return;
-        var name = new TextBox { Header = L("Name", "Название"), Text = Path.GetFileNameWithoutExtension(file.Path), MaxLength = 120 };
+        var path = await GameLibraryService.PickExecutableAsync(window.AppWindow.Id);
+        if (path is null) return;
+        var name = new TextBox { Header = L("Name", "Название"), Text = Path.GetFileNameWithoutExtension(path), MaxLength = 120 };
         var arguments = new TextBox { Header = L("Launch arguments (optional)", "Параметры запуска (необязательно)") };
         var fields = new StackPanel { Spacing = 12 }; fields.Children.Add(name); fields.Children.Add(arguments);
         var dialog = new ContentDialog { XamlRoot = XamlRoot, RequestedTheme = ActualTheme, Title = L("Add game", "Добавить игру"), Content = fields, PrimaryButtonText = L("Add", "Добавить"), CloseButtonText = L("Cancel", "Отмена"), DefaultButton = ContentDialogButton.Primary };
         if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
-        try { library.Add(new GameEntry { Name = string.IsNullOrWhiteSpace(name.Text) ? Path.GetFileNameWithoutExtension(file.Path) : name.Text.Trim(), Executable = file.Path, Arguments = arguments.Text }); }
+        try { library.Add(new GameEntry { Name = string.IsNullOrWhiteSpace(name.Text) ? Path.GetFileNameWithoutExtension(path) : name.Text.Trim(), Executable = path, Arguments = arguments.Text }); }
         catch (Exception e) { status.Text = e.Message; }
     }
 

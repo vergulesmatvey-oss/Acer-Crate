@@ -155,7 +155,6 @@ public sealed partial class WorkspacePage : Page
             var kind=Combo(T("Способ управления · ")+f.Name,new[]{T("Постоянная добавка"),T("Температурная кривая")},f,"KindIndex");Bind(kind,IsEnabledProperty,vm,"ManualAllowed",false);panel.Children.Add(kind);
             var curve=new FanCurveEditor { Height=240 };Bind(curve,FanCurveEditor.CurveProperty,f.Curve,"Curve");var expander=new Expander { Header=T("Кривая · ")+f.Name,Content=curve,HorizontalAlignment=HorizontalAlignment.Stretch };Bind(expander,IsEnabledProperty,vm,"ManualAllowed",false);panel.Children.Add(expander); }
         if(vm.ManualFans.Count==0) panel.Children.Add(Text(T("Управляемые вентиляторы не обнаружены.")));
-        Toggle(panel,T("Температурная помощь"),T("Дополнительные обороты при приближении к температурному пределу"),vm,"AutoBoostEnabled",vm.ManualAllowed);
         Card(T("Вентиляторы"),panel);
         var protection=new StackPanel();Toggle(protection,T("Возвращать штатное управление при выходе"),T("Прошивка продолжит управлять охлаждением"),vm,"RestoreAutoOnExit");if(vm.CoolBoostAvailable) Toggle(protection,"CoolBoost",T("Штатное усиление охлаждения Acer"),vm,"CoolBoost",vm.ManualAllowed);Card(T("Защита и штатные функции"),protection);
     }

@@ -117,7 +117,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         _load = load;
         _power = power;
         _direct = direct ?? DirectSensors.None;
-        _profile = initialProfile;
+        _profile = LaptopModePolicy.Normalize(initialProfile);
         _clock = clock ?? (() => DateTime.UtcNow);
         _controllable = capabilities.ControllableFans;
         foreach (var fan in _controllable)
@@ -186,7 +186,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
     public void Update(ControlProfile profile)
     {
         lock (_gate)
-            _profile = profile;
+            _profile = LaptopModePolicy.Normalize(profile);
         Wake();
     }
 
@@ -372,7 +372,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
 
         ControlProfile profile;
         lock (_gate)
-            profile = LaptopModePolicy.Normalize(_profile);
+            profile = _profile;
 
         // Profile changes wake the loop early; don't hammer the sensors when that happens.
         if (now - _lastSample >= Interval * Math.Clamp(profile.SensorIntervalSeconds, 1, 3) * 0.8)
@@ -390,7 +390,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         var gpuClocks = _gpuClocks?.Step(profile.GpuClocks.For(Capabilities.HasOperatingModes, _appliedMode, Capabilities.EcHid?.GpuOffsets),
             _gpuOn, reapply);
         TrackDustDefender(now);
-        var (effective, fanLock, boosting) = ApplyFans(profile, now, reapply);
+        var (effective, fanLock) = ApplyFans(profile, now, reapply);
 
         var telemetry = new Telemetry
         {
@@ -398,6 +398,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
             CpuTemperature = _cpuTemp,
             CpuTemperatureOrigin = _cpuOrigin,
             GpuTemperature = _gpuTemp,
+            GpuVoltage = _gpuVoltage,
             GpuTemperatureOrigin = _gpuOrigin,
             GpuAsleep = _gpuAsleep,
             Limits = _limits,
@@ -427,6 +428,8 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         TelemetryUpdated?.Invoke(telemetry);
     }
 
+    private double? _gpuVoltage;
+
     private void Sample()
     {
         // Prefer the chips' own sensors; the embedded controller's copy lags and is rounded.
@@ -445,6 +448,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
             _gpuOn = on;
             // Asking the driver while the GPU is off could wake it.
             var gpu = on == true ? _direct.ReadGpu() : null;
+            _gpuVoltage = on == true ? _direct.ReadGpuVoltage() : null;
             _gpuOrigin = gpu is null ? TemperatureOrigin.Firmware : TemperatureOrigin.GpuDriver;
             _gpuTemp = gpu ?? (g > 0 ? g : null);
             _gpuAsleep = on == false && _gpuTemp is null;
@@ -585,27 +589,25 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
             Notice?.Invoke(new ControlNotice(NoticeKind.FanTableRejected));
     }
 
-    /// <returns>The mode in force, why fan control is locked, and whether AcerCrate is boosting the fans.</returns>
-    private (FanControlMode Effective, FanLock? Lock, bool Boosting) ApplyFans(ControlProfile profile, DateTime now, bool reapply)
+    /// <returns>The mode in force and why fan control is locked.</returns>
+    private (FanControlMode Effective, FanLock? Lock) ApplyFans(ControlProfile profile, DateTime now, bool reapply)
     {
         // The firmware is running the fans backwards to clear dust: leave them alone until it is done.
         if (_dustSince is not null)
-            return (FanControlMode.Auto, FanLock.DustDefender, false);
+            return (FanControlMode.Auto, FanLock.DustDefender);
 
         var effective = profile.Mode;
-        var boosting = profile.Boosts(effective);
         FanLock? fanLock = null;
 
         // Quiet (NitroSense) and Eco (PredatorSense) keep the fans on Auto.
         if (profile.LaptopMode == LaptopMode.Quiet || _appliedMode is OperatingMode.Quiet or OperatingMode.Eco)
         {
             effective = FanControlMode.Auto;
-            boosting = false;
             fanLock = profile.LaptopMode == LaptopMode.Quiet || _appliedMode == OperatingMode.Quiet ? FanLock.QuietMode : FanLock.EcoMode;
         }
 
         // Failsafe: boosting without a CPU temperature is flying blind.
-        if (boosting && _cpuTemp is null)
+        if (effective == FanControlMode.Custom && _cpuTemp is null)
         {
             if (++_cpuMisses >= FailsafeAfterMisses && !_failsafe)
             {
@@ -619,10 +621,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
             _failsafe = false;
         }
         if (_failsafe || _modeRejected)
-        {
             effective = FanControlMode.Auto;
-            boosting = false;
-        }
 
         // Curves step every CurveInterval, and at once when the profile or the mode changes.
         if (effective != _curveMode)
@@ -632,7 +631,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         }
         var curveStep = now - _lastCurveStep >= CurveInterval * 0.9 || effective != _curveMode || !ReferenceEquals(profile, _curveProfile);
 
-        var targets = _controllable.ToDictionary(f => f.Id, f => Target(f, effective, boosting, profile, curveStep));
+        var targets = _controllable.ToDictionary(f => f.Id, f => Target(f, effective, profile, curveStep));
         if (curveStep)
         {
             _curveTemps.Clear();
@@ -667,7 +666,7 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         if (assert)
             _lastAssert = now;
         _fansConfirmed = targets.All(t => _appliedBehavior?.GetValueOrDefault(t.Key) == t.Value.Behavior && (t.Value.Percent is null || _appliedPercent.GetValueOrDefault(t.Key, -1) == t.Value.Percent));
-        return (effective, fanLock, boosting);
+        return (effective, fanLock);
     }
 
     /// <summary>Sends each fan on Custom its speed, when it changed or <paramref name="force"/>.</summary>
@@ -688,17 +687,15 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         }
     }
 
-    private (FanBehavior Behavior, int? Percent) Target(FanChannel fan, FanControlMode mode, bool boosting, ControlProfile profile, bool curveStep)
+    private (FanBehavior Behavior, int? Percent) Target(FanChannel fan, FanControlMode mode, ControlProfile profile, bool curveStep)
     {
         if (mode == FanControlMode.Max)
             return (FanBehavior.Max, null);
-        if (!boosting)
+        if (mode != FanControlMode.Custom)
             return (FanBehavior.Auto, null);
 
         var manual = profile.ManualFor(fan.Id);
-        var curve = mode == FanControlMode.Auto ? AntiThrottle.For(fan.Chip, _limits)
-            : manual.UseCurve ? profile.CurveFor(fan.Id).Curve
-            : null;
+        var curve = manual.UseCurve ? profile.CurveFor(fan.Id).Curve : null;
         int percent;
         if (curve is null)
         {
@@ -713,10 +710,9 @@ public sealed class FanControlService : IDeviceDispatcher, IDisposable
         // The firmware only boosts in tens: send the nearest one it does, not one it would round down.
         percent = AcerProtocol.NearestFanSpeed(percent);
 
-        // Where speeds are the fans' own, a part of full speed could be slower than Auto: Anti-throttle goes to full speed
-        // instead, and so does Custom once the chip is as hot as Anti-throttle would boost at.
-        if (Capabilities.FixedFanSpeeds && (mode == FanControlMode.Auto ? percent
-                : AcerProtocol.NearestFanSpeed(FollowCurve(fan, AntiThrottle.For(fan.Chip, _limits), curveStep, _limitFollowers[fan.Id]))) > 0)
+        // Fixed manual speeds can hold the fans below the firmware's curve at high temperatures.
+        if (Capabilities.FixedFanSpeeds && percent > 0 &&
+            AcerProtocol.NearestFanSpeed(FollowCurve(fan, AntiThrottle.For(fan.Chip, _limits), curveStep, _limitFollowers[fan.Id])) > 0)
             return (FanBehavior.Max, null);
 
         // A lower duty could leave a fan stopped, and nothing in such firmware speeds it up again.

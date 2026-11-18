@@ -35,11 +35,12 @@ public sealed record Telemetry
 
     /// <summary>Null while the discrete GPU is powered down (see <see cref="GpuAsleep"/>).</summary>
     public double? GpuTemperature { get; init; }
+    public double? GpuVoltage { get; init; }
     public TemperatureOrigin GpuTemperatureOrigin { get; init; }
 
     public bool GpuAsleep { get; init; }
 
-    /// <summary>Where the chips start slowing down, which Auto's boost goes by (<see cref="AntiThrottle"/>).</summary>
+    /// <summary>Where the chips start slowing down, used for temperature displays and manual fan curves.</summary>
     public ThermalLimits Limits { get; init; } = ThermalLimits.Default;
 
     public double? SystemTemperature { get; init; }
@@ -65,6 +66,8 @@ public sealed record Telemetry
     public bool ControlConfirmed { get; init; }
     public Guid? ActivePowerScheme { get; init; }
     public string? PowerSchemeError { get; init; }
+    public int? ProcessorLimitPercent { get; init; }
+    public bool ThermalPowerProtection { get; init; }
     public ControlProfile? AppliedProfile { get; init; }
 
     /// <summary>Null on machines without a battery.</summary>

@@ -373,9 +373,6 @@
     <value>Χειροκίνητο</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Το υλικολογισμικό του φορητού διαχειρίζεται τους ανεμιστήρες· το Acer Crate μπορεί να προσθέσει ταχύτητα όταν ζεσταθεί.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Όλοι οι ανεμιστήρες στη μέγιστη ταχύτητα.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Ανεμιστήρες</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Αποτροπή στραγγαλισμού</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Προσθέτει ταχύτητα σε αυτή του υλικολογισμικού καθώς ζεσταίνονται τα τσιπ και φτάνει στη μέγιστη ταχύτητα στη θερμοκρασία όπου ο επεξεργαστής αρχίζει να μειώνει τις επιδόσεις του.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Λειτουργεί τους ανεμιστήρες στη μέγιστη ταχύτητα καθώς τα τσιπ πλησιάζουν τη θερμοκρασία όπου αρχίζουν να μειώνουν τις επιδόσεις τους.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Αυξάνει τις ταχύτητες ανεμιστήρων του ίδιου του υλικολογισμικού, τις οποίες χρησιμοποιεί η λειτουργία Αυτόματο και στις οποίες προσθέτει η λειτουργία Χειροκίνητο.</value>

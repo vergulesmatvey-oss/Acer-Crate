@@ -9,7 +9,15 @@
       "PH16"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-16_agl6ty.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-16_agl6ty.png",
+    "Framing": {
+      "Bounds": [
+        0.083562,
+        0.157781,
+        0.838735,
+        0.674672
+      ]
+    }
   },
   {
     "File": "PH18-71.png",
@@ -21,7 +29,15 @@
       "PH18"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-18_sy9va8.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-18_sy9va8.png",
+    "Framing": {
+      "Bounds": [
+        0.083562,
+        0.157781,
+        0.838735,
+        0.674672
+      ]
+    }
   },
   {
     "File": "PH315-54.png",
@@ -33,7 +49,15 @@
       "PH315"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300_veygbm.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300_veygbm.png",
+    "Framing": {
+      "Bounds": [
+        0.091375,
+        0.177312,
+        0.819203,
+        0.651235
+      ]
+    }
   },
   {
     "File": "PH315-55S.png",
@@ -45,7 +69,15 @@
       "PH315"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300-spatiallabs_vcnwtn.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-300-spatiallabs_vcnwtn.png",
+    "Framing": {
+      "Bounds": [
+        0.095281,
+        0.173406,
+        0.803578,
+        0.643422
+      ]
+    }
   },
   {
     "File": "PH517-52.png",
@@ -57,7 +89,15 @@
       "PH517"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-500_h0f1oq.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-500_h0f1oq.png",
+    "Framing": {
+      "Bounds": [
+        0.103094,
+        0.173406,
+        0.795765,
+        0.651235
+      ]
+    }
   },
   {
     "File": "PHN16-72.png",
@@ -69,10 +109,18 @@
       "PHN16"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-neo-16_hosqrs.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/helios-neo-16_hosqrs.png",
+    "Framing": {
+      "Bounds": [
+        0.091375,
+        0.165594,
+        0.815297,
+        0.666859
+      ]
+    }
   },
   {
-    "File": "PHN16S-71.jpg",
+    "File": "PHN16S-71.png",
     "Title": "Helios Neo 16S AI",
     "Models": [
       "PHN16S-71"
@@ -81,7 +129,15 @@
       "PHN16S"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/sw4ou9jwqwr2uaggphy6.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/sw4ou9jwqwr2uaggphy6.webp",
+    "Framing": {
+      "Bounds": [
+        0.027,
+        0.1345,
+        0.94475,
+        0.72975
+      ]
+    }
   },
   {
     "File": "AN16-41.png",
@@ -93,7 +149,15 @@
       "AN16"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-swift-laptops-powered-by-the-latest-amd-ryzen-7000-series-processors",
-    "ImageUrl": "https://cdn.assets.prezly.com/c3604f44-461d-499d-b70c-584cf0462470/-/resize/640x/-/format/png/Nitro_16_AMD_AN16-41_03.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/c3604f44-461d-499d-b70c-584cf0462470/-/resize/640x/-/format/png/Nitro_16_AMD_AN16-41_03.png",
+    "Framing": {
+      "Bounds": [
+        0.06325,
+        0.191375,
+        0.843812,
+        0.596937
+      ]
+    }
   },
   {
     "File": "AN16-73.png",
@@ -105,7 +169,37 @@
       "AN16"
     ],
     "SourcePage": "https://news.acer.com/acer-debuts-new-predator-helios-neo-14-a-portable-ai-gaming-laptop-with-intel-core-ultra-processors",
-    "ImageUrl": "https://cdn.assets.prezly.com/49324705-023f-4dc9-ac70-1a1dc0630aaa/-/resize/640x/-/format/png/Nitro_16_%28AN16-73%29_Special_Angle_1.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/49324705-023f-4dc9-ac70-1a1dc0630aaa/-/resize/640x/-/format/png/Nitro_16_%28AN16-73%29_Special_Angle_1.png",
+    "Framing": {
+      "Bounds": [
+        0.09239,
+        0.085896,
+        0.506779,
+        0.750286
+      ],
+      "Outline": [
+        0.25,
+        0.168831,
+        0.551948,
+        0.103896,
+        0.581169,
+        0.519481,
+        0.581169,
+        0.549784,
+        0.561688,
+        0.601732,
+        0.418831,
+        0.818182,
+        0.116883,
+        0.78355,
+        0.11039,
+        0.766234,
+        0.220779,
+        0.601732,
+        0.275974,
+        0.510823
+      ]
+    }
   },
   {
     "File": "AN16-61.png",
@@ -117,7 +211,15 @@
       "AN16"
     ],
     "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/89fa1c23-a9f5-4340-98c0-5c6f49b752bb/-/resize/640x/-/format/png/Nitro-16_AI_EV9-02.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/89fa1c23-a9f5-4340-98c0-5c6f49b752bb/-/resize/640x/-/format/png/Nitro-16_AI_EV9-02.png",
+    "Framing": {
+      "Bounds": [
+        0.028875,
+        0.108233,
+        0.943813,
+        0.783534
+      ]
+    }
   },
   {
     "File": "AN17-41.png",
@@ -129,7 +231,33 @@
       "AN17"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-swift-laptops-powered-by-the-latest-amd-ryzen-7000-series-processors",
-    "ImageUrl": "https://cdn.assets.prezly.com/d8113181-792d-440c-8398-f330310adc44/-/resize/640x/-/format/png/Nitro_17_AMD_AN17-41_05.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/d8113181-792d-440c-8398-f330310adc44/-/resize/640x/-/format/png/Nitro_17_AMD_AN17-41_05.png",
+    "Framing": {
+      "Bounds": [
+        0.384597,
+        0.235247,
+        0.591195,
+        0.639896
+      ],
+      "Outline": [
+        0.457792,
+        0.334416,
+        0.824675,
+        0.253247,
+        0.753247,
+        0.503247,
+        0.746753,
+        0.522727,
+        0.957792,
+        0.678571,
+        0.623377,
+        0.857143,
+        0.402597,
+        0.642857,
+        0.402597,
+        0.613636
+      ]
+    }
   },
   {
     "File": "AN18-61.png",
@@ -141,7 +269,35 @@
       "AN18"
     ],
     "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/bf4ce2d3-de7c-42f3-8ab5-817173677270/-/resize/640x/-/format/png/Nitro-18-AI_AN18-61_SA-01.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/bf4ce2d3-de7c-42f3-8ab5-817173677270/-/resize/640x/-/format/png/Nitro-18-AI_AN18-61_SA-01.png",
+    "Framing": {
+      "Bounds": [
+        0.397584,
+        0.003645,
+        0.545741,
+        0.910459
+      ],
+      "Outline": [
+        0.431818,
+        0.229437,
+        0.769481,
+        0.021645,
+        0.905844,
+        0.437229,
+        0.925325,
+        0.4329,
+        0.918831,
+        0.493506,
+        0.795455,
+        0.796537,
+        0.415584,
+        0.896104,
+        0.493506,
+        0.688312,
+        0.538961,
+        0.532468
+      ]
+    }
   },
   {
     "File": "AN515-58.png",
@@ -152,8 +308,16 @@
     "Prefixes": [
       "AN515"
     ],
-    "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/nitro-5_qq5z3q.png"
+    "SourcePage": "https://predatorshop.sk/acer-nitro-5-an515-58-97yt-id679",
+    "ImageUrl": "https://media.isso.sk/products/acer%20nitro%205%20an515-58/acer%20nitro%205%20an515-58-0.webp",
+    "Framing": {
+      "Bounds": [
+        0.03,
+        0.008667,
+        0.947,
+        0.989333
+      ]
+    }
   },
   {
     "File": "AN515-45.png",
@@ -165,7 +329,41 @@
       "AN515"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-aspire-notebooks-powered-by-new-amd-ryzen-5000-series-mobile-processors-nitro-notebooks-also-feature-new-nvidia-geforce-rtx-30-series-laptop-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/779e83bc-15f4-46b3-95f4-c15129c05f7e/-/resize/640x/-/format/png/Nitro5_AN515-45-56-57_High_01.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/779e83bc-15f4-46b3-95f4-c15129c05f7e/-/resize/640x/-/format/png/Nitro5_AN515-45-56-57_High_01.jpg",
+    "Framing": {
+      "Bounds": [
+        0.039227,
+        0.07963,
+        0.558884,
+        0.724675
+      ],
+      "Outline": [
+        0.229396,
+        0.09763,
+        0.286785,
+        0.101881,
+        0.580111,
+        0.246418,
+        0.567358,
+        0.276175,
+        0.41113,
+        0.45472,
+        0.401565,
+        0.484478,
+        0.567358,
+        0.701284,
+        0.554604,
+        0.735292,
+        0.24215,
+        0.786305,
+        0.18476,
+        0.773552,
+        0.060416,
+        0.471725,
+        0.057227,
+        0.441967
+      ]
+    }
   },
   {
     "File": "AN517-41.png",
@@ -177,10 +375,40 @@
       "AN517"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-nitro-and-aspire-notebooks-powered-by-new-amd-ryzen-5000-series-mobile-processors-nitro-notebooks-also-feature-new-nvidia-geforce-rtx-30-series-laptop-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/a1052f9d-d8bf-4679-8d4b-61624138484f/-/resize/640x/-/format/png/Nitro5_AN517-41-53-54_High_05.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/a1052f9d-d8bf-4679-8d4b-61624138484f/-/resize/640x/-/format/png/Nitro5_AN517-41-53-54_High_05.jpg",
+    "Framing": {
+      "Bounds": [
+        0.041189,
+        0.160301,
+        0.915974,
+        0.685577
+      ],
+      "Outline": [
+        0.059189,
+        0.210073,
+        0.135708,
+        0.185361,
+        0.534247,
+        0.178301,
+        0.559754,
+        0.203013,
+        0.636273,
+        0.573695,
+        0.939163,
+        0.647832,
+        0.92641,
+        0.676075,
+        0.441786,
+        0.827878,
+        0.164403,
+        0.718438,
+        0.145273,
+        0.693726
+      ]
+    }
   },
   {
-    "File": "NL16-71.jpg",
+    "File": "NL16-71.png",
     "Title": "Nitro Lite 16",
     "Models": [
       "NL16-71"
@@ -189,10 +417,18 @@
       "NL16"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492619844-100527011.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492619844-100527011.png",
+    "Framing": {
+      "Bounds": [
+        0.066677,
+        0.175548,
+        0.880758,
+        0.642855
+      ]
+    }
   },
   {
-    "File": "NITRO-V14.jpg",
+    "File": "NITRO-V14.png",
     "Title": "Nitro V 14",
     "Models": [
       "ANV14-61"
@@ -201,7 +437,15 @@
       "ANV14"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/v8jtzz7tj7davkoumvjz.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/v8jtzz7tj7davkoumvjz.webp",
+    "Framing": {
+      "Bounds": [
+        0.08825,
+        0.172625,
+        0.825062,
+        0.653188
+      ]
+    }
   },
   {
     "File": "ANV14-62.png",
@@ -213,10 +457,44 @@
       "ANV14"
     ],
     "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
-    "ImageUrl": "https://cdn.assets.prezly.com/4fdce9f4-7ee6-44bb-8f26-5e629c3a6549/-/resize/640x/-/format/png/Nitro-V-14-AI_ANV14-62-06.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/4fdce9f4-7ee6-44bb-8f26-5e629c3a6549/-/resize/640x/-/format/png/Nitro-V-14-AI_ANV14-62-06.jpg",
+    "Framing": {
+      "Bounds": [
+        0.038472,
+        0.121632,
+        0.536565,
+        0.732763
+      ],
+      "Outline": [
+        0.056472,
+        0.292767,
+        0.359362,
+        0.139632,
+        0.372116,
+        0.139632,
+        0.557037,
+        0.465043,
+        0.557037,
+        0.491842,
+        0.512401,
+        0.583723,
+        0.426316,
+        0.771313,
+        0.091543,
+        0.836395,
+        0.085167,
+        0.832566,
+        0.180816,
+        0.656461,
+        0.225453,
+        0.56458,
+        0.215888,
+        0.537783
+      ]
+    }
   },
   {
-    "File": "ANV15-42.png",
+    "File": "ANV15-42.jpg",
     "Title": "Nitro V 15 AI",
     "Models": [
       "ANV15-42"
@@ -224,11 +502,37 @@
     "Prefixes": [
       "ANV15"
     ],
-    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
-    "ImageUrl": "https://cdn.assets.prezly.com/2742ae9a-1c70-4fdd-aed7-6f63050c1c61/-/resize/640x/-/format/png/Nitro-V-15-AI-ANV15-42-Lifestyle-03.jpg"
+    "SourcePage": "https://www.gpasplus.com/ordinateurs-portables/5166971-acer-nitro-v-15-anv15-42-r8lf-4711474771117.html",
+    "ImageUrl": "https://www.gpasplus.com/16000831-large_default/acer-nitro-v-15-anv15-42-r8lf.jpg",
+    "Framing": {
+      "Bounds": [
+        0.106305,
+        0.246035,
+        0.79163,
+        0.501494
+      ],
+      "Outline": [
+        0.124305,
+        0.276789,
+        0.535597,
+        0.264035,
+        0.545163,
+        0.273601,
+        0.608929,
+        0.550984,
+        0.879935,
+        0.608374,
+        0.879935,
+        0.624315,
+        0.471831,
+        0.729529,
+        0.188071,
+        0.659387
+      ]
+    }
   },
   {
-    "File": "ANV15-51.jpg",
+    "File": "ANV15-51.png",
     "Title": "Nitro V 15 SE",
     "Models": [
       "ANV15-51"
@@ -237,10 +541,18 @@
       "ANV15"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/kpykakhf5ouvxm3o0imd.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/kpykakhf5ouvxm3o0imd.webp",
+    "Framing": {
+      "Bounds": [
+        0.0,
+        0.157781,
+        1.0,
+        0.721547
+      ]
+    }
   },
   {
-    "File": "ANV16-71.jpg",
+    "File": "ANV16-71.png",
     "Title": "Nitro V 16",
     "Models": [
       "ANV16-71"
@@ -249,7 +561,15 @@
       "ANV16"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/fzkgkckjrngmh1ikx7ox.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/fzkgkckjrngmh1ikx7ox.webp",
+    "Framing": {
+      "Bounds": [
+        0.032,
+        0.112,
+        0.93475,
+        0.77475
+      ]
+    }
   },
   {
     "File": "ANV16-61.png",
@@ -261,10 +581,38 @@
       "ANV16"
     ],
     "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
-    "ImageUrl": "https://cdn.assets.prezly.com/a6924909-65ad-4067-a22c-13c3b4e7fa2c/-/resize/640x/-/format/png/Nitro-V-16-AI_ANV16-61-06.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/a6924909-65ad-4067-a22c-13c3b4e7fa2c/-/resize/640x/-/format/png/Nitro-V-16-AI_ANV16-61-06.jpg",
+    "Framing": {
+      "Bounds": [
+        2.6E-05,
+        0.072313,
+        0.558884,
+        0.824644
+      ],
+      "Outline": [
+        0.132805,
+        0.090313,
+        0.50265,
+        0.197507,
+        0.54091,
+        0.542061,
+        0.515403,
+        0.610972,
+        0.365552,
+        0.875129,
+        0.340045,
+        0.878957,
+        0.021215,
+        0.68371,
+        0.018026,
+        0.672226,
+        0.19976,
+        0.408068
+      ]
+    }
   },
   {
-    "File": "ANV16S-41.jpg",
+    "File": "ANV16S-41.png",
     "Title": "Nitro V 16S AI",
     "Models": [
       "ANV16S-41"
@@ -273,7 +621,15 @@
       "ANV16S"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/knd4rmkub03tmoinoy0p.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/knd4rmkub03tmoinoy0p.webp",
+    "Framing": {
+      "Bounds": [
+        0.010125,
+        0.1195,
+        0.975063,
+        0.759438
+      ]
+    }
   },
   {
     "File": "ANV16S-61.png",
@@ -285,7 +641,33 @@
       "ANV16S"
     ],
     "SourcePage": "https://news.acer.com/acer-debuts-nitro-gaming-pcs-featuring-latest-nvidia-geforce-rtx-50-series-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/2a6b4162-84be-4764-97c9-f5aaf7333fbe/-/resize/640x/-/format/png/Nitro-V-16S-AI_ANV16S-61_SA-04.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/2a6b4162-84be-4764-97c9-f5aaf7333fbe/-/resize/640x/-/format/png/Nitro-V-16S-AI_ANV16S-61_SA-04.png",
+    "Framing": {
+      "Bounds": [
+        0.410571,
+        0.02529,
+        0.500286,
+        0.86284
+      ],
+      "Outline": [
+        0.581169,
+        0.04329,
+        0.814935,
+        0.251082,
+        0.698052,
+        0.601732,
+        0.691558,
+        0.619048,
+        0.863636,
+        0.831169,
+        0.892857,
+        0.87013,
+        0.633117,
+        0.770563,
+        0.428571,
+        0.47619
+      ]
+    }
   },
   {
     "File": "ANV17-61.png",
@@ -296,11 +678,19 @@
     "Prefixes": [
       "ANV17"
     ],
-    "SourcePage": "https://news.acer.com/acer-launches-new-nitro-v-series-laptops-expanding-its-essential-gaming-portfolio",
-    "ImageUrl": "https://cdn.assets.prezly.com/e093e3da-74a3-4759-a2e1-b2757b987943/-/resize/640x/-/format/png/Nitro-V-17-AI_ANV17-61-Lifestyle-01.jpg"
+    "SourcePage": "https://euronics.hu/",
+    "ImageUrl": "https://images.euronics.hu/product_images/800x600/resize/acer-nitro-v-anv17-61-r5z8-obszidianfekete-i757101_lemexcl2.png?v=3",
+    "Framing": {
+      "Bounds": [
+        0.267,
+        0.272,
+        0.46975,
+        0.461
+      ]
+    }
   },
   {
-    "File": "ANV15-52.jpg",
+    "File": "ANV15-52.png",
     "Title": "Nitro V15",
     "Models": [
       "ANV15-52"
@@ -309,7 +699,15 @@
       "ANV15"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492548516-874806024.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/1785492548516-874806024.png",
+    "Framing": {
+      "Bounds": [
+        0.030387,
+        0.232,
+        0.945274,
+        0.590435
+      ]
+    }
   },
   {
     "File": "PH3D15-71.png",
@@ -321,7 +719,37 @@
       "PH3D15"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
-    "ImageUrl": "https://cdn.assets.prezly.com/c6c90929-016d-43dc-b12d-698f18d2e352/-/resize/640x/-/format/png/PREDATOR-HELIOS-3D-15-PH3D15-71-01.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/c6c90929-016d-43dc-b12d-698f18d2e352/-/resize/640x/-/format/png/PREDATOR-HELIOS-3D-15-PH3D15-71-01.jpg",
+    "Framing": {
+      "Bounds": [
+        0.19525,
+        0.048146,
+        0.587579,
+        0.863544
+      ],
+      "Outline": [
+        0.45875,
+        0.066146,
+        0.764829,
+        0.151168,
+        0.720192,
+        0.638625,
+        0.710628,
+        0.672634,
+        0.70425,
+        0.723647,
+        0.500199,
+        0.89369,
+        0.216439,
+        0.649962,
+        0.21325,
+        0.615953,
+        0.401361,
+        0.502591,
+        0.420491,
+        0.343883
+      ]
+    }
   },
   {
     "File": "PHN14-51.png",
@@ -333,7 +761,31 @@
       "PHN14"
     ],
     "SourcePage": "https://news.acer.com/acer-debuts-new-predator-helios-neo-14-a-portable-ai-gaming-laptop-with-intel-core-ultra-processors",
-    "ImageUrl": "https://cdn.assets.prezly.com/830e20ba-ef9b-4207-9205-d241713bccd2/-/resize/640x/-/format/png/Helios_Neo14_SP01_transparent.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/830e20ba-ef9b-4207-9205-d241713bccd2/-/resize/640x/-/format/png/Helios_Neo14_SP01_transparent.png",
+    "Framing": {
+      "Bounds": [
+        0.47226,
+        0.15516,
+        0.344441,
+        0.774817
+      ],
+      "Outline": [
+        0.607143,
+        0.17316,
+        0.756494,
+        0.340548,
+        0.782468,
+        0.629149,
+        0.798701,
+        0.658009,
+        0.623377,
+        0.911977,
+        0.49026,
+        0.663781,
+        0.62987,
+        0.479076
+      ]
+    }
   },
   {
     "File": "PHN16-71.png",
@@ -345,7 +797,37 @@
       "PHN16"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
-    "ImageUrl": "https://cdn.assets.prezly.com/fbf761b1-c0e3-437f-a07c-21fce5688ed1/-/resize/640x/-/format/png/PREDATOR-HELIOS-NEO-16-PHN16-71-04.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/fbf761b1-c0e3-437f-a07c-21fce5688ed1/-/resize/640x/-/format/png/PREDATOR-HELIOS-NEO-16-PHN16-71-04.jpg",
+    "Framing": {
+      "Bounds": [
+        0.093575,
+        0.104519,
+        0.833078,
+        0.774278
+      ],
+      "Outline": [
+        0.149835,
+        0.214804,
+        0.621706,
+        0.122519,
+        0.873582,
+        0.542928,
+        0.864017,
+        0.573689,
+        0.908653,
+        0.583943,
+        0.8959,
+        0.635212,
+        0.443159,
+        0.860797,
+        0.114764,
+        0.681355,
+        0.111575,
+        0.630085,
+        0.322004,
+        0.558308
+      ]
+    }
   },
   {
     "File": "PHN16-73.png",
@@ -357,7 +839,31 @@
       "PHN16"
     ],
     "SourcePage": "https://news.acer.com/acer-launches-new-predator-helios-neo-ai-gaming-laptops-with-next-gen-processors-and-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/4f40e21b-0b84-4468-b155-6c909ad562f7/-/resize/640x/-/format/png/Predator%20Helios%20Neo%2016%20AI_SA-01.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/4f40e21b-0b84-4468-b155-6c909ad562f7/-/resize/640x/-/format/png/Predator%20Helios%20Neo%2016%20AI_SA-01.png",
+    "Framing": {
+      "Bounds": [
+        0.426805,
+        0.09744,
+        0.412624,
+        0.722869
+      ],
+      "Outline": [
+        0.487013,
+        0.11544,
+        0.694805,
+        0.236652,
+        0.691558,
+        0.525253,
+        0.821429,
+        0.802309,
+        0.594156,
+        0.756133,
+        0.444805,
+        0.525253,
+        0.461039,
+        0.496392
+      ]
+    }
   },
   {
     "File": "PHN18-72.png",
@@ -369,7 +875,15 @@
       "PHN18"
     ],
     "SourcePage": "https://news.acer.com/acer-launches-new-predator-helios-neo-ai-gaming-laptops-with-next-gen-processors-and-gpus",
-    "ImageUrl": "https://cdn.assets.prezly.com/0b67f184-f11f-4b5d-a698-893ebdec18c0/-/resize/640x/-/format/png/Neo18-02.png"
+    "ImageUrl": "https://cdn.assets.prezly.com/0b67f184-f11f-4b5d-a698-893ebdec18c0/-/resize/640x/-/format/png/Neo18-02.png",
+    "Framing": {
+      "Bounds": [
+        0.028875,
+        0.120067,
+        0.943813,
+        0.759866
+      ]
+    }
   },
   {
     "File": "PT14-51.png",
@@ -381,7 +895,33 @@
       "PT14"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
-    "ImageUrl": "https://cdn.assets.prezly.com/ad1d51b2-e3de-48b7-b1b8-a87974e00e40/-/resize/640x/-/format/png/PREDATOR-TRITON-14-PT14-51-01.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/ad1d51b2-e3de-48b7-b1b8-a87974e00e40/-/resize/640x/-/format/png/PREDATOR-TRITON-14-PT14-51-01.jpg",
+    "Framing": {
+      "Bounds": [
+        0.123989,
+        0.067216,
+        0.785253,
+        0.813948
+      ],
+      "Outline": [
+        0.263144,
+        0.085216,
+        0.789216,
+        0.174488,
+        0.891242,
+        0.523927,
+        0.626612,
+        0.863164,
+        0.145177,
+        0.702473,
+        0.141989,
+        0.684618,
+        0.355605,
+        0.429553,
+        0.377923,
+        0.401496
+      ]
+    }
   },
   {
     "File": "PT16-51.png",
@@ -393,7 +933,35 @@
       "PT16"
     ],
     "SourcePage": "https://news.acer.com/acer-expands-its-premium-gaming-portfolio-with-the-new-predator-triton-16",
-    "ImageUrl": "https://cdn.assets.prezly.com/aa1886d2-bee8-46c5-973d-2fc916cbcab0/-/resize/640x/-/format/png/PREDATOR-TRITON-16-PT16-51-01.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/aa1886d2-bee8-46c5-973d-2fc916cbcab0/-/resize/640x/-/format/png/PREDATOR-TRITON-16-PT16-51-01.jpg",
+    "Framing": {
+      "Bounds": [
+        0.119318,
+        0.037272,
+        0.466423,
+        0.884356
+      ],
+      "Outline": [
+        0.166013,
+        0.055272,
+        0.39876,
+        0.282988,
+        0.389194,
+        0.640191,
+        0.382818,
+        0.671447,
+        0.567741,
+        0.885768,
+        0.564552,
+        0.903628,
+        0.542234,
+        0.903628,
+        0.150072,
+        0.49731,
+        0.137318,
+        0.47052
+      ]
+    }
   },
   {
     "File": "PTX17-71.png",
@@ -405,10 +973,34 @@
       "PTX17"
     ],
     "SourcePage": "https://news.acer.com/acer-introduces-all-new-high-performance-predator-triton-17-x-and-predator-helios-neo-16-gaming-laptops",
-    "ImageUrl": "https://cdn.assets.prezly.com/9af18cd8-8184-40df-9aa0-596cefcd10e4/-/resize/640x/-/format/png/PREDATOR-TRITON-17-X-PTX17-71-01.jpg"
+    "ImageUrl": "https://cdn.assets.prezly.com/9af18cd8-8184-40df-9aa0-596cefcd10e4/-/resize/640x/-/format/png/PREDATOR-TRITON-17-X-PTX17-71-01.jpg",
+    "Framing": {
+      "Bounds": [
+        0.060524,
+        0.243349,
+        0.491929,
+        0.593954
+      ],
+      "Outline": [
+        0.276199,
+        0.261349,
+        0.534453,
+        0.349028,
+        0.480251,
+        0.655903,
+        0.336777,
+        0.819303,
+        0.078524,
+        0.699741,
+        0.078524,
+        0.671843,
+        0.234751,
+        0.53634
+      ]
+    }
   },
   {
-    "File": "PT14-52T.jpg",
+    "File": "PT14-52T.png",
     "Title": "Triton 14 AI",
     "Models": [
       "PT14-52T"
@@ -417,7 +1009,15 @@
       "PT14"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/vj26jufodhoxjypwxxfb.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/vj26jufodhoxjypwxxfb.webp",
+    "Framing": {
+      "Bounds": [
+        0.0695,
+        0.222625,
+        0.868812,
+        0.559437
+      ]
+    }
   },
   {
     "File": "PT314-52S.png",
@@ -429,7 +1029,15 @@
       "PT314"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-300se_d6skjs.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-300se_d6skjs.png",
+    "Framing": {
+      "Bounds": [
+        0.122625,
+        0.208562,
+        0.752797,
+        0.600454
+      ]
+    }
   },
   {
     "File": "PT516-52S.png",
@@ -441,10 +1049,18 @@
       "PT516"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-500se_v2odh0.png"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/triton-500se_v2odh0.png",
+    "Framing": {
+      "Bounds": [
+        0.134344,
+        0.224188,
+        0.725453,
+        0.580921
+      ]
+    }
   },
   {
-    "File": "PTN16-51.jpg",
+    "File": "PTN16-51.png",
     "Title": "Triton Neo 16",
     "Models": [
       "PTN16-51"
@@ -453,6 +1069,14 @@
       "PTN16"
     ],
     "SourcePage": "https://www.acerid.com/produk/laptop",
-    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/bbwipvvprzso8tq8phqe.webp"
+    "ImageUrl": "https://d21ijl4iqs0z04.cloudfront.net/public/bbwipvvprzso8tq8phqe.webp",
+    "Framing": {
+      "Bounds": [
+        0.007,
+        0.122,
+        0.98975,
+        0.76475
+      ]
+    }
   }
 ]

@@ -373,9 +373,6 @@
     <value>Ruční</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>Ventilátory řídí firmware notebooku; Acer Crate může při zahřátí přidat otáčky.</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>Všechny ventilátory na plné otáčky.</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>Ventilátory</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>Proti throttlingu</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>Přidává otáčky k otáčkám firmwaru, jak se čipy zahřívají, a plných otáček dosáhne při teplotě, kdy procesor začíná snižovat výkon.</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>Roztočí ventilátory na plné otáčky, když se čipy přiblíží teplotě, kdy začínají snižovat výkon.</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>Zvyšuje vlastní otáčky ventilátorů řízené firmwarem, které používá režim Auto a ke kterým režim Ruční přidává.</value>

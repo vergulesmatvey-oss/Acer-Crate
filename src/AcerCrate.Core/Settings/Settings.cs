@@ -70,6 +70,7 @@ public sealed record UserSettings
     public Dictionary<string, CoolingPreset> CoolingPresets { get; init; } = [];
     public Dictionary<string, LightingSettings> LightingPresets { get; init; } = [];
     public List<GameEntry> Games { get; init; } = [];
+    public IReadOnlyList<string> HomeGameIds { get; init; } = [];
     public PersonalMode PersonalMode { get; init; } = new();
 }
 

@@ -10,6 +10,7 @@ namespace AcerCrate.Core.Engine;
 public interface IMachine
 {
     IModePowerSchemes? ModePowerSchemes => null;
+    IProcessorPowerPlans? ProcessorPowerPlans => null;
     /// <summary>E.g. "Nitro AN515-57"; null when Windows does not say.</summary>
     string? Model { get; }
 
@@ -57,6 +58,7 @@ public interface IMachine
 public sealed class WindowsMachine : IMachine
 {
     public IModePowerSchemes ModePowerSchemes { get; } = new WindowsModePowerSchemes();
+    public IProcessorPowerPlans ProcessorPowerPlans { get; } = new WindowsProcessorPowerPlans();
     public string? Model => SystemInfo.ReadModel();
 
     public string? BiosVersion => SystemInfo.ReadBiosVersion();

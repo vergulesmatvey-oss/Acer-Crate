@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased
+
+### Dashboard
+
+- Add a three-slot launcher for pinned games and applications. Choose entries from the game library or browse for a Windows executable or shortcut. Cards use local application icons or Steam's cached artwork where available.
+- Align the games panel with the operating mode selector on wide layouts. Use Orbitron Black for the laptop model name and regular text for hardware specifications.
+- Improve the model photographs and their framing, including a front-facing photo for the Nitro AN515-58.
+- Fix clipped labels in the compact sidebar and animate changes in the dashboard meter fills.
+
+### Cooling and monitoring
+
+- Let the firmware manage fan speed in Auto mode. When the CPU reaches 100 °C, request a 5% Windows processor performance limit with boost disabled. Release the emergency limit after 15 seconds at 90 °C or less.
+- Add an optional Windows processor limit to personal modes alongside the existing fan settings.
+- Show GPU voltage when the graphics driver supplies a usable reading.
+- Add an on-demand microphone level meter in the fan section. It shows dBFS and supports an approximate dB SPL reading after calibration with a reference sound level meter.
+
+### Installation
+
+- Remove the application's Windows power schemes during uninstall, including the temporary CPU limit scheme. Switch to another Windows power scheme first when necessary.
+
 ## 1.1.0 — 2026-11-13
 
 ### Modes and hardware

@@ -373,9 +373,6 @@
     <value>कस्टम</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>लैपटॉप का फ़र्मवेयर पंखों का प्रबंधन करता है; गर्म होने पर Acer Crate गति बढ़ा सकता है।</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>सभी पंखे पूरी गति पर।</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>पंखे</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>थ्रॉटलिंग से बचाव</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>चिप गर्म होने पर फ़र्मवेयर की गति के ऊपर गति जोड़ता है, और उस तापमान पर पूरी गति तक पहुँचता है जहाँ प्रोसेसर अपनी गति घटाने लगता है।</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>जब चिप उस तापमान के पास पहुँचते हैं जहाँ वे अपनी गति घटाने लगते हैं, तो पंखों को पूरी गति पर चलाता है।</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>फ़र्मवेयर की अपनी पंखा गतियाँ बढ़ाता है, जिनका उपयोग "स्वचालित" मोड करता है और जिनमें "कस्टम" मोड गति जोड़ता है।</value>

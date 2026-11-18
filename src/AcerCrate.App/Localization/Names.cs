@@ -35,7 +35,7 @@ public static class Names
     {
         FanControlMode.Max => Strings.Get("FanMode_Max_Description"),
         FanControlMode.Custom => Strings.Get(fixedSpeeds ? "FanMode_Custom_DescriptionFixed" : "FanMode_Custom_Description"),
-        _ => Strings.Get("FanMode_Auto_Description"),
+        _ => CrateText.T("FirmwareFanControl"),
     };
 
     public static string OperatingMode(OperatingMode mode) => mode switch

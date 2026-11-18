@@ -373,9 +373,6 @@
     <value>自訂</value>
     <comment>Fan mode: speed added on top of Auto for each fan, fixed or following a curve. Short: a segmented button.</comment>
   </data>
-  <data name="FanMode_Auto_Description" xml:space="preserve">
-    <value>由筆記型電腦的韌體管理風扇；溫度升高時，Acer Crate 可以額外提速。</value>
-  </data>
   <data name="FanMode_Max_Description" xml:space="preserve">
     <value>所有風扇全速運轉。</value>
   </data>
@@ -556,18 +553,6 @@
   <data name="Fans_Title.Text" xml:space="preserve">
     <value>風扇</value>
     <comment>Page title.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Header" xml:space="preserve">
-    <value>防降頻</value>
-    <comment>Name of an on/off setting in Auto mode: Acer Crate adds fan speed as the chips heat up, so the processor does not throttle (slow itself down because it is too hot). Short.</comment>
-  </data>
-  <data name="Fans_AutoBoost.Description" xml:space="preserve">
-    <value>隨著晶片升溫，在韌體轉速之上額外提速，並在處理器開始降頻的溫度達到全速。</value>
-    <comment>What the on/off setting does. "Throttle" = the processor slowing itself down because it is too hot.</comment>
-  </data>
-  <data name="Fans_AutoBoostFixed" xml:space="preserve">
-    <value>晶片接近開始降頻的溫度時，讓風扇全速運轉。</value>
-    <comment>What the Anti-throttle on/off setting does on laptops where it can only switch the fans to full speed. "Throttle" = a chip slowing itself down because it is too hot.</comment>
   </data>
   <data name="Fans_CoolBoost.Description" xml:space="preserve">
     <value>提高韌體本身的風扇轉速：「自動」模式使用這個轉速，「自訂」模式在其之上額外增加。</value>

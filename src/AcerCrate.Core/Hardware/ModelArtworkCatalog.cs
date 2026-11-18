@@ -10,6 +10,17 @@ public sealed record ModelArtworkEntry
     public string[] Prefixes { get; init; } = [];
     public string SourcePage { get; init; } = "";
     public string ImageUrl { get; init; } = "";
+    public ArtworkFraming? Framing { get; init; }
+}
+
+/// <summary>Coordinates relative to the original photo, in the range 0 to 1.</summary>
+public sealed record ArtworkFraming
+{
+    /// <summary>The visible rectangle as x, y, width, height.</summary>
+    public double[] Bounds { get; init; } = [];
+
+    /// <summary>Optional x and y pairs defining a silhouette inside the rectangle.</summary>
+    public double[]? Outline { get; init; }
 }
 
 public sealed record ModelArtworkMatch(ModelArtworkEntry Entry, bool IsExact);

@@ -9,6 +9,7 @@ namespace AcerCrate.Core.Settings;
 public sealed record RuntimeState
 {
     public CalibrationRecord? Calibration { get; init; }
+    public Guid? ProcessorLimitPreviousScheme { get; init; }
 
     public GpuClockRecord? GpuClocks { get; init; }
 

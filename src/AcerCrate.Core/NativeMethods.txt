@@ -32,6 +32,7 @@ D3DKMTOpenAdapterFromLuid
 D3DKMTQueryAdapterInfo
 D3DKMTCloseAdapter
 D3DKMT_ADAPTER_PERFDATA
+D3DKMT_NODE_PERFDATA
 KMTQUERYADAPTERINFOTYPE
 
 // Power source
@@ -49,6 +50,9 @@ PowerEnumerate
 PowerReadFriendlyName
 PowerGetActiveScheme
 PowerSetActiveScheme
+PowerDuplicateScheme
+PowerWriteFriendlyName
+PowerDeleteScheme
 LocalFree
 
 // Restart after a GPU mode switch

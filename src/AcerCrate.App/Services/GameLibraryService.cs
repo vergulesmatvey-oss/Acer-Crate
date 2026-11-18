@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
+using Microsoft.Windows.Storage.Pickers;
 using AcerCrate.Core.Settings;
 
 namespace AcerCrate.App.Services;
@@ -21,7 +22,36 @@ public sealed class GameLibraryService(SettingsService settings, ILogger<GameLib
         if (!game.CanLaunch) throw new InvalidDataException("Choose an executable or a supported launcher game.");
         settings.Update(s => s with { Games = GameLibrary.Merge(s.Games, [game]).ToList() });
     }
-    public void Remove(string id) => settings.Update(s => s with { Games = s.Games.Where(g => g.Id != id).ToList() });
+    public void Remove(string id) => settings.Update(s => s with
+    {
+        Games = s.Games.Where(g => g.Id != id).ToList(),
+        HomeGameIds = GameLibrary.HomeGames(s).Where(g => g.Id != id).Select(g => g.Id).ToArray(),
+    });
+
+    public bool PinToHome(GameEntry game)
+    {
+        var added = false;
+        settings.Update(current =>
+        {
+            var updated = GameLibrary.PinToHome(current, game);
+            added = !ReferenceEquals(current, updated);
+            return updated;
+        });
+        return added;
+    }
+
+    public void UnpinFromHome(string id) => settings.Update(s => s with
+    {
+        HomeGameIds = GameLibrary.HomeGames(s).Where(g => g.Id != id).Select(g => g.Id).ToArray(),
+    });
+
+    public static async Task<string?> PickExecutableAsync(Microsoft.UI.WindowId window)
+    {
+        var picker = new FileOpenPicker(window);
+        picker.FileTypeFilter.Add(".exe");
+        picker.FileTypeFilter.Add(".lnk");
+        return (await picker.PickSingleFileAsync())?.Path;
+    }
     public void Favorite(string id) => settings.Update(s => s with { Games = s.Games.Select(g => g.Id == id ? g with { Favorite = !g.Favorite } : g).ToList() });
     public void Launch(GameEntry game)
     {
@@ -56,15 +86,7 @@ public sealed class GameLibraryService(SettingsService settings, ILogger<GameLib
     private List<GameEntry> Discover()
     {
         var games = new List<GameEntry>();
-        var roots = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Valve\Steam"))
-            if (key?.GetValue("SteamPath") is string steam) roots.Add(steam);
-        foreach (var view in new[] { RegistryView.Registry32, RegistryView.Registry64 })
-        {
-            using var root = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view);
-            using var key = root.OpenSubKey(@"Software\Valve\Steam");
-            if (key?.GetValue("InstallPath") is string steam) roots.Add(steam);
-        }
+        var roots = SteamInstallations();
         foreach (var root in roots.ToArray())
         {
             var libraries = Path.Combine(root, "steamapps", "libraryfolders.vdf");
@@ -84,6 +106,26 @@ public sealed class GameLibraryService(SettingsService settings, ILogger<GameLib
             catch (Exception e) when (e is IOException or UnauthorizedAccessException) { log.LogDebug(e, "Epic directory unavailable"); }
         }
         return games;
+    }
+
+    internal static HashSet<string> SteamInstallations()
+    {
+        var roots = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Valve\Steam"))
+            AddRoot(key?.GetValue("SteamPath") as string);
+        foreach (var view in new[] { RegistryView.Registry32, RegistryView.Registry64 })
+        {
+            using var root = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, view);
+            using var key = root.OpenSubKey(@"Software\Valve\Steam");
+            AddRoot(key?.GetValue("InstallPath") as string);
+        }
+        return roots;
+
+        void AddRoot(string? path)
+        {
+            if (path is not null && Path.IsPathFullyQualified(path))
+                roots.Add(Path.GetFullPath(path));
+        }
     }
 
     private void TryRead(string path, Action<string> consume)
